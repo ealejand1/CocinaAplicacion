@@ -3,9 +3,19 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CocinaAPP": {
+    "CocinaApp": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -62,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "CocinaAPP:build:production"
+              "buildTarget": "CocinaApp:build:production"
             },
             "development": {
-              "buildTarget": "CocinaAPP:build:development"
+              "buildTarget": "CocinaApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "CocinaAPP:build"
+            "buildTarget": "CocinaApp:build"
           }
         },
         "test": {
@@ -98,6 +108,6 @@
     }
   },
   "cli": {
-    "analytics": "f7917f6f-346e-45ac-94ef-58dea356ede6"
+    "analytics": "887025c2-d6c7-441e-aa90-6ddf401ba19c"
   }
 }
