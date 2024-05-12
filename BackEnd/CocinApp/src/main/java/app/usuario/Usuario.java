@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import app.receta.Receta;
+import app.valoraciones.Valoracion;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,17 +29,20 @@ public class Usuario {
 	protected String contraseña;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-    protected Date fechaRegistro;
+    protected Date fechaCreacion;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL) // Relación uno a muchos con Receta
 	@JsonIgnore
 	protected List<Receta> recetas;
-	 
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnore
+    protected List<Valoracion> valoraciones;	
 	
     // Configuración para generar la fecha de registro automáticamente antes de persistir
     @PrePersist
     protected void onCreate() {
-        fechaRegistro = new Date(); // Establecer la fecha actual antes de persistir
+    	fechaCreacion = new Date(); // Establecer la fecha actual antes de persistir
     }
 		
 	public long getId() {
@@ -65,11 +69,11 @@ public class Usuario {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
-	public Date getFechaRegistro() {
-		return fechaRegistro;
+	public Date getFechaCreacion() {
+		return fechaCreacion;
 	}
-	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	public List<Receta> getRecetas() {
@@ -78,6 +82,14 @@ public class Usuario {
 
 	public void setRecetas(List<Receta> recetas) {
 		this.recetas = recetas;
+	}
+
+	public List<Valoracion> getValoraciones() {
+		return valoraciones;
+	}
+
+	public void setValoraciones(List<Valoracion> valoraciones) {
+		this.valoraciones = valoraciones;
 	}
 	
 	

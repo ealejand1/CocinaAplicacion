@@ -2,14 +2,20 @@ package app.receta;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import app.usuario.Usuario;
+import app.valoraciones.Valoracion;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -27,16 +33,20 @@ public class Receta {
 	protected Duration tiempoPreparacion;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-    protected Date fechaRegistro;
+    protected Date fechaCreacion;
 	
 	@ManyToOne // Relación muchos a uno con Usuario
     @JoinColumn(name = "usuario_id") // Nombre de la columna que hace referencia al usuario
     protected Usuario usuario;
 	
+	@OneToMany(mappedBy = "receta", cascade = CascadeType.ALL)
+	@JsonIgnore
+    protected List<Valoracion> valoraciones;
+	
     // Configuración para generar la fecha de registro automáticamente antes de persistir
     @PrePersist
     protected void onCreate() {
-        fechaRegistro = new Date(); // Establecer la fecha actual antes de persistir
+    	fechaCreacion = new Date(); // Establecer la fecha actual antes de persistir
     }
 
 	public long getId() {
@@ -79,12 +89,12 @@ public class Receta {
 		this.tiempoPreparacion = tiempoPreparacion;
 	}
 
-	public Date getFechaRegistro() {
-		return fechaRegistro;
+	public Date getFechaCreacion() {
+		return fechaCreacion;
 	}
 
-	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	public Usuario getUsuario() {
@@ -93,6 +103,14 @@ public class Receta {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public List<Valoracion> getValoraciones() {
+		return valoraciones;
+	}
+
+	public void setValoraciones(List<Valoracion> valoraciones) {
+		this.valoraciones = valoraciones;
 	}
     
     

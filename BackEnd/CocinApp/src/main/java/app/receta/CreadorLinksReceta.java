@@ -8,6 +8,7 @@ import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
 import app.usuario.ControladorUsuarios;
+import app.valoraciones.ControladorValoraciones;
 
 @Component
 public class CreadorLinksReceta implements RepresentationModelAssembler<Receta, EntityModel<Receta>> {
@@ -17,7 +18,8 @@ public class CreadorLinksReceta implements RepresentationModelAssembler<Receta, 
         return EntityModel.of(receta,
                 linkTo(methodOn(ControladorRecetas.class).obtenerRecetaPorId(receta.getId())).withSelfRel(),
                 linkTo(methodOn(ControladorRecetas.class).obtenerRecetas()).withRel("recetas"),
-                linkTo(methodOn(ControladorUsuarios.class).obtenerUsuarioPorId(receta.getUsuario().getId())).withRel("usuario")
+                linkTo(methodOn(ControladorUsuarios.class).obtenerUsuarioPorId(receta.getUsuario().getId())).withRel("usuario"),
+                linkTo(methodOn(ControladorValoraciones.class).obtenerValoracionesPorReceta(receta.getId())).withRel("valoraciones")
         );
     }
 }
