@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/usuarios") // Cambio de /razas a /usuarios
+@RequestMapping("/usuarios") 
 public class ControladorUsuarios {
 
-    private final RepositorioUsuario repositorio; // Repositorio de Usuarios en lugar de Razas
+    private final RepositorioUsuario repositorio; 
     private final CreadorLinksUsuario creaLinks;
 
     public ControladorUsuarios(RepositorioUsuario repositorio, CreadorLinksUsuario creaLinks) {
