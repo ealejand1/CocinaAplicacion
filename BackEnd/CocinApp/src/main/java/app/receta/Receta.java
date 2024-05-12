@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import app.categoria.Categoria;
 import app.usuario.Usuario;
 import app.valoraciones.Valoracion;
 import jakarta.persistence.CascadeType;
@@ -14,6 +15,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
@@ -42,6 +45,15 @@ public class Receta {
 	@OneToMany(mappedBy = "receta", cascade = CascadeType.ALL)
 	@JsonIgnore
     protected List<Valoracion> valoraciones;
+	
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnore
+    @JoinTable(
+        name = "receta_categoria",
+        joinColumns = @JoinColumn(name = "receta_id"),
+        inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
+    protected List<Categoria> categorias;
 	
     // Configuración para generar la fecha de registro automáticamente antes de persistir
     @PrePersist
@@ -111,6 +123,14 @@ public class Receta {
 
 	public void setValoraciones(List<Valoracion> valoraciones) {
 		this.valoraciones = valoraciones;
+	}
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
     
     

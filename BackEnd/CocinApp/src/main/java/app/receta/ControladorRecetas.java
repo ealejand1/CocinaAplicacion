@@ -45,7 +45,7 @@ public class ControladorRecetas {
         return creaLinks.toModel(receta);
     }
 
-    @GetMapping("/usuarios/{idUsuario}/recetas")
+    @GetMapping("/usuario/{idUsuario}/recetas")
     public CollectionModel<EntityModel<Receta>> obtenerRecetasPorUsuario(@PathVariable("idUsuario") Long idUsuario) {
         List<EntityModel<Receta>> recetas = repositorio.findByUsuarioId(idUsuario).stream()
                 .map(creaLinks::toModel)
@@ -56,6 +56,20 @@ public class ControladorRecetas {
                         .withSelfRel()
         );
     }
+    
+    @GetMapping("/categoria/{idCategoria}/recetas")
+    public CollectionModel<EntityModel<Receta>> obtenerRecetasPorCategoria(@PathVariable("idCategoria") Long idCategoria) {
+        List<EntityModel<Receta>> recetas = repositorio.findByCategoriaId(idCategoria).stream()
+                .map(creaLinks::toModel)
+                .collect(Collectors.toList());
+
+        return CollectionModel.of(recetas,
+                linkTo(methodOn(ControladorRecetas.class).obtenerRecetasPorCategoria(idCategoria))
+                .withSelfRel()
+        );
+    }
+
+
 
     // Crear una nueva receta (POST)
     @PostMapping

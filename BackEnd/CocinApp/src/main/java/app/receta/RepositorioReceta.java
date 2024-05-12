@@ -3,6 +3,7 @@ package app.receta;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -16,6 +17,9 @@ public interface RepositorioReceta extends CrudRepository<Receta, Long> {
     List<Receta> findByNombre(@Param("nombre") String nombre); // Si deseas buscar por nombre de receta
     List<Receta> findByUsuarioId(Long userId);
 
+    @Query("SELECT r FROM Receta r JOIN r.categorias c WHERE c.id = :categoriaId")
+    List<Receta> findByCategoriaId(@Param("categoriaId") Long categoriaId);
+  
     // Update
     Receta saveAndFlush(Receta receta);
 
