@@ -7,6 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import app.categoria.Categoria;
+import app.receta_ingrediente.RecetaIngrediente;
 import app.usuario.Usuario;
 import app.valoraciones.Valoracion;
 import jakarta.persistence.CascadeType;
@@ -54,6 +55,10 @@ public class Receta {
         inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
     protected List<Categoria> categorias;
+    
+    @OneToMany(mappedBy = "receta")
+    @JsonIgnore
+    protected List<RecetaIngrediente> ingredientes;
 	
     // Configuración para generar la fecha de registro automáticamente antes de persistir
     @PrePersist
@@ -131,6 +136,14 @@ public class Receta {
 
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
+	}
+
+	public List<RecetaIngrediente> getIngredientes() {
+		return ingredientes;
+	}
+
+	public void setIngredientes(List<RecetaIngrediente> ingredientes) {
+		this.ingredientes = ingredientes;
 	}
     
     
