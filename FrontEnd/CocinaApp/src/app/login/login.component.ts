@@ -7,6 +7,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+  ruta: string='../assets/vegetables.jpg'
   
   loginForm = this.formBuilder.group({
     usuario:'',

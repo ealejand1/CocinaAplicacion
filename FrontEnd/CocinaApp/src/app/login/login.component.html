@@ -1,10 +1,17 @@
-<form [formGroup]="loginForm">
+<app-header></app-header>
+<div class="caja">
+<form class="formulario" [formGroup]="loginForm">
     <h2>Login</h2>
-    <div class="input-Form">
-        <label>Nombre de Usuario <input type="text" name="usuario" formControlName="usuario"></label>
+    <div class="input usuario">
+         <input type="text" name="usuario" formControlName="usuario" placeholder="nombre de usuario">
     </div>
-    <div class="input-Form">
-        <label>Contrasena <input type="password" name="password" formControlName="password"></label>
+    <div class="input contra">
+        <input type="password" name="password" formControlName="password" placeholder="contrasena">
     </div>
-    <button class="boton-Form-Enviar" value="enviar">Iniciar Sesion</button>
+    <button class="Enviar" value="enviar">Iniciar Sesion</button>
+    <button class="invitado">Iniciar como invitado</button>
+    <p>Tu próximo plato favorito te espera. ¡Ingresa ahora para empezar a cocinar!</p>
 </form>
+</div>
+<app-footer></app-footer>
+
