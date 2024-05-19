@@ -17,6 +17,7 @@ import app.receta.Receta;
 
 @RestController
 @RequestMapping("/categorias")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class ControladorCategorias {
 
     private final RepositorioCategoria repositorio;
@@ -29,16 +30,16 @@ public class ControladorCategorias {
 
     // Obtener todas las categorías (GET)
     @GetMapping
-    public CollectionModel<EntityModel<Categoria>> obtenerCategorias() {
-
-        List<EntityModel<Categoria>> categorias = repositorio.findAll().stream()
-                .map(creaLinks::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(categorias,
-                linkTo(methodOn(ControladorCategorias.class).obtenerCategorias())
-                        .withSelfRel()
-        );
+    public List<Categoria> obtenerCategorias() {
+    	return repositorio.findAll();
+//        List<EntityModel<Categoria>> categorias = repositorio.findAll().stream()
+//                .map(creaLinks::toModel)
+//                .collect(Collectors.toList());
+//
+//        return CollectionModel.of(categorias,
+//                linkTo(methodOn(ControladorCategorias.class).obtenerCategorias())
+//                        .withSelfRel()
+//        );
     }
 
     // Obtener una categoría por su ID (GET)

@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="fondo">
+    <div id="idMenuInicio">
+        <h2>Recetas Caseras</h2>
+        <form action="#">
+            <input type="text" placeholder="Nombre de la receta">
+            <input type="submit" value="Buscar >">
+        </form>
+    </div>
+</div>
+<div class="Embellecedor">>>>- - - - - - ⋅♥⋅ - - - - - -<<<</div>
+<div class="contenedor">
+    <div *ngFor="let categoria of categorias" class="caja">
+        <input type="hidden" class="categoria" name="id{{categoria.nombre}}" value="{{categoria.id}}">
+        <div>{{categoria.nombre}}</div>
+        <img class="imgCaja" src="../../assets/imagenes/categorias/{{categoria.nombre}}.jpg" alt="{{categoria.nombre}}">
+    </div>
+</div>
+<app-footer></app-footer>

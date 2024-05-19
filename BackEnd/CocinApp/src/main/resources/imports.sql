@@ -102,25 +102,25 @@ insert into valoracion (puntuacion, receta_id, usuario_id, comentario) values (4
 insert into valoracion (puntuacion, receta_id, usuario_id, comentario) values (5, 21, 13, "Los wraps de pollo y aguacate eran frescos y deliciosos. ¡Perfectos para un almuerzo rápido!");
 
 
+insert into categoria (nombre) values ("Entrantes");
+insert into categoria (nombre) values ("Postres");
+insert into categoria (nombre) values ("Batidos");
 insert into categoria (nombre) values ("Italiana");
 insert into categoria (nombre) values ("Mexicana");
-insert into categoria (nombre) values ("Japonesa");
-insert into categoria (nombre) values ("Mediterránea");
-insert into categoria (nombre) values ("Vegetariana");
 insert into categoria (nombre) values ("Asiática");
-insert into categoria (nombre) values ("Americana");
-insert into categoria (nombre) values ("Árabe");
-insert into categoria (nombre) values ("Griega");
-insert into categoria (nombre) values ("India");
-insert into categoria (nombre) values ("Francesa");
+insert into categoria (nombre) values ("Vegetariana");
+insert into categoria (nombre) values ("Vegana");
+insert into categoria (nombre) values ("Cumpleaños");
+insert into categoria (nombre) values ("Rápidas");
+insert into categoria (nombre) values ("Pocos ingredientes");
 insert into categoria (nombre) values ("Española");
-insert into categoria (nombre) values ("Tailandesa");
+insert into categoria (nombre) values ("Arroces");
+insert into categoria (nombre) values ("Carnes");
 insert into categoria (nombre) values ("Peruana");
-insert into categoria (nombre) values ("China");
-insert into categoria (nombre) values ("Brasileña");
-insert into categoria (nombre) values ("Coreana");
-insert into categoria (nombre) values ("Caribeña");
-insert into categoria (nombre) values ("Sudafricana");
+insert into categoria (nombre) values ("Hamburguesas");
+insert into categoria (nombre) values ("Ecuatoriana");
+insert into categoria (nombre) values ("Pizzas");
+insert into categoria (nombre) values ("Pastas");
 
 insert into receta_categoria (categoria_id, receta_id) values (2, 1);
 insert into receta_categoria (categoria_id, receta_id) values (10, 1);
