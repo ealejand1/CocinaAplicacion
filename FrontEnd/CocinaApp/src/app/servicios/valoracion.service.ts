@@ -12,6 +12,6 @@ export class ValoracionService {
   constructor(private http: HttpClient) { }
 
   obtenerValoracionesPorReceta(recetaId: number): Observable<Valoracion[]> {
-    return this.http.get<Valoracion[]>(`${this.apiUrl}/recetas/${recetaId}/valoraciones`);
+    return this.http.get<Valoracion[]>(`${this.apiUrl}/valoraciones/${recetaId}/valoraciones`);
   }
 }

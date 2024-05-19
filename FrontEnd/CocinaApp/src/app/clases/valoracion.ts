@@ -1,3 +1,4 @@
+import { Receta } from "./receta";
 import { Usuario } from "./usuario";
 
 export class Valoracion {
@@ -5,4 +6,5 @@ export class Valoracion {
     puntuacion: number;
     comentario: string;
     usuario: Usuario;
+    receta:Receta;
 }

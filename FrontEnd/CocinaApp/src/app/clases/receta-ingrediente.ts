@@ -1,10 +1,14 @@
+import { Receta } from "./receta";
+
 export class RecetaIngrediente {
     
         id: number;
-        ingrediente: {
-                nombre: string;
-              };
-            
         cantidad: number;
         unidades: string;
+        receta: Receta;
+        ingrediente: {
+                id: number;
+                nombre: string;
+        };
+            
 }
