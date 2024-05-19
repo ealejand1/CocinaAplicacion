@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Receta } from '../receta';
-import { RecetaService } from '../receta.service';
+import { Receta } from '../clases/receta';
+import { RecetaService } from '../servicios/receta.service';
 
 @Component({
   selector: 'app-recetas',

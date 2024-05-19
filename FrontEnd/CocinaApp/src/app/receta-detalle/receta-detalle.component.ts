@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Receta } from '../receta';
-import { RecetaService } from '../receta.service';
-import { RecetaIngrediente } from "../receta-ingrediente";
-import { RecetaIngredienteService } from '../receta-ingrediente.service';
-import { ValoracionService } from '../valoracion.service'; // Asegúrate de importar el servicio
-import { Valoracion } from '../valoracion'; // Asegúrate de importar el modelo de valoraciones si no lo has hecho
+import { Receta } from '../clases/receta';
+import { RecetaService } from '../servicios/receta.service';
+import { RecetaIngrediente } from "../clases/receta-ingrediente";
+import { RecetaIngredienteService } from '../servicios/receta-ingrediente.service';
+import { ValoracionService } from '../servicios/valoracion.service'; // Asegúrate de importar el servicio
+import { Valoracion } from '../clases/valoracion'; // Asegúrate de importar el modelo de valoraciones si no lo has hecho
 
 @Component({
   selector: 'app-receta-detalle',

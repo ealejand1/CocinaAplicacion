@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Valoracion } from './valoracion'; // Asegúrate de que el modelo Valoracion esté correctamente definido.
+import { Valoracion } from '../clases/valoracion'; // Asegúrate de que el modelo Valoracion esté correctamente definido.
 
 @Injectable({
   providedIn: 'root'
