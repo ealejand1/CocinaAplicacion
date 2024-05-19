@@ -1,0 +1,7 @@
+
+<div *ngFor="let receta of recetas">
+    <a [routerLink]="['/recetas', receta.id]">{{ receta.nombre }}</a>
+  <p>{{ receta.descripcion }}</p>
+  <!-- Más detalles de cada receta -->
+</div>
+

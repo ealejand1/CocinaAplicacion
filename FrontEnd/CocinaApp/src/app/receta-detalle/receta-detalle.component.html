@@ -1,0 +1,22 @@
+<div *ngIf="receta">
+  <h2>{{receta.usuario.nombre}}</h2>
+    <h2>{{ receta.nombre }}</h2>
+    <p>{{ receta.descripcion }}</p>
+    <h3>Instrucciones</h3>
+    <p>{{ receta.instrucciones }}</p>
+    <h3>Ingredientes</h3>
+    <ul>
+      <li *ngFor="let ingrediente of ingredientes">
+        {{ ingrediente.ingrediente.nombre }} - {{ ingrediente.cantidad }} {{ ingrediente.unidades }}
+      </li>
+    </ul>
+    <h3>Valoraciones</h3>
+  <ul *ngIf="valoraciones && valoraciones.length > 0">
+    <li *ngFor="let valoracion of valoraciones">
+      "{{ valoracion.comentario }}" - {{ valoracion.puntuacion }} estrellas
+    </li>
+  </ul>
+  </div>
+  <ng-template #loading>
+    <p>Cargando detalles de la receta...</p>
+  </ng-template>

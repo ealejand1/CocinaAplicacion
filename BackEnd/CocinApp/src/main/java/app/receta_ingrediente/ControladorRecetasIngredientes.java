@@ -12,6 +12,7 @@ import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/recetas-ingredientes") 
 public class ControladorRecetasIngredientes {
@@ -47,16 +48,15 @@ public class ControladorRecetasIngredientes {
     
     // Obtener los ingredientes de una receta por su ID (GET)
     @GetMapping("/receta/{receta_id}")
-    public CollectionModel<EntityModel<RecetaIngrediente>> obtenerIngredientesPorReceta(@PathVariable("receta_id") Long recetaId) {
-        List<EntityModel<RecetaIngrediente>> recetasIngredientes = repositorio.findByRecetaId(recetaId).stream()
-                .map(creaLinks::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(recetasIngredientes,
-                linkTo(methodOn(ControladorRecetasIngredientes.class).obtenerIngredientesPorReceta(recetaId))
-                        .withSelfRel()
-        );
+    public ResponseEntity<List<RecetaIngrediente>> obtenerIngredientesPorReceta(@PathVariable("receta_id") Long recetaId) {
+        List<RecetaIngrediente> ingredientes = repositorio.findByRecetaId(recetaId);
+        if (ingredientes.isEmpty()) {
+            return ResponseEntity.noContent().build();  // Devuelve 204 No Content si la lista está vacía
+        }
+        return ResponseEntity.ok(ingredientes);  // Devuelve 200 OK con la lista de ingredientes
     }
+
+    
 
     // Obtener las recetas de un ingrediente por su ID (GET)
     @GetMapping("/ingrediente/{ingrediente_id}")
