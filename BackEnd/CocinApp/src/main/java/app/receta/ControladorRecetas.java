@@ -12,6 +12,7 @@ import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/recetas") 
 public class ControladorRecetas {
@@ -26,16 +27,8 @@ public class ControladorRecetas {
 
     // Obtener todas las recetas (GET)
     @GetMapping
-    public CollectionModel<EntityModel<Receta>> obtenerRecetas() {
-
-        List<EntityModel<Receta>> recetas = repositorio.findAll().stream()
-                .map(creaLinks::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(recetas,
-                linkTo(methodOn(ControladorRecetas.class).obtenerRecetas())
-                        .withSelfRel()
-        );
+    public List<Receta> obtenerRecetas() {
+        return repositorio.findAll().stream().collect(Collectors.toList());
     }
 
     // Obtener una receta por su ID (GET)
@@ -45,7 +38,7 @@ public class ControladorRecetas {
         return creaLinks.toModel(receta);
     }
 
-    @GetMapping("/usuario/{idUsuario}/recetas")
+    @GetMapping("/usuario/{idUsuario}/recetas")	
     public CollectionModel<EntityModel<Receta>> obtenerRecetasPorUsuario(@PathVariable("idUsuario") Long idUsuario) {
         List<EntityModel<Receta>> recetas = repositorio.findByUsuarioId(idUsuario).stream()
                 .map(creaLinks::toModel)
