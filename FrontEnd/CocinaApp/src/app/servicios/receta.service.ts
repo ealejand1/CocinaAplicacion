@@ -23,5 +23,8 @@ export class RecetaService {
   obtenerValoracionesPorReceta(idReceta: number): Observable<Valoracion[]> {
     return this.http.get<Valoracion[]>(`${this.apiUrl}/${idReceta}/valoraciones`);
   }
+  obtenerRecetasPorCategoria(idCategoria: number): Observable<Receta[]>{
+    return this.http.get<Receta[]>(`${this.apiUrl}/categoria/${idCategoria}/recetas`);
+  }
   
 }
