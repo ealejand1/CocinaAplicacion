@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { LoginService } from '../servicios/auth/login.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,29 @@ import { Router } from "@angular/router";
   styleUrl: './header.component.css'
 
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
-  constructor(private router:Router){}
+  loggeado:boolean = false;
+  constructor(private router:Router, private loginServicio:LoginService){}
+
+  ngOnInit(): void {
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      if(sessionStorage.getItem("token")){
+        this.loggeado = true;
+       }
+       else{
+        this.loggeado = false;
+       }
+    }
+   
+  }
+  
+
   crearReceta(){
     this.router.navigate(['registrar-receta'])
+  }
+  logOut():void{
+    this.loginServicio.logout();
+    this.router.navigateByUrl("login");
   }
 }

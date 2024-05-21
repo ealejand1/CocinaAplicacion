@@ -5,7 +5,15 @@
         <div></div>
     </div>
     <a [routerLink]="['/inicio/']">RecipyEnte</a>
-    <p (click)="crearReceta()">crear Receta</p>
+
+    <div *ngIf="loggeado">
+        <a (click)="crearReceta()">crear Receta</a>
+    </div>
+    
+    <div *ngIf="loggeado">
+        <a (click)="logOut()">Cerrar Sesion</a>
+    </div>
+   
     <div class="imagen">
         ★
     </div>
