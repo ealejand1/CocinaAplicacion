@@ -1,4 +1,26 @@
-body{
+
+html, body {
+    height: 100%;
     margin: 0;
-    background-color: #FFF9E9;
-}
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height of the viewport */
+  }
+  
+  app-header {
+    flex: 0 0 auto; /* Header takes its natural height */
+  }
+  
+  .content {
+    flex: 1 1 auto; /* Content takes remaining space */
+    overflow: auto; /* Enable scrolling for content if necessary */
+  }
+  
+  app-footer {
+    flex: 0 0 auto; /* Footer takes its natural height */
+  }

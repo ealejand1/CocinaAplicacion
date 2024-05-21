@@ -30,7 +30,7 @@ export class RecetaDetalleComponent implements OnInit {
       const recetaId = +id;
       this.recetaService.obtenerRecetaPorId(recetaId).subscribe(receta => {
         this.receta = receta;
-        this.cargarValoraciones(recetaId); // Cargar valoraciones cuando cargues la receta
+        this.cargarValoraciones(recetaId); 
       });
       this.recetaIngredienteService.obtenerIngredientesPorReceta(recetaId).subscribe(
         ingredientes => {

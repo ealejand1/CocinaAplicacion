@@ -1,0 +1,83 @@
+.caja-registrar{
+    background-image: url('../../assets/fondos/Inicio.jpg');
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.caja-marco{
+    width: 50%;
+    height: 75vh;
+    background-color: antiquewhite;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    
+}
+.formulario-registrar{
+    width: 95%;
+    height: 70vh;
+    background-color: antiquewhite;
+    border: 2px solid #DB8243;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.nombrereceta{
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background: transparent;
+    font-size: 50px;
+    color: #55260F;
+
+}
+label {
+    display: block;
+    margin-left: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #55260F;
+  }
+  .descripcion, .instrucciones, .tiempo {
+    margin-left: 15px;
+    width: 95%; 
+    padding: 0.5rem; /* Espacio interno del textarea */
+    border: 2px solid #55260F; 
+    border-radius: 10px; 
+    font-size: 1rem; 
+    resize: vertical; /* Permitir solo el cambio de tamaño vertical */
+    box-shadow:  0 4px 8px rgba(0, 0, 0, 05);
+    box-sizing: border-box; /* Incluir el padding y el borde en el ancho total */
+  }
+  .descripcion::placeholder{
+    color: #55260F;
+    font-size: 12px;
+  }
+.nombrereceta::placeholder{
+    color:#55260F;
+}
+.tiempo{
+    width: 10%; 
+}
+.crear{
+    border-radius: 100px;
+    width: 25%;
+    height: 15vh;
+    background-color: #823914;
+    align-self: center;
+    color:white;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+.cancelar{
+    width: 15%;
+    height: 5vh;
+}

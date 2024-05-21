@@ -1,0 +1,43 @@
+<div class="caja-registrar">
+  <div class="caja-marco">
+
+  
+  <form (ngSubmit)="onSubmit()"  class="formulario-registrar">
+
+
+      <div >
+          
+          <input class="nombrereceta" id="nombre" type="text" [(ngModel)]="receta.nombre" name="nombre" placeholder="Nombre Receta" required>
+      </div>
+     
+      <div>
+          <label  for="descripcion">Descripción:</label>
+          <textarea class="descripcion" id="descripcion" [(ngModel)]="receta.descripcion" name="descripcion" required placeholder="descripcion breve y detalles a anadir a la receta"></textarea>
+      </div>
+      
+      <div class="contenedor-instrucciones">
+          <label for="instrucciones">Instrucciones:</label>
+          <textarea class="instrucciones"id="instrucciones" [(ngModel)]="receta.instrucciones" name="instrucciones"></textarea>
+      </div>
+      
+      <div>
+          <label for="tiempoPreparacion">Tiempo de Preparación:</label>
+          <input  class="tiempo"id="tiempoPreparacion" type="text" [(ngModel)]="receta.tiempoPreparacion" name="tiempoPreparacion">
+      </div>
+      <button class="crear" type="submit">Crear Receta</button>
+      <!-- Lista de ingredientes 
+      <h1>lista ingredientes</h1>
+      <select name="ingredientes" id="idIngredientes" >
+          <option value="{{ingrediente.id}}" *ngFor="let ingrediente of todosLosIngredientes">{{ingrediente.nombre}}</option>
+      </select>
+  
+      cantidad
+      <input type="number" name="cantidad" id="idCantidad">
+      unidades
+      <input type="text" name="unidades" id="idUnidades">
+      
+        <button type="button" (click)="addIngredient()">Añadir Ingrediente</button>
+      -->
+  </form>  
+</div> 
+</div>
