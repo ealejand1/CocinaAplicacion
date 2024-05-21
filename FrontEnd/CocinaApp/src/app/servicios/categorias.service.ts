@@ -18,4 +18,8 @@ export class CategoriasService {
     return this.httpClient.get<Categoria[]>(this.baseURL);
   }
 
+  obtenerCategoriaPorId(id:number):Observable<Categoria>{
+    return this.httpClient.get<Categoria>(`${this.baseURL}/${id}`)
+  }
+
 }

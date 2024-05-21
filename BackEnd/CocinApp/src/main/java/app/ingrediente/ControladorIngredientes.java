@@ -27,16 +27,17 @@ public class ControladorIngredientes {
 
     // Obtener todos los ingredientes (GET)
     @GetMapping
-    public CollectionModel<EntityModel<Ingrediente>> obtenerIngredientes() {
+    public List<Ingrediente> obtenerIngredientes() {
 
-        List<EntityModel<Ingrediente>> ingredientes = repositorio.findAll().stream()
-                .map(creaLinks::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(ingredientes,
-                linkTo(methodOn(ControladorIngredientes.class).obtenerIngredientes())
-                        .withSelfRel()
-        );
+    	return repositorio.findAll();
+//        List<EntityModel<Ingrediente>> ingredientes = repositorio.findAll().stream()
+//                .map(creaLinks::toModel)
+//                .collect(Collectors.toList());
+//
+//        return CollectionModel.of(ingredientes,
+//                linkTo(methodOn(ControladorIngredientes.class).obtenerIngredientes())
+//                        .withSelfRel()
+//        );
     }
 
     // Obtener un ingrediente por su ID (GET)

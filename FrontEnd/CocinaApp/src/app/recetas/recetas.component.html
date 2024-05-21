@@ -1,7 +1,15 @@
-
-<div *ngFor="let receta of recetas">
-    <a [routerLink]="['/recetas', receta.id]">{{ receta.nombre }}</a>
-  <p>{{ receta.descripcion }}</p>
-  <!-- Más detalles de cada receta -->
+<div class="recetas-container">
+  <div class="header-image">
+    <img src="../../assets/fondos/logo1.png" alt="Header Image">
+  </div>
+  <div class="recetas-grid">
+    <div class="receta-card" *ngFor="let receta of recetas">
+      <a [routerLink]="['/recetas', receta.id]" class="receta-nombre">{{ receta.nombre }}</a>
+      <p class="receta-descripcion">{{ receta.descripcion }}</p>
+      <div class="receta-buttons">
+        <button [routerLink]="['/editar-receta', receta.id]" class="btn">Editar</button>
+        <button (click)="eliminarReceta(receta.id)" class="btn">Eliminar</button>
+      </div>
+    </div>
+  </div>
 </div>
-

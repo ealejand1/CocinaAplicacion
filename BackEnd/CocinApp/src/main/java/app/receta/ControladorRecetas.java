@@ -51,15 +51,18 @@ public class ControladorRecetas {
     }
     
     @GetMapping("/categoria/{idCategoria}/recetas")
-    public CollectionModel<EntityModel<Receta>> obtenerRecetasPorCategoria(@PathVariable("idCategoria") Long idCategoria) {
-        List<EntityModel<Receta>> recetas = repositorio.findByCategoriaId(idCategoria).stream()
-                .map(creaLinks::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(recetas,
-                linkTo(methodOn(ControladorRecetas.class).obtenerRecetasPorCategoria(idCategoria))
-                .withSelfRel()
-        );
+    public ResponseEntity<List<Receta>> obtenerRecetasPorCategoria(@PathVariable("idCategoria") Long idCategoria) {
+    	List<Receta> recetas = repositorio.findByCategoriaId(idCategoria);
+    	return ResponseEntity.ok(recetas);
+    	
+//        List<EntityModel<Receta>> recetas = repositorio.findByCategoriaId(idCategoria).stream()
+//                .map(creaLinks::toModel)
+//                .collect(Collectors.toList());
+//
+//        return CollectionModel.of(recetas,
+//                linkTo(methodOn(ControladorRecetas.class).obtenerRecetasPorCategoria(idCategoria))
+//                .withSelfRel()
+//        );
     }
 
 
@@ -80,7 +83,9 @@ public class ControladorRecetas {
         Receta recetaActu = repositorio.findById(id)
                 .map(receta -> {
                     receta.setNombre(recetaNueva.getNombre());
-                    // Agrega aquí más campos que quieras actualizar
+                    receta.setCategorias(recetaNueva.getCategorias());
+                    receta.setDescripcion(recetaNueva.getDescripcion());
+                    receta.setTiempoPreparacion(recetaNueva.getTiempoPreparacion());
                     return repositorio.save(receta);
                 })
                 .orElseGet(() -> {

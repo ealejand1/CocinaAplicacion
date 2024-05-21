@@ -34,7 +34,7 @@ public class Receta {
 	protected String nombre;
 	protected String descripcion;
 	protected String instrucciones;
-	protected Duration tiempoPreparacion;
+	protected String tiempoPreparacion;
 	
 	@Temporal(TemporalType.TIMESTAMP)
     protected Date fechaCreacion;
@@ -98,11 +98,11 @@ public class Receta {
 		this.instrucciones = instrucciones;
 	}
 
-	public Duration getTiempoPreparacion() {
+	public String getTiempoPreparacion() {
 		return tiempoPreparacion;
 	}
 
-	public void setTiempoPreparacion(Duration tiempoPreparacion) {
+	public void setTiempoPreparacion(String tiempoPreparacion) {
 		this.tiempoPreparacion = tiempoPreparacion;
 	}
 

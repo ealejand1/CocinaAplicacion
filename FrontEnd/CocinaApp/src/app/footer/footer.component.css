@@ -1,12 +1,12 @@
-body{
-    width: 100%;
-}
+
 footer {
-    margin-top: auto; /* Empuja el footer hacia abajo */
+    margin: 0;
     background-color: #FFF9E9;
     width: 100%;
     height: 50px;
+    padding-top: 10px;
     text-align: center;
+    box-shadow: 0 -2px 2px #472110;
 }
 p{
     margin: 0;
@@ -16,7 +16,6 @@ p{
     text-align: center;
     color: #481D0B;
     font-size: 2rem;
-    margin: 20px 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 b{

@@ -1,5 +1,78 @@
-div{
-    width: 1000px;
-    height: 500px;
-    background-color: aqua;
-}
+.recetas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px;
+  }
+  
+  .header-image {
+    margin-bottom: 100px;
+    border: 1px solid red;
+    width: 10%;
+    border-radius: 100%;
+    background-color: #F8F5EB;
+  }
+  
+  .header-image img {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    
+  }
+  
+  .recetas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Siempre 4 columnas */
+    gap: 16px;
+    width: 100%;
+  }
+  
+  .receta-card {
+    background-color: #fff;
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .receta-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .receta-nombre {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: brown;
+    text-decoration: none;
+  }
+  
+  .receta-descripcion {
+    text-align: center;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  .receta-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: brown;
+    color: white;
+  }
+  
+  .btn:hover {
+    background-color: darkred;
+  }
+  
