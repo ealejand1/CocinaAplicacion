@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RecetasCategoriaComponent } from './recetas-categoria/recetas-categoria.component';
 import { EditarRecetaComponent } from './editar-receta/editar-receta.component';
 import { RegistrarRecetaComponent } from './registrar-receta/registrar-receta.component';
+import { CategoriaRecetasComponent } from './categoria-recetas/categoria-recetas.component';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { RegistrarRecetaComponent } from './registrar-receta/registrar-receta.co
     RecetasCategoriaComponent,
     EditarRecetaComponent,
     RegistrarRecetaComponent,
+    CategoriaRecetasComponent,
   ],
   imports: [
     BrowserModule,

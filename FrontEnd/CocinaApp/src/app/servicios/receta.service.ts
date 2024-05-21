@@ -16,7 +16,6 @@ export class RecetaService {
   obtenerRecetas(): Observable<Receta[]> {
     return this.http.get<Receta[]>(this.apiUrl);
   }
-
   obtenerRecetaPorId(id: number): Observable<Receta> {
     return this.http.get<Receta>(`${this.apiUrl}/${id}`);
   } 
@@ -32,4 +31,8 @@ export class RecetaService {
   eliminarReceta(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+  obtenerRecetasPorCategoria(idCategoria: number): Observable<Receta[]>{
+    return this.http.get<Receta[]>(`${this.apiUrl}/categoria/${idCategoria}/recetas`);
+  }
+
 }

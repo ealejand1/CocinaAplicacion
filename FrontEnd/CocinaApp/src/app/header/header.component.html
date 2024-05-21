@@ -1,10 +1,13 @@
 <header>
-    <div class="desplegable" (click)="crearReceta()">
-        <p>crear Receta</p>
+
+    <div class="desplegable">
+        <div></div>
+        <div></div>
     </div>
-    <p>hola</p>
+    <a [routerLink]="['/inicio/']">RecipyEnte</a>
+    <p (click)="crearReceta()">crear Receta</p>
     <div class="imagen">
-        <p></p>
+        ★
     </div>
 
 </header>

@@ -44,9 +44,9 @@ public class ControladorCategorias {
 
     // Obtener una categoría por su ID (GET)
     @GetMapping("/{id}")
-    public EntityModel<Categoria> obtenerCategoriaPorId(@PathVariable("id") Long id) {
+    public ResponseEntity<Categoria> obtenerCategoriaPorId(@PathVariable("id") Long id) {
         Categoria categoria = repositorio.findById(id).orElseThrow(() -> new CategoriaNotFoundException(id));
-        return creaLinks.toModel(categoria);
+        return ResponseEntity.ok(categoria);
     }
     
     @GetMapping("/receta/{idReceta}/categorias")

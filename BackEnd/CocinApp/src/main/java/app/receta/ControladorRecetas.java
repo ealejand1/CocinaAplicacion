@@ -51,15 +51,18 @@ public class ControladorRecetas {
     }
     
     @GetMapping("/categoria/{idCategoria}/recetas")
-    public CollectionModel<EntityModel<Receta>> obtenerRecetasPorCategoria(@PathVariable("idCategoria") Long idCategoria) {
-        List<EntityModel<Receta>> recetas = repositorio.findByCategoriaId(idCategoria).stream()
-                .map(creaLinks::toModel)
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(recetas,
-                linkTo(methodOn(ControladorRecetas.class).obtenerRecetasPorCategoria(idCategoria))
-                .withSelfRel()
-        );
+    public ResponseEntity<List<Receta>> obtenerRecetasPorCategoria(@PathVariable("idCategoria") Long idCategoria) {
+    	List<Receta> recetas = repositorio.findByCategoriaId(idCategoria);
+    	return ResponseEntity.ok(recetas);
+    	
+//        List<EntityModel<Receta>> recetas = repositorio.findByCategoriaId(idCategoria).stream()
+//                .map(creaLinks::toModel)
+//                .collect(Collectors.toList());
+//
+//        return CollectionModel.of(recetas,
+//                linkTo(methodOn(ControladorRecetas.class).obtenerRecetasPorCategoria(idCategoria))
+//                .withSelfRel()
+//        );
     }
 
 
