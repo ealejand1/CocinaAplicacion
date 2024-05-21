@@ -29,4 +29,13 @@ cargarRecetas(): void {
     error: error => console.error('Error al obtener las recetas:', error)
   });
 }
+eliminarReceta(id: number): void {
+  this.recetaService.eliminarReceta(id).subscribe({
+    next: () => {
+      console.log('Receta eliminada con éxito');
+      this.cargarRecetas(); // Recargar la lista de recetas después de eliminar
+    },
+    error: error => console.error('Error al eliminar la receta:', error)
+  });
+}
 }

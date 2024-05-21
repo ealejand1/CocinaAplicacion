@@ -80,7 +80,9 @@ public class ControladorRecetas {
         Receta recetaActu = repositorio.findById(id)
                 .map(receta -> {
                     receta.setNombre(recetaNueva.getNombre());
-                    // Agrega aquí más campos que quieras actualizar
+                    receta.setCategorias(recetaNueva.getCategorias());
+                    receta.setDescripcion(recetaNueva.getDescripcion());
+                    receta.setTiempoPreparacion(recetaNueva.getTiempoPreparacion());
                     return repositorio.save(receta);
                 })
                 .orElseGet(() -> {

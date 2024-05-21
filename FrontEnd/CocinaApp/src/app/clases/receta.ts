@@ -8,11 +8,11 @@ export class Receta {
     nombre: string;
     descripcion: string;
     instrucciones: string;
-    tiempoPreparacion: number; 
+    tiempoPreparacion: string; 
     fechaCreacion: Date;
     usuario: Usuario;
     valoraciones: Valoracion[];
     categorias: Categoria[];
-    ingredientes: RecetaIngrediente[];
+    ingredientes: RecetaIngrediente[]=[];
     
 }

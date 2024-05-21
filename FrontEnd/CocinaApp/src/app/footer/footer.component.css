@@ -1,11 +1,9 @@
-body{
-    width: 100%;
-}
+
 footer {
     margin-top: auto; /* Empuja el footer hacia abajo */
     background-color: #FFF9E9;
     width: 100%;
-    height: 50px;
+    height: 40px;
     text-align: center;
 }
 p{
@@ -16,7 +14,7 @@ p{
     text-align: center;
     color: #481D0B;
     font-size: 2rem;
-    margin: 20px 0;
+    
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 b{
