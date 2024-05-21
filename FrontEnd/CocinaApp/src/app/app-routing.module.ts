@@ -9,7 +9,8 @@ import { loginGuard } from './guard/login.guard';
 const routes: Routes = [
   //{path: 'recetas', component: RecetasComponent },
   //{path: 'recetas/:id', component: RecetaDetalleComponent },
-  {path : "inicio",component:InicioComponent,  canActivate:[loginGuard]},
+  {path : "inicio",component:InicioComponent,  
+  canActivate:[loginGuard]},
   {path : "login",component:LoginComponent},
   {path : '', redirectTo:"login",pathMatch: 'full'}
 ];
