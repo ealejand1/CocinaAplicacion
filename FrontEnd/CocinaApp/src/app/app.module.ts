@@ -11,6 +11,7 @@ import { RecetaDetalleComponent } from './receta-detalle/receta-detalle.componen
 import { InicioComponent } from './inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecetasCategoriaComponent } from './recetas-categoria/recetas-categoria.component';
+import { GuardComponent } from './guard/guard.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RecetasCategoriaComponent } from './recetas-categoria/recetas-categoria
     RecetaDetalleComponent,
     InicioComponent,
     RecetasCategoriaComponent,
+    GuardComponent,
   ],
   imports: [
     BrowserModule,
