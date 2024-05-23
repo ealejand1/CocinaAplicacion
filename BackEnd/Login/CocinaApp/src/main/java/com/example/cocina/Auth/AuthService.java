@@ -30,8 +30,10 @@ public class AuthService {
 	public AuthResponse login(LoginRequest request) {
 		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 		UserDetails user = userRepositorio.findByUsername(request.getUsername()).orElseThrow();
+		User usuario1 = userRepositorio.findByUsername(request.getUsername()).orElseThrow();
 		String token = jwtServicio.getToken(user);
 		return AuthResponse.builder()
+				.id(usuario1.getId())
 				.token(token)
 				.build();
 	}
@@ -49,6 +51,7 @@ public class AuthService {
 		
 		//Obtenemos el token gracias al servicioJWT
 		return AuthResponse.builder()
+				.id(usuario.getId())
 				.token(jwtServicio.getToken(usuario))
 				.build();
 				

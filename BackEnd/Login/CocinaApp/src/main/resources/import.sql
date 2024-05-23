@@ -1,22 +1,22 @@
-insert into usuario (nombre,contraseña) values ("Armando","armando1234");
-insert into usuario (nombre,contraseña) values ("Miguel","miguel1234");
-insert into usuario (nombre,contraseña) values ("Erik","erik1234");
-insert into usuario (nombre,contraseña) values ("Claudia","claudia1234");
-insert into usuario (nombre,contraseña) values ("Mar","mar1234");
-insert into usuario (nombre,contraseña) values ("Rosa","rosa1234");
-insert into usuario (nombre,contraseña) values ("Marc","marc1234");
-insert into usuario (nombre,contraseña) values ("Lex","lex1234");
-insert into usuario (nombre,contraseña) values ("Gerrau","gerrau1234");
-insert into usuario (nombre,contraseña) values ("Abel","abel1234");
-insert into usuario (nombre,contraseña) values ("Mateo","mateo1234");
-insert into usuario (nombre,contraseña) values ("Daniel","daniel1234");
-insert into usuario (nombre,contraseña) values ("Marcos","marcos1234");
-insert into usuario (nombre,contraseña) values ("Nicolás","nicolas1234");
-insert into usuario (nombre,contraseña) values ("Lara","lara1234");
-insert into usuario (nombre,contraseña) values ("Marta","marta1234");
-insert into usuario (nombre,contraseña) values ("Emma","emma1234");
-insert into usuario (nombre,contraseña) values ("Paula","paula1234");
-insert into usuario (nombre,contraseña) values ("Martina","martina1234");
+insert into user (nombre,contraseña) values ("Armando","armando1234");
+insert into user (nombre,contraseña) values ("Miguel","miguel1234");
+insert into user (nombre,contraseña) values ("Erik","erik1234");
+insert into user (nombre,contraseña) values ("Claudia","claudia1234");
+insert into user (nombre,contraseña) values ("Mar","mar1234");
+insert into user (nombre,contraseña) values ("Rosa","rosa1234");
+insert into user (nombre,contraseña) values ("Marc","marc1234");
+insert into user (nombre,contraseña) values ("Lex","lex1234");
+insert into user (nombre,contraseña) values ("Gerrau","gerrau1234");
+insert into user (nombre,contraseña) values ("Abel","abel1234");
+insert into user (nombre,contraseña) values ("Mateo","mateo1234");
+insert into user (nombre,contraseña) values ("Daniel","daniel1234");
+insert into user (nombre,contraseña) values ("Marcos","marcos1234");
+insert into user (nombre,contraseña) values ("Nicolás","nicolas1234");
+insert into user (nombre,contraseña) values ("Lara","lara1234");
+insert into user (nombre,contraseña) values ("Marta","marta1234");
+insert into user (nombre,contraseña) values ("Emma","emma1234");
+insert into user (nombre,contraseña) values ("Paula","paula1234");
+insert into user (nombre,contraseña) values ("Martina","martina1234");
 
 
 insert into receta (tiempo_preparacion,usuario_id,descripcion,instrucciones,nombre) values (5400,1,"Sabrosa pizza casera","Hacer la masa, reposar, echar ingredientes desados, calentar","Pizza");
@@ -448,4 +448,3 @@ insert into receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) v
 insert into receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) values (100, 60, 17, "g");
 insert into receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) values (50, 74, 17, "ml");
 insert into receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) values (1, 68, 17, "unidad");
-

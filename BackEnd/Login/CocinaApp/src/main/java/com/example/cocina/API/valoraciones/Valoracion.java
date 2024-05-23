@@ -1,9 +1,10 @@
-package app.valoraciones;
+package com.example.cocina.API.valoraciones;
 
 import java.util.Date;
 
-import app.receta.Receta;
-import app.usuario.User;
+import com.example.cocina.API.receta.Receta;
+import com.example.cocina.user.User;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

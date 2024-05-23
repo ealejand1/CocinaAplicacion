@@ -36,9 +36,9 @@ public class ControladorUsuarios {
 
     // Obtener todos los usuarios (GET)
     @GetMapping
-    public CollectionModel<EntityModel<Usuario>> obtenerUsuarios() {
+    public CollectionModel<EntityModel<User>> obtenerUsuarios() {
 
-        List<EntityModel<Usuario>> usuarios = repositorio.findAll().stream()
+        List<EntityModel<User>> usuarios = repositorio.findAll().stream()
                 .map(creaLinks::toModel)
                 .collect(Collectors.toList());
 
@@ -50,15 +50,15 @@ public class ControladorUsuarios {
 
     // Obtener un usuario por su ID (GET)
     @GetMapping("/{id}")
-    public EntityModel<Usuario> obtenerUsuarioPorId(@PathVariable("id") Long id) {
-        Usuario usuario = repositorio.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
+    public EntityModel<User> obtenerUsuarioPorId(@PathVariable("id") Long id) {
+        User usuario = repositorio.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
         return creaLinks.toModel(usuario);
     }
 
     // Crear un nuevo usuario (POST)
     @PostMapping
-    public ResponseEntity<EntityModel<Usuario>> crearUsuario(@RequestBody Usuario usuario) {
-        EntityModel<Usuario> usuarioRes = creaLinks.toModel(repositorio.save(usuario));
+    public ResponseEntity<EntityModel<User>> crearUsuario(@RequestBody User usuario) {
+        EntityModel<User> usuarioRes = creaLinks.toModel(repositorio.save(usuario));
         return ResponseEntity
                 .created(usuarioRes.getRequiredLink(IanaLinkRelations.SELF).toUri())
                 .body(usuarioRes);
@@ -66,9 +66,9 @@ public class ControladorUsuarios {
 
     // Actualizar un usuario (PUT)
     @PutMapping("/{id}")
-    public ResponseEntity<EntityModel<Usuario>> actualizarUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuarioNuevo) {
+    public ResponseEntity<EntityModel<User>> actualizarUsuario(@PathVariable("id") Long id, @RequestBody User usuarioNuevo) {
 
-        Usuario usuarioActu = repositorio.findById(id)
+        User usuarioActu = repositorio.findById(id)
                 .map(usuario -> {
                     usuario.setNombre(usuarioNuevo.getNombre());
                     // Añadir aquí más campos que quieras actualizar
@@ -79,7 +79,7 @@ public class ControladorUsuarios {
                     return repositorio.save(usuarioNuevo);
                 });
 
-        EntityModel<Usuario> usuarioRes = creaLinks.toModel(usuarioActu);
+        EntityModel<User> usuarioRes = creaLinks.toModel(usuarioActu);
 
         return ResponseEntity
                 .created(usuarioRes.getRequiredLink(IanaLinkRelations.SELF).toUri())
@@ -88,12 +88,12 @@ public class ControladorUsuarios {
     
     //Modificar parcialmente un Usuario
   	@PatchMapping("/{id}")
-  	public ResponseEntity<Usuario> actualizarParcialUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
+  	public ResponseEntity<User> actualizarParcialUsuario(@PathVariable("id") Long id, @RequestBody User usuario) {
           // Verificar si la raza con el ID dado existe antes de actualizar
-          Optional<Usuario> usuarioExistente = repositorio.findById(id);
+          Optional<User> usuarioExistente = repositorio.findById(id);
           
           if (usuarioExistente.isPresent()) {
-              Usuario usuarioActual = usuarioExistente.get();
+              User usuarioActual = usuarioExistente.get();
               
               // Actualizar solo los campos no nulos proporcionados en la solicitud
               if (usuario.getNombre() != null) {
@@ -107,7 +107,7 @@ public class ControladorUsuarios {
               }           
 
               // Guardar el usuario actualizada en la base de datos
-              Usuario usuarioActualizada = repositorio.save(usuarioActual);
+              User usuarioActualizada = repositorio.save(usuarioActual);
 
               return ResponseEntity.ok(usuarioActual);
           } else {

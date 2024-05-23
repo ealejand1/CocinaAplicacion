@@ -6,8 +6,8 @@ export const loginGuard = ()=>{
  
     const router=inject(Router);
  
-  if (typeof window !== 'undefined' && window.sessionStorage) {
-    if (sessionStorage.getItem('token')) {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    if (localStorage.getItem('token')) {
       return true;
     } else {
       router.navigate(['/login']);

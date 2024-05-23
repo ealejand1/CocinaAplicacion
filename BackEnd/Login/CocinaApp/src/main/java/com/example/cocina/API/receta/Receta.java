@@ -1,15 +1,14 @@
-package app.receta;
+package com.example.cocina.API.receta;
 
-import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 
+import com.example.cocina.API.categorias.Categoria;
+import com.example.cocina.API.receta_ingrediente.RecetaIngrediente;
+import com.example.cocina.API.valoraciones.Valoracion;
+import com.example.cocina.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import app.categoria.Categoria;
-import app.receta_ingrediente.RecetaIngrediente;
-import app.usuario.User;
-import app.valoraciones.Valoracion;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

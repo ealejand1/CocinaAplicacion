@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ingrediente } from '../clases/ingrediente';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IngredienteService {
-  private apiUrl = 'http://localhost:8080/ingredientes'; // Asegúrate de que esta URL es correcta
+  private apiUrl = environment.urlApi + '/ingredientes'; // Asegúrate de que esta URL es correcta
 
   constructor(private http: HttpClient) { }
 

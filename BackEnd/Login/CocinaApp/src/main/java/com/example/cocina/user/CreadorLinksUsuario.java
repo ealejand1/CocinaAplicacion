@@ -1,4 +1,4 @@
-package app.usuario;
+package com.example.cocina.user;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -7,8 +7,8 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
-import app.receta.ControladorRecetas;
-import app.valoraciones.ControladorValoraciones;
+import com.example.cocina.API.receta.ControladorRecetas;
+import com.example.cocina.API.valoraciones.ControladorValoraciones;
 
 @Component
 public class CreadorLinksUsuario implements RepresentationModelAssembler<User, EntityModel<User>> {
