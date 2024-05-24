@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.example.cocina.user.User;
 import com.example.cocina.user.UserRepositorio;
 
 import lombok.RequiredArgsConstructor;
@@ -44,9 +45,17 @@ public class ApplicationConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
+	/*@Bean
 	public UserDetailsService userDetailService() {
 		return username -> repositorio.findByUsername(username)
 				.orElseThrow(()-> new UsernameNotFoundException("user not found"));
-	}
+	}*/
+	@Bean
+	public UserDetailsService userDetailService() {
+        return username -> {
+            User user = repositorio.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            return user;
+        };
+    }
 }

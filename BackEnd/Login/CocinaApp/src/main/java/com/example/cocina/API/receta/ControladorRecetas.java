@@ -12,9 +12,10 @@ import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET,
+		RequestMethod.DELETE },allowedHeaders = "*")
 @RestController
-@RequestMapping("/api/v1/recetas") 
+@RequestMapping("/api/v1/recetas")
 public class ControladorRecetas {
 
     private final RepositorioReceta repositorio;

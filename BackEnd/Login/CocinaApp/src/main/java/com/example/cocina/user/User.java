@@ -1,6 +1,7 @@
 package com.example.cocina.user;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -73,8 +74,8 @@ public class User implements UserDetails {
 	//Returna una Lista de objeto que nos dice el rol que tendra el usuario
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority(rol.name()));
-	}
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + (rol != null ? rol.name() : "USER")));
+    }
 
 	@Override
 	public boolean isAccountNonExpired() {

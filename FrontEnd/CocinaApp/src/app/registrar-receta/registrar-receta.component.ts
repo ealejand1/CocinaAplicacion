@@ -48,8 +48,12 @@ addIngredient() {
     this.router.navigate(["/recetas"])
   }
   ngOnInit() {
-    this.receta.ingredientes = [];
-    this.receta.usuario = { id: 1, nombre:"", email:"",contraseña:""}; // Usuario predefinido
-    this.cargarIngredientes();
+    let userId:any  = localStorage.getItem("idUsuario");
+    if (userId !== null && userId !== undefined){
+      this.receta.ingredientes = [];
+      this.receta.usuario = { id: userId }; // Usuario predefinido
+      this.cargarIngredientes();
+    }
+    
   }
 }

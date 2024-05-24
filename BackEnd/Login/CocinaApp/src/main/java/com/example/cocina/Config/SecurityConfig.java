@@ -3,6 +3,7 @@ package com.example.cocina.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -36,7 +37,14 @@ public class SecurityConfig {
 				.authorizeHttpRequests(
 						authRequest -> authRequest
 						.requestMatchers("/auth/**").permitAll()
-						.anyRequest().authenticated())
+						
+						.requestMatchers(HttpMethod.GET, "/method/get").hasAnyRole("USER", "ADMIN")
+		                .requestMatchers(HttpMethod.POST, "/method/post").hasAnyRole("USER", "ADMIN")
+		                .requestMatchers(HttpMethod.DELETE, "/method/delete").hasAnyRole("USER", "ADMIN")
+		                .requestMatchers(HttpMethod.PUT, "/method/put").hasAnyRole("USER", "ADMIN")
+		                .anyRequest().authenticated()
+						)
+				
 				.sessionManagement(sessionManager ->
 					sessionManager
 					.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
