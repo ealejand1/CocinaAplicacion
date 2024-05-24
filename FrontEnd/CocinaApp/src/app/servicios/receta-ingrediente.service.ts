@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RecetaIngrediente } from '../clases/receta-ingrediente';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecetaIngredienteService {
-  private apiUrl = 'http://localhost:8080/recetas-ingredientes';
+  private apiUrl = environment.urlApi + '/recetas-ingredientes';
 
   constructor(private http: HttpClient) {}
 

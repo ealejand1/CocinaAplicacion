@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Receta } from '../clases/receta';
 import { Valoracion } from '../clases/valoracion';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecetaService {
 
-  private apiUrl = 'http://localhost:8080/recetas'; // URL del backend
+  private apiUrl = environment.urlApi + '/recetas'; // URL del backend
 
   constructor(private http: HttpClient) { }
 

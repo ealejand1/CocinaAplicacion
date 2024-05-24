@@ -9,11 +9,12 @@ import { FooterComponent } from './footer/footer.component';
 import { RecetasComponent } from './recetas/recetas.component';
 import { RecetaDetalleComponent } from './receta-detalle/receta-detalle.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RecetasCategoriaComponent } from './recetas-categoria/recetas-categoria.component';
 import { EditarRecetaComponent } from './editar-receta/editar-receta.component';
 import { RegistrarRecetaComponent } from './registrar-receta/registrar-receta.component';
 import { CategoriaRecetasComponent } from './categoria-recetas/categoria-recetas.component';
+import { AuthInterceptor } from './servicios/auth/auth.interceptor.service';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { CategoriaRecetasComponent } from './categoria-recetas/categoria-recetas
     FormsModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

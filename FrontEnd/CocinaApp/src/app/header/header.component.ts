@@ -14,8 +14,8 @@ export class HeaderComponent implements OnInit{
   constructor(private router:Router, private loginServicio:LoginService){}
 
   ngOnInit(): void {
-    if (typeof window !== 'undefined' && window.sessionStorage) {
-      if(sessionStorage.getItem("token")){
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if(localStorage.getItem("token")){
         this.loggeado = true;
        }
        else{
