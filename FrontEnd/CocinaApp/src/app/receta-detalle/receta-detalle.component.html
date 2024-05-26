@@ -1,22 +1,32 @@
-<div *ngIf="receta">
-  <h2>{{receta.usuario.nombre}}</h2>
-    <h2>{{ receta.nombre }}</h2>
-    <p>{{ receta.descripcion }}</p>
-    <h3>Instrucciones</h3>
-    <p>{{ receta.instrucciones }}</p>
-    <h3>Ingredientes</h3>
-    <ul>
-      <li *ngFor="let ingrediente of ingredientes">
-        {{ ingrediente.ingrediente.nombre }} - {{ ingrediente.cantidad }} {{ ingrediente.unidades }}
-      </li>
-    </ul>
-    <h3>Valoraciones</h3>
-  <ul *ngIf="valoraciones && valoraciones.length > 0">
-    <li *ngFor="let valoracion of valoraciones">
-      "{{ valoracion.comentario }}" - {{ valoracion.puntuacion }} estrellas
-    </li>
-  </ul>
+<div class="caja-registrar">
+  <div class="caja-marco">
+    <div class="detalles-receta">
+      
+      <h2 class="nombre-receta">{{ receta.nombre }}</h2>
+      
+      <p class="descripcion-receta">{{ receta.descripcion }}</p>
+      <h3 class="titulo-seccion">Instrucciones</h3>
+      <p class="texto-instrucciones">{{ receta.instrucciones }}</p>
+      <h3 class="titulo-seccion">Ingredientes</h3>
+      <div class="lista-container">
+        <ul class="lista-ingredientes">
+          <li *ngFor="let ingrediente of ingredientes">
+            {{ ingrediente.ingrediente.nombre }} - {{ ingrediente.cantidad }} {{ ingrediente.unidades }}
+          </li>
+        </ul>
+      </div>
+      <h3 class="titulo-seccion">Valoraciones</h3>
+      <div class="lista-container">
+        <ul class="lista-valoraciones" *ngIf="valoraciones && valoraciones.length > 0">
+          <li *ngFor="let valoracion of valoraciones">
+            "{{ valoracion.comentario }}" - {{ valoracion.puntuacion }} estrellas
+          </li>
+        </ul>
+      </div>
+      <h2 class="nombre-usuario">creado por {{ receta.usuario.nombre }}</h2>
+    </div>
   </div>
-  <ng-template #loading>
-    <p>Cargando detalles de la receta...</p>
-  </ng-template>
+</div>
+<ng-template #loading>
+  <p>Cargando detalles de la receta...</p>
+</ng-template>

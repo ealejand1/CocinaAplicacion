@@ -12,12 +12,12 @@ import { CategoriaRecetasComponent } from './categoria-recetas/categoria-recetas
 const routes: Routes = [
   {path: 'recetas', component: RecetasComponent },
   {path: 'recetas/:id', component: RecetaDetalleComponent },
-  {path : "inicio",component:InicioComponent,  
-  canActivate:[loginGuard]},
+  {path : "inicio",component:InicioComponent},  
+  //canActivate:[loginGuard]},
   {path : 'categoria/:id', component:CategoriaRecetasComponent},
   { path: 'editar-receta/:id', component: EditarRecetaComponent },
   { path: 'registrar-receta', component: RegistrarRecetaComponent},
-  {path : "login",component:LoginComponent},
+ // {path : "login",component:LoginComponent},
   {path : '', redirectTo:"inicio",pathMatch: 'full'}
 ];
 

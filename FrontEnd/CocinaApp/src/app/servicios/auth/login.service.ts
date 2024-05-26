@@ -20,18 +20,18 @@ export class LoginService {
     //this.currentUserData = new BehaviorSubject<String>(sessionStorage.getItem("token") || "");
   }
 
-  login(datos:LoginRequest):Observable<any>{
-    return this.http.post<any>(environment.urlHost + "auth/login",datos).pipe(
-      tap( (userData) => {
-        localStorage.setItem("token",userData.token);
-        this.currentUser.next(true);
-        this.currentUserData.next(userData.token);
-      }),
-      map((userData) => userData.token),
-      catchError(this.handleError)
-    );
+  // login(datos:LoginRequest):Observable<any>{
+  //   return this.http.post<any>(environment.urlHost + "auth/login",datos).pipe(
+  //     tap( (userData) => {
+  //       localStorage.setItem("token",userData.token);
+  //       this.currentUser.next(true);
+  //       this.currentUserData.next(userData.token);
+  //     }),
+  //     map((userData) => userData.token),
+  //     catchError(this.handleError)
+  //   );
 
-  }
+  // }
 
   login2(datos:LoginRequest):Observable<any>{
     return this.http.post<any>(environment.urlHost + "/auth/login",datos);

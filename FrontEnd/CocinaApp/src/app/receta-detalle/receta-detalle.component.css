@@ -1,0 +1,85 @@
+.caja-registrar {
+    background-image: url('../../assets/fondos/Inicio.jpg');
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .caja-marco {
+    width: 50%;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .detalles-receta {
+    border: 3px solid burlywood;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+  }
+  
+  .nombre-usuario, .nombre-receta {
+    color: #55260F;
+    margin: 0;
+  }
+  
+  .nombre-usuario {
+    font-size: 2rem;
+  }
+  
+  .nombre-receta {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .descripcion-receta {
+    font-size: 1rem;
+    color: #55260F;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .titulo-seccion {
+    font-size: 1.25rem;
+    color: #55260F;
+    margin: 10px 0;
+  }
+  
+  .texto-instrucciones {
+    font-size: 1rem;
+    color: #55260F;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .lista-container {
+    width: 90%;
+    max-height: 100px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border:2px solid #55260F;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .lista-ingredientes, .lista-valoraciones {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .lista-ingredientes li, .lista-valoraciones li {
+    font-size: 1rem;
+    color: #55260F;
+    margin-bottom: 5px;
+  }
