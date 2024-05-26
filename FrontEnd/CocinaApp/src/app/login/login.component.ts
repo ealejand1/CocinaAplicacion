@@ -28,25 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    /*
-    this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
-      next:(userData) =>{
-        console.log(userData);
-      },
-      error:(errorData) =>{
-        console.log(errorData);
-      },
-      complete:() =>{
-        console.log("OKKK");
-        //
-        this.loginForm.reset();
-      }
-    });
-    console.log(this.loginForm.value as LoginRequest);*/
 
     this.loginService.login2(this.loginForm.value as LoginRequest).subscribe(
       response => {
-        sessionStorage.setItem("token",response.token);
+        localStorage.setItem("token",response.token);
+        localStorage.setItem("idUsuario",response.id);
         this.router.navigateByUrl("inicio");
       },
     )
