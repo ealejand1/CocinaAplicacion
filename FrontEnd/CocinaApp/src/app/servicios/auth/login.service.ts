@@ -21,8 +21,12 @@ export class LoginService {
   }
 
 
-  login2(datos:LoginRequest):Observable<any>{
+  login(datos:LoginRequest):Observable<any>{
     return this.http.post<any>(environment.urlHost + "/auth/login",datos);
+  }
+
+  loginInvitado():Observable<any>{
+    return this.http.post<any>(environment.urlHost + "/auth/loginInvitado","a");
   }
 
   logout():void{

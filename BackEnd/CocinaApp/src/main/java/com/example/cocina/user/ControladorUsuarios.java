@@ -72,7 +72,6 @@ public class ControladorUsuarios {
 		return ResponseEntity.created(usuarioRes.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(usuarioRes);
 	}
 
-
 	// Eliminar un usuario por su ID (DELETE)
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> eliminarUsuario(@PathVariable("id") Long id) {

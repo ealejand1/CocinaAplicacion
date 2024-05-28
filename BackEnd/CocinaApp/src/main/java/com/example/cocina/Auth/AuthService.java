@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.cocina.Invitado.InvitadoServicio;
 import com.example.cocina.JWT.JwtServicio;
 import com.example.cocina.user.Role;
 import com.example.cocina.user.User;
@@ -26,6 +27,8 @@ public class AuthService {
 	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	@Autowired
+	private InvitadoServicio invitadoServicio;
 	
 	public AuthResponse login(LoginRequest request) {
 		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
@@ -53,8 +56,16 @@ public class AuthService {
 		return AuthResponse.builder()
 				.id(usuario.getId())
 				.token(jwtServicio.getToken(usuario))
+				.build();		
+	}
+	
+	public AuthResponse loginInvitado() {
+		User usuario = invitadoServicio.getInvitadoUsuario();
+		String token = jwtServicio.getToken(usuario);
+		return AuthResponse.builder()
+				.id(usuario.getId())
+				.token(token)
 				.build();
-				
 	}
 
 }
