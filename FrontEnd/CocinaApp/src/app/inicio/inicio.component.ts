@@ -22,5 +22,4 @@ export class InicioComponent {
       this.categorias = categorias;
     })
   }
-
 }
