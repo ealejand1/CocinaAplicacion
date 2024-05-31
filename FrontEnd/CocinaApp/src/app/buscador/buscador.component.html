@@ -1,8 +1,7 @@
 <main>
 
 <div class="fondo">
-    <div id="idMenuBuscador">
-        <h2>Recetas Caseras</h2>
+    <div id="idMenuBuscadorPorIngrediente">
         <form (submit)="addIngredient($event)">
             <input type="text" placeholder="¿Qué tienes en tu nevera?" [(ngModel)]="searchTerm" (input)="filterIngredients()" list="ingredientes" name="ingredientes" autocomplete="off">
             <datalist id="ingredientes">
@@ -26,6 +25,13 @@
         </form>
     </div>
 
+    <div id="idMenuBuscadorPorNombre">
+        <form (submit)="buscarPorNombre($event)">
+            <input type="text" placeholder="¿Qué receta buscas?" name="nombreBuscar" autocomplete="off">
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+
         <div class="contenedor">
           <div class="grid">
             <a [routerLink]="['/recetas/', receta.id]" class="caja" *ngFor="let receta of listaRecetas">
@@ -33,7 +39,7 @@
               <div class="receta-info">
                 <h2 class="receta-nombre">{{ receta.nombre }}</h2>
                 <p>Tiempo: {{ receta.tiempoPreparacion }}</p>
-                <p>{{ receta.usuario.username }}</p>
+                <!-- <p>{{ receta.usuario.username }}</p> -->
               </div>
             </a>
           </div>

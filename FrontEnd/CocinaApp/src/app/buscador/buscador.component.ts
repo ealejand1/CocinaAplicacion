@@ -5,6 +5,7 @@ import { RecetaIngredienteService } from '../servicios/receta-ingrediente.servic
 import { RecetaIngrediente } from '../clases/receta-ingrediente';
 import { forkJoin, Observable } from 'rxjs';
 import { Receta } from '../clases/receta';
+import { RecetaService } from '../servicios/receta.service';
 
 @Component({
   selector: 'app-buscador',
@@ -21,7 +22,8 @@ export class BuscadorComponent implements OnInit {
 
   constructor(
     private ingredienteServicio: IngredienteService,
-    private recetaIngredienteServicio: RecetaIngredienteService
+    private recetaIngredienteServicio: RecetaIngredienteService,
+    private recetaServicio: RecetaService
     ) {}
 
   ngOnInit(): void {
@@ -80,11 +82,20 @@ export class BuscadorComponent implements OnInit {
   
       // Filtrar recetas que se han repetido el número de veces de ingredientes
       recetasRecibidas.forEach(receta => {
-        console.log(ids[receta.id] + " -> " + ingredientesIds.length);
         if (ids[receta.id] === ingredientesIds.length) {
           this.listaRecetas.push(receta);
         }
       });
     });
+  }
+
+  buscarPorNombre(event: Event): void {
+    event.preventDefault(); 
+    const target = event.target as HTMLFormElement;
+    const input = target.querySelector('input[name="nombreBuscar"]') as HTMLInputElement;
+    const value = input.value;
+    this.recetaServicio.obtenerRecetasPorNombre(value).subscribe(recetas =>{
+      this.listaRecetas=recetas;
+    })
   }
 }
