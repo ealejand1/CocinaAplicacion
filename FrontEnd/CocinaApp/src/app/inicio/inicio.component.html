@@ -1,9 +1,8 @@
-<app-header></app-header>
 <div class="fondo">
     <div id="idMenuInicio">
         <h2>Recetas Caseras</h2>
         <form action="#">
-            <input type="text" placeholder="Nombre de la receta">
+            <a class="enlaceBuscador" [routerLink]="['/buscador']"><input type="text" placeholder="¿Que tienes en tu nevera?"></a>
             <input type="submit" value="Buscar >">
         </form>
     </div>
@@ -13,9 +12,8 @@
     <div *ngFor="let categoria of categorias" class="caja">
         <input type="hidden" class="categoria" name="id{{categoria.nombre}}" value="{{categoria.id}}">
         <div>{{categoria.nombre}}</div>
-        <a [routerLink]="['/categoria',categoria.id]">
+        <a class="enlaceCategoria" [routerLink]="['/categoria',categoria.id]">
             <img class="imgCaja" src="../../assets/imagenes/categorias/{{categoria.nombre}}.jpg" alt="{{categoria.nombre}}">
         </a>
     </div>
 </div>
-<app-footer></app-footer>

@@ -19,6 +19,10 @@ public interface RepositorioReceta extends CrudRepository<Receta, Long> {
 
     @Query("SELECT r FROM Receta r JOIN r.categorias c WHERE c.id = :categoriaId")
     List<Receta> findByCategoriaId(@Param("categoriaId") Long categoriaId);
+    
+    //Buscar por nombre parcial
+    @Query("SELECT r FROM Receta r WHERE r.nombre LIKE %:nombre%")
+    List<Receta> findByNombreParcial(@Param("nombre") String nombre);
   
     // Update
     Receta saveAndFlush(Receta receta);

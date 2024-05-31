@@ -38,6 +38,13 @@ public class ControladorRecetas {
         Receta receta = repositorio.findById(id).orElseThrow(() -> new RecetaNotFoundException(id));
         return creaLinks.toModel(receta);
     }
+    
+    // Obtener receta por nombre (GET)
+    @GetMapping("/nombre/{nombreReceta}")
+    public ResponseEntity<List<Receta>> obtenerRecetasPorNombre(@PathVariable("nombreReceta") String nombreReceta){
+    	List<Receta> recetas= repositorio.findByNombreParcial(nombreReceta);
+    	return ResponseEntity.ok(recetas);
+    }
 
     @GetMapping("/usuario/{idUsuario}/recetas")	
     public CollectionModel<EntityModel<Receta>> obtenerRecetasPorUsuario(@PathVariable("idUsuario") Long idUsuario) {

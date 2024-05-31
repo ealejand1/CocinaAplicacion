@@ -34,7 +34,7 @@ export class RecetaDetalleComponent implements OnInit {
       });
       this.recetaIngredienteService.obtenerIngredientesPorReceta(recetaId).subscribe(
         ingredientes => {
-          this.ingredientes = ingredientes;
+          this.ingredientes = ingredientes||[];
         },
         error => {
           console.error('Error al cargar ingredientes:', error);
