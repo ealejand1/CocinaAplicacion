@@ -8,11 +8,14 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ValoracionService {
-  private apiUrl = environment.urlApi + '/valoraciones'; // Asegúrate de que esta URL coincide con la de tu backend
+  private apiUrl = environment.urlApi + '/valoraciones';
 
   constructor(private http: HttpClient) { }
 
   obtenerValoracionesPorReceta(recetaId: number): Observable<Valoracion[]> {
     return this.http.get<Valoracion[]>(`${this.apiUrl}/${recetaId}/valoraciones`);
+  }
+  crearValoracion(valoracion: Valoracion): Observable<Valoracion> {
+    return this.http.post<Valoracion>(this.apiUrl, valoracion);
   }
 }

@@ -41,7 +41,7 @@ public class ControladorRecetasIngredientes {
                 .collect(Collectors.toList());
 
         return CollectionModel.of(recetasIngredientes,
-                linkTo(methodOn(ControladorRecetasIngredientes.class).obtenerRecetasIngredientes())
+                linkTo(methodOn(ControladorRecetasIngredientes.class).obtenerRecetasIngredientes())	
                         .withSelfRel()
         );
     }
@@ -122,11 +122,9 @@ public class ControladorRecetasIngredientes {
 
     // Crear un nuevo ingrediente de receta (POST)
     @PostMapping
-    public ResponseEntity<EntityModel<RecetaIngrediente>> crearRecetaIngrediente(@RequestBody RecetaIngrediente recetaIngrediente) {
-        EntityModel<RecetaIngrediente> recetaIngredienteRes = creaLinks.toModel(repositorio.save(recetaIngrediente));
-        return ResponseEntity
-                .created(recetaIngredienteRes.getRequiredLink(IanaLinkRelations.SELF).toUri())
-                .body(recetaIngredienteRes);
+    public RecetaIngrediente crearRecetaIngrediente(@RequestBody RecetaIngrediente recetaIngrediente) {
+      return  repositorio.save(recetaIngrediente);
+        
     }
 
     // Actualizar un ingrediente de receta (PUT)

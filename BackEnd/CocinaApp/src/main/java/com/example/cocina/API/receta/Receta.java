@@ -34,7 +34,16 @@ public class Receta {
 	protected String descripcion;
 	protected String instrucciones;
 	protected String tiempoPreparacion;
+	protected String imagenUrl;
 	
+	public String getImagenUrl() {
+		return imagenUrl;
+	}
+
+	public void setImagenUrl(String imagenUrl) {
+		this.imagenUrl = imagenUrl;
+	}
+
 	@Temporal(TemporalType.TIMESTAMP)
     protected Date fechaCreacion;
 	

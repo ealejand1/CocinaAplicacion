@@ -17,12 +17,15 @@ export class EditarRecetaComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) { }
-
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.recetaService.obtenerRecetaPorId(+id).subscribe(receta => {
         this.receta = receta;
+        let userId = localStorage.getItem("idUsuario"); // Obtener el ID del usuario de localStorage
+        if (userId) {
+          this.receta.usuario = { id: userId }; // Asignar el ID del usuario a la receta si existe
+        }
       });
     }
   }
@@ -39,4 +42,5 @@ export class EditarRecetaComponent implements OnInit {
       });
     }
   }
+  
 }

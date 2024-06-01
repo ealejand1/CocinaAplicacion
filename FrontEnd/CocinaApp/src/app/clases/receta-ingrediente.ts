@@ -6,5 +6,5 @@ export class RecetaIngrediente {
     cantidad: number;
     unidades: string;
     ingrediente: Ingrediente;
-    receta: Receta
-}
+    receta:{ id: number };
+} 

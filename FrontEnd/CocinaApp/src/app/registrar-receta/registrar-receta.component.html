@@ -24,21 +24,31 @@
             <label for="tiempoPreparacion">Tiempo de Preparación:</label>
             <input  class="tiempo"id="tiempoPreparacion" type="text" [(ngModel)]="receta.tiempoPreparacion" name="tiempoPreparacion">
         </div>
+
+        <div>
+            <label for="imageFile">Imagen de la receta:</label>
+            <input type="file" id="imageFile" (change)="onFileSelected($event)">
+            <img *ngIf="imageSrc" [src]="imageSrc" class="preview-img" alt="Previsualización de la imagen">
+        </div>
+
+
+
         <button class="crear" type="submit">Crear Receta</button>
         <button class="crear cancelar" (click)="regresoRecetas()"> Cancelar</button>
-        <!-- Lista de ingredientes 
+        Lista de ingredientes 
         <h1>lista ingredientes</h1>
-        <select name="ingredientes" id="idIngredientes" >
-            <option value="{{ingrediente.id}}" *ngFor="let ingrediente of todosLosIngredientes">{{ingrediente.nombre}}</option>
-        </select>
-    
-        cantidad
-        <input type="number" name="cantidad" id="idCantidad">
-        unidades
-        <input type="text" name="unidades" id="idUnidades">
+        <div>
+            <select [(ngModel)]="nuevoIngrediente.ingrediente" name="ingredienteSeleccionado" required>
+                <option *ngFor="let ingrediente of todosLosIngredientes" [ngValue]="ingrediente">{{ingrediente.nombre}}</option>
+            </select>
+            Cantidad:
+            <input type="number" [(ngModel)]="nuevoIngrediente.cantidad" name="cantidad" required>
+            Unidades:
+            <input type="text" [(ngModel)]="nuevoIngrediente.unidades" name="unidades" required>
+            <button type="button" (click)="addIngredient()">Añadir Ingrediente</button>
         
-          <button type="button" (click)="addIngredient()">Añadir Ingrediente</button>
-        -->
+          </div>
+          
     </form>  
 </div> 
 </div>

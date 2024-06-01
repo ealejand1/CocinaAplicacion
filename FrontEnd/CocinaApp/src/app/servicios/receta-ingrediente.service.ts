@@ -18,6 +18,10 @@ export class RecetaIngredienteService {
   obtenerIngredientesPorReceta(recetaId: number): Observable<RecetaIngrediente[]> {
     return this.http.get<RecetaIngrediente[]>(`${this.apiUrl}/receta/${recetaId}`);
   }
+  crearRecetaIngrediente(recetaIngrediente: RecetaIngrediente): Observable<any> {
+    return this.http.post<RecetaIngrediente>(this.apiUrl, recetaIngrediente);
+  }
+  //anadir getall recetas
   obtenerRecetasPorIngrediente(ingredienteId: number): Observable<RecetaIngrediente[]>{
     return this.http.get<RecetaIngrediente[]>(`${this.apiUrl}/ingrediente/${ingredienteId}`);
   }
