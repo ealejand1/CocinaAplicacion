@@ -16,6 +16,7 @@ import { RegistrarRecetaComponent } from './registrar-receta/registrar-receta.co
 import { CategoriaRecetasComponent } from './categoria-recetas/categoria-recetas.component';
 import { AuthInterceptor } from './servicios/auth/auth.interceptor.service';
 import { RegistroComponent } from './registro/registro.component';
+import { BuscadorComponent } from './buscador/buscador.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { RegistroComponent } from './registro/registro.component';
     RegistrarRecetaComponent,
     CategoriaRecetasComponent,
     RegistroComponent,
+    BuscadorComponent
   ],
   imports: [
     BrowserModule,

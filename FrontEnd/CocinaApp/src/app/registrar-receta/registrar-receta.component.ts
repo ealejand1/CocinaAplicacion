@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class RegistrarRecetaComponent implements OnInit {
   receta: Receta = new Receta();
   todosLosIngredientes: Ingrediente[] = [];
-  nuevoIngrediente: RecetaIngrediente = { id:0, cantidad: 0, unidades: '', ingrediente: new Ingrediente() };
+  nuevoIngrediente: RecetaIngrediente = { id:0, cantidad: 0, unidades: '', ingrediente: new Ingrediente(), receta: new Receta };
   listaIngrediente: Ingrediente[]=[];
   constructor(
     private recetaService: RecetaService, 

@@ -35,5 +35,7 @@ export class RecetaService {
   obtenerRecetasPorCategoria(idCategoria: number): Observable<Receta[]>{
     return this.http.get<Receta[]>(`${this.apiUrl}/categoria/${idCategoria}/recetas`);
   }
-
+  obtenerRecetasPorNombre(nombreReceta:String):Observable<Receta[]>{
+    return this.http.get<Receta[]>(`${this.apiUrl}/nombre/${nombreReceta}`);
+  }
 }

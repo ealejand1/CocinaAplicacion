@@ -2,8 +2,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RecetaIngrediente } from '../clases/receta-ingrediente';
 import { environment } from '../../environments/environment';
+import { Receta } from '../clases/receta';
+import { RecetaIngrediente } from '../clases/receta-ingrediente';
 
 
 @Injectable({
@@ -16,5 +17,8 @@ export class RecetaIngredienteService {
 
   obtenerIngredientesPorReceta(recetaId: number): Observable<RecetaIngrediente[]> {
     return this.http.get<RecetaIngrediente[]>(`${this.apiUrl}/receta/${recetaId}`);
+  }
+  obtenerRecetasPorIngrediente(ingredienteId: number): Observable<RecetaIngrediente[]>{
+    return this.http.get<RecetaIngrediente[]>(`${this.apiUrl}/ingrediente/${ingredienteId}`);
   }
 }
