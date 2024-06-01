@@ -15,6 +15,7 @@ import { EditarRecetaComponent } from './editar-receta/editar-receta.component';
 import { RegistrarRecetaComponent } from './registrar-receta/registrar-receta.component';
 import { CategoriaRecetasComponent } from './categoria-recetas/categoria-recetas.component';
 import { AuthInterceptor } from './servicios/auth/auth.interceptor.service';
+import { ValorarRecetaComponent } from './valorar-receta/valorar-receta.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AuthInterceptor } from './servicios/auth/auth.interceptor.service';
     EditarRecetaComponent,
     RegistrarRecetaComponent,
     CategoriaRecetasComponent,
+    ValorarRecetaComponent,
   ],
   imports: [
     BrowserModule,

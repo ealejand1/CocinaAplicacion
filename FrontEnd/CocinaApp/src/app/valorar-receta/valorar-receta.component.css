@@ -1,0 +1,15 @@
+/* valorar-receta.component.css */
+.rating {
+    display: flex;
+  }
+  
+  .rating span {
+    font-size: 2rem;
+    cursor: pointer;
+    color: lightgray;
+  }
+  
+  .rating .filled {
+    color: gold;
+  }
+  

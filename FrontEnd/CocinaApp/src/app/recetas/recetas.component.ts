@@ -8,12 +8,32 @@ import { RecetaService } from '../servicios/receta.service';
   styleUrl: './recetas.component.css'
 })
 export class RecetasComponent {
-  recetas: Receta[];
+  recetas: Receta[]=[];
 
   constructor(private recetaService: RecetaService) { }
 
   ngOnInit(): void {
-    this.cargarRecetas();
+    let userId:any  = localStorage.getItem("idUsuario");
+    if (userId !== null && userId !== undefined){
+      console.log(userId)
+      
+      this.cargarRecetasPorUsuarioId(+userId);
+      
+    }
+   
+  }
+
+  cargarRecetasPorUsuarioId(userId: number): void {
+    this.recetaService.obtenerRecetasPorUsuarioId(userId).subscribe({
+      next: (data) => {
+          // Asegúrate de que data es un array
+        if (Array.isArray(data)) {
+          this.recetas=data;
+          console.error('Datos recibidos no son un array:', data);
+        }
+      },
+      error: error => console.error('Error al obtener las recetas:', error)
+    });
   }
 
  // En tu componente

@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 	        this.repositorioValoracion = repositorioValoracion;
 	        this.creaLinksValoracion = creaLinksValoracion;
 	    }
-	
+	    
 	    // Obtener todas las valoraciones (GET)
 	    @GetMapping
 	    public CollectionModel<EntityModel<Valoracion>> obtenerValoraciones() {

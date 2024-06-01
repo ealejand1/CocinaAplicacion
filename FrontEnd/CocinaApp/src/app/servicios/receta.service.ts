@@ -26,7 +26,7 @@ export class RecetaService {
   actualizarReceta(id: number, receta: Receta): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}`, receta);
   }
-  crearReceta(receta: Receta): Observable<Object> {
+  crearReceta(receta: Receta): Observable<any> {
     return this.http.post(this.apiUrl, receta);
   }
   eliminarReceta(id: number): Observable<void> {
@@ -35,5 +35,15 @@ export class RecetaService {
   obtenerRecetasPorCategoria(idCategoria: number): Observable<Receta[]>{
     return this.http.get<Receta[]>(`${this.apiUrl}/categoria/${idCategoria}/recetas`);
   }
+  crearRecetaConImagen(receta: Receta, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('receta', JSON.stringify(receta));
+    formData.append('file', file);
+    return this.http.post(`${this.apiUrl}/conImagen`, formData);
+}
+
+obtenerRecetasPorUsuarioId(userId: number): Observable<Receta[]> {
+  return this.http.get<Receta[]>(`${this.apiUrl}/usuario/${userId}/recetas`);
+}
 
 }

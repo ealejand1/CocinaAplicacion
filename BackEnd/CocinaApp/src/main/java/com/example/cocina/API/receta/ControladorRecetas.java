@@ -1,16 +1,23 @@
 package com.example.cocina.API.receta;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET,
 		RequestMethod.DELETE },allowedHeaders = "*")
@@ -40,15 +47,12 @@ public class ControladorRecetas {
     }
 
     @GetMapping("/usuario/{idUsuario}/recetas")	
-    public CollectionModel<EntityModel<Receta>> obtenerRecetasPorUsuario(@PathVariable("idUsuario") Long idUsuario) {
-        List<EntityModel<Receta>> recetas = repositorio.findByUsuarioId(idUsuario).stream()
-                .map(creaLinks::toModel)
-                .collect(Collectors.toList());
+    public List<Receta> obtenerRecetasPorUsuario(@PathVariable("idUsuario") Long idUsuario) {
+        return repositorio.findByUsuarioId(idUsuario);
+                
 
-        return CollectionModel.of(recetas,
-                linkTo(methodOn(ControladorRecetas.class).obtenerRecetasPorUsuario(idUsuario))
-                        .withSelfRel()
-        );
+        
+       
     }
     
     @GetMapping("/categoria/{idCategoria}/recetas")
@@ -136,5 +140,21 @@ public class ControladorRecetas {
     public ResponseEntity<Void> eliminarReceta(@PathVariable("id") Long id) {
         repositorio.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/conImagen")
+    public ResponseEntity<EntityModel<Receta>> crearRecetaConImagen(@RequestParam("receta") String recetaJson, @RequestParam("file") MultipartFile file) {
+        try {
+            // Convertir JSON a objeto Receta, considerando incluir una librería como Jackson para hacerlo
+            Receta receta = new ObjectMapper().readValue(	recetaJson, Receta.class);
+            String filename = System.currentTimeMillis() + "-" + file.getOriginalFilename();
+            Path path = Paths.get("src/main/resources/static/uploads/" + filename);
+            file.transferTo(path);
+            receta.setImagenUrl("/uploads/" + filename); // Asumiendo que Receta tiene un campo para la URL de la imagen
+            Receta recetaGuardada = repositorio.save(receta);
+            EntityModel<Receta> recetaRes = creaLinks.toModel(recetaGuardada);
+            return ResponseEntity.created(recetaRes.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(recetaRes);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 }

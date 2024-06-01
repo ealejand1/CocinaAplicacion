@@ -105,3 +105,17 @@ main{
         max-width: 800px; /* El doble de la anterior máxima anchura */
     }
 }
+
+.valoraciones {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .filled {
+    color: gold;
+  }
+  
+  .unfilled {
+    color: lightgray;
+  }
+  
