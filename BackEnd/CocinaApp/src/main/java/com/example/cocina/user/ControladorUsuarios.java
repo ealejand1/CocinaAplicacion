@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -25,13 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/usuarios")
 public class ControladorUsuarios {
 
-	private final RepositorioUsuario repositorio;
-	private final CreadorLinksUsuario creaLinks;
+	@Autowired
+	private RepositorioUsuario repositorio;
+	@Autowired
+	private CreadorLinksUsuario creaLinks;
 
-	public ControladorUsuarios(RepositorioUsuario repositorio, CreadorLinksUsuario creaLinks) {
-		this.repositorio = repositorio;
-		this.creaLinks = creaLinks;
-	}
 
 	// Obtener todos los usuarios (GET)
 	@GetMapping
@@ -46,33 +45,13 @@ public class ControladorUsuarios {
 		return creaLinks.toModel(usuario);
 	}
 
-	// Crear un nuevo usuario (POST)
-	@PostMapping
-	public ResponseEntity<EntityModel<User>> crearUsuario(@RequestBody User usuario) {
-		EntityModel<User> usuarioRes = creaLinks.toModel(repositorio.save(usuario));
-		return ResponseEntity.created(usuarioRes.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(usuarioRes);
+	//ME QUEDA OBTENER EL ROL DE UN USUARIO POR SU ID
+	@GetMapping("/{id}/rol")
+	public ResponseEntity<Role> obtenerRolporUsuarioId(@PathVariable("id") Long id){
+		return ResponseEntity.ok(repositorio.findRolById(id));
 	}
-
-	// Actualizar un usuario (PUT)
-	@PutMapping("/{id}")
-	public ResponseEntity<EntityModel<User>> actualizarUsuario(@PathVariable("id") Long id,
-			@RequestBody User usuarioNuevo) {
-
-		User usuarioActu = repositorio.findById(id).map(usuario -> {
-			usuario.setUsername(usuarioNuevo.getUsername());
-			// Añadir aquí más campos que quieras actualizar
-			return repositorio.save(usuario);
-		}).orElseGet(() -> {
-			usuarioNuevo.setId(id);
-			return repositorio.save(usuarioNuevo);
-		});
-
-		EntityModel<User> usuarioRes = creaLinks.toModel(usuarioActu);
-
-		return ResponseEntity.created(usuarioRes.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(usuarioRes);
-	}
-
-
+	
+	
 	// Eliminar un usuario por su ID (DELETE)
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> eliminarUsuario(@PathVariable("id") Long id) {

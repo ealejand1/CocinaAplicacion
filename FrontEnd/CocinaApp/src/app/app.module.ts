@@ -16,6 +16,8 @@ import { RegistrarRecetaComponent } from './registrar-receta/registrar-receta.co
 import { CategoriaRecetasComponent } from './categoria-recetas/categoria-recetas.component';
 import { AuthInterceptor } from './servicios/auth/auth.interceptor.service';
 import { ValorarRecetaComponent } from './valorar-receta/valorar-receta.component';
+import { RegistroComponent } from './registro/registro.component';
+import { BuscadorComponent } from './buscador/buscador.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { ValorarRecetaComponent } from './valorar-receta/valorar-receta.componen
     RegistrarRecetaComponent,
     CategoriaRecetasComponent,
     ValorarRecetaComponent,
+    RegistroComponent,
+    BuscadorComponent
   ],
   imports: [
     BrowserModule,
