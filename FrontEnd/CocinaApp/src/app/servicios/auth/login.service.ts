@@ -3,6 +3,7 @@ import { LoginRequest } from './loginRequest';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError,BehaviorSubject,tap, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { registroRequest } from './registroRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,6 @@ export class LoginService {
 
   //Este boolean nos sirve para poder inidicar si un usuario ha iniciado sesion
   //El behaviorSubject nos sirve para poder ver si se ha porducido un cambio en una API
-  currentUser : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData : BehaviorSubject<String> = new BehaviorSubject<String>("");
-
 
   constructor(private http:HttpClient) { 
     //this.currentUser = new BehaviorSubject<boolean>(sessionStorage.getItem("token") != null); 
@@ -27,6 +25,10 @@ export class LoginService {
 
   loginInvitado():Observable<any>{
     return this.http.post<any>(environment.urlHost + "/auth/loginInvitado","a");
+  }
+
+  registroUsuario(datosRegistro:registroRequest):Observable<any>{
+    return this.http.post<any>(environment.urlHost + "/auth/registro",datosRegistro)
   }
 
   logout():void{
@@ -44,13 +46,6 @@ export class LoginService {
     }
     return throwError(()=> new Error('Fallo algo'));
 
-  }
-
-  get userData(): Observable<String>{
-    return this.currentUserData.asObservable();
-  }
-  get userLogin(): Observable<boolean>{
-    return this.currentUser.asObservable();
   }
 
 }

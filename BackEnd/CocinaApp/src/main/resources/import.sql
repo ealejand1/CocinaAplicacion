@@ -1,7 +1,3 @@
-insert into user (username,password,rol) values ("admin","admin",'ADMIN');
-"insert into user (username,password,rol) values ("invitado","invitado",'INVITADO');"
-
-
 
 insert into receta (tiempo_preparacion,usuario_id,descripcion,instrucciones,nombre) values (5400,1,"Sabrosa pizza casera","Hacer la masa, reposar, echar ingredientes desados, calentar","Pizza");
 insert into receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) values (2400, 2, "Deliciosa pasta al pesto", "Cocinar la pasta al dente, mezclar con salsa pesto casera, servir caliente.", "Pasta al Pesto");

@@ -48,6 +48,6 @@ export class LoginComponent implements OnInit {
   }
 
   registrarse(){
-    
+    this.router.navigateByUrl("registro");
   }
 }

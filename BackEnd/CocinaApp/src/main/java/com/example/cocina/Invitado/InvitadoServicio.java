@@ -20,6 +20,13 @@ public class InvitadoServicio {
 	
 	@PostConstruct
 	public void init() {
+		if (userRepositorio.findByUsername("admin").isEmpty()) {
+			User admin = User.builder()
+					.username("admin")
+					.password(passwordEncoder.encode("adminAME"))
+					.rol(Role.ADMIN).build();
+			userRepositorio.save(admin);
+		}
 		if(userRepositorio.findByUsername("invitado").isEmpty()) {
 			User invitado = User.builder()
 					.username("invitado")
