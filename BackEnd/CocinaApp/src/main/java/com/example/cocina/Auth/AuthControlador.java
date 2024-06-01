@@ -24,10 +24,17 @@ public class AuthControlador {
 		return ResponseEntity.ok(authService.login(request));
 	}
 	
+	@PostMapping("loginInvitado")
+	public ResponseEntity<AuthResponse> loginInvitado() {
+		
+		return ResponseEntity.ok(authService.loginInvitado());
+	}
+	
 	@PostMapping("registro")
 	public ResponseEntity<AuthResponse> registro(@RequestBody RegistroRequest request ) {
 		
 		return ResponseEntity.ok(authService.register(request));
 	}
+	
 
 }

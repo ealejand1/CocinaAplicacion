@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Categoria } from '../clases/categoria';
 import { CategoriasService } from '../servicios/categorias.service';
+import { UsuarioService } from '../servicios/auth/usuario.service';
 
 @Component({
   selector: 'app-inicio',
@@ -11,7 +12,7 @@ export class InicioComponent {
 
   categorias:Categoria[];
 
-  constructor(private categoriasServicio:CategoriasService){}
+  constructor(private categoriasServicio:CategoriasService,private usuarioServicio:UsuarioService){}
 
   ngOnInit(): void {
     this.obtenerCategorias();

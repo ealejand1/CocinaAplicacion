@@ -38,8 +38,8 @@ public class SecurityConfig {
 						authRequest -> authRequest
 						.requestMatchers("/auth/**").permitAll()
 						
-						.requestMatchers(HttpMethod.GET, "/method/get").hasAnyRole("USER", "ADMIN")
-		                .requestMatchers(HttpMethod.POST, "/method/post").hasAnyRole("USER", "ADMIN")
+						.requestMatchers(HttpMethod.GET, "/method/get").hasAnyRole("USER", "ADMIN","INVITADO")
+		                .requestMatchers(HttpMethod.POST, "/method/post").hasAnyRole("USER", "ADMIN","INVITADO")
 		                .requestMatchers(HttpMethod.DELETE, "/method/delete").hasAnyRole("USER", "ADMIN")
 		                .requestMatchers(HttpMethod.PUT, "/method/put").hasAnyRole("USER", "ADMIN")
 		                .anyRequest().authenticated()
