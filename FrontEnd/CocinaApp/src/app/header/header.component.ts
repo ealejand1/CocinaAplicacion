@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { LoginService } from '../servicios/auth/login.service';
+import { UsuarioService } from '../servicios/auth/usuario.service';
 
 @Component({
   selector: 'app-header',
@@ -13,27 +14,18 @@ export class HeaderComponent implements OnInit{
   loggeado:boolean = false;
   mostrarCrearRecetaDesplegable: boolean = false;
   mostrarCerrarSesionDesplegable: boolean = false;
-
   constructor(private router:Router, private loginServicio:LoginService){}
 
   ngOnInit(): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      if(localStorage.getItem("token")){
-        this.loggeado = true;
-       }
-       else{
-        this.loggeado = false;
-       }
-    }
   }
 
+  
   crearReceta(){
     this.router.navigate(['registrar-receta'])
   }
 
   logOut():void{
     this.loginServicio.logout();
-    this.router.navigateByUrl("login");
   }
 
   toggleCrearRecetaDesplegable(): void {
