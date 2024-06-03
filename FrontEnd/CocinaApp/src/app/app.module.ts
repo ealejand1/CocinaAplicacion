@@ -17,6 +17,7 @@ import { CategoriaRecetasComponent } from './categoria-recetas/categoria-recetas
 import { AuthInterceptor } from './servicios/auth/auth.interceptor.service';
 import { RegistroComponent } from './registro/registro.component';
 import { BuscadorComponent } from './buscador/buscador.component';
+import { MostrarRolesDirective } from './directive/mostrar-roles.directive';
 
 
 @NgModule({
@@ -33,19 +34,23 @@ import { BuscadorComponent } from './buscador/buscador.component';
     RegistrarRecetaComponent,
     CategoriaRecetasComponent,
     RegistroComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    MostrarRolesDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideClientHydration()
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    MostrarRolesDirective
+  ]
 })
 export class AppModule { }

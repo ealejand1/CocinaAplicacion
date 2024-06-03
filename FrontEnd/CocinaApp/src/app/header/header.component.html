@@ -6,11 +6,11 @@
     </div>
     <a [routerLink]="['/inicio/']">RecipyEnte</a>
 
-    <div *ngIf="loggeado">
+    <div *appMostrarRoles="['ADMIN','USER']">
         <a (click)="crearReceta()">crear Receta</a>
     </div>
     
-    <div *ngIf="loggeado">
+    <div *appMostrarRoles="['ADMIN','INVITADO','USER']">
         <a (click)="logOut()">Cerrar Sesion</a>
     </div>
    

@@ -48,7 +48,7 @@ addIngredient() {
     this.router.navigate(["/recetas"])
   }
   ngOnInit() {
-    console.log(localStorage.getItem("idUsuario"))
+    console.log(localStorage.getItem("idUsuario") + "aaaaaaa")
     let userId:any  = localStorage.getItem("idUsuario");
     if (userId !== null && userId !== undefined){
       this.receta.ingredientes = [];
