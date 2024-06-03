@@ -18,6 +18,7 @@ import { AuthInterceptor } from './servicios/auth/auth.interceptor.service';
 import { ValorarRecetaComponent } from './valorar-receta/valorar-receta.component';
 import { RegistroComponent } from './registro/registro.component';
 import { BuscadorComponent } from './buscador/buscador.component';
+import { MostrarRolesDirective } from './directive/mostrar-roles.directive';
 
 
 @NgModule({
@@ -35,19 +36,23 @@ import { BuscadorComponent } from './buscador/buscador.component';
     CategoriaRecetasComponent,
     ValorarRecetaComponent,
     RegistroComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    MostrarRolesDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideClientHydration()
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    MostrarRolesDirective
+  ]
 })
 export class AppModule { }

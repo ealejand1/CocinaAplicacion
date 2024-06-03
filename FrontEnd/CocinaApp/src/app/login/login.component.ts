@@ -30,8 +30,6 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginService.login(this.loginForm.value as LoginRequest).subscribe(
       response => {
-        localStorage.setItem("token",response.token);
-        localStorage.setItem("idUsuario",response.id);
         this.router.navigateByUrl("inicio");
       },
     )
@@ -40,8 +38,6 @@ export class LoginComponent implements OnInit {
   loginInvitado(){
     this.loginService.loginInvitado().subscribe(
       response =>{
-        localStorage.setItem("token",response.token);
-        localStorage.setItem("idUsuario",response.id);
         this.router.navigateByUrl("inicio");
       }
     )

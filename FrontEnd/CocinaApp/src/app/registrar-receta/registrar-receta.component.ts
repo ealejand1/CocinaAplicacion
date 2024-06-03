@@ -132,7 +132,7 @@ export class RegistrarRecetaComponent implements OnInit {
   //la lista de ingredientes de la receta vacia
   // cargamos los ingredientes todos
   ngOnInit() {
-    console.log(localStorage.getItem("idUsuario"))
+    console.log(localStorage.getItem("idUsuario") + "aaaaaaa")
     let userId:any  = localStorage.getItem("idUsuario");
     if (userId !== null && userId !== undefined){
 
