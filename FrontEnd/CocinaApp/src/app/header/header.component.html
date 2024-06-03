@@ -1,21 +1,19 @@
 <header>
 
-    <div class="desplegable">
+    <div class="desplegable" (click)="toggleCrearRecetaDesplegable()">
         <div></div>
         <div></div>
     </div>
     <a [routerLink]="['/inicio/']">RecipyEnte</a>
 
-    <div *ngIf="loggeado">
-        <a (click)="crearReceta()">crear Receta</a>
-    </div>
-    
-    <div *ngIf="loggeado">
-        <a (click)="logOut()">Cerrar Sesion</a>
-    </div>
-   
-    <div class="imagen">
+    <div class="imagen" (click)="toggleCerrarSesionDesplegable()">
         ★
     </div>
 
+    <div class="desplegable-contenido izq" [ngClass]="{'mostrar': mostrarCrearRecetaDesplegable}">
+        <a (click)="crearReceta()">Crear Receta</a>
+    </div>
+    <div class="desplegable-contenido der" [ngClass]="{'mostrar': mostrarCerrarSesionDesplegable}">
+        <a (click)="logOut()">Cerrar Sesión</a>
+    </div>
 </header>

@@ -1,16 +1,13 @@
-
-<div class="cajaRegistro">
-    <form class="formularioRegistro" [formGroup]="registrarForm" method="post">
+<div class="caja">
+    <form class="formulario" [formGroup]="registrarForm" method="post">
         <h2>Registro</h2>
         <p>Crea tu usuario :D</p>
         <div class="input usuario">
-             <input type="text" name="usuario" formControlName="username" placeholder="nombre de usuario">
+            <input type="text" name="usuario" formControlName="username" placeholder="nombre de usuario">
         </div>
         <div class="input contra">
             <input type="password" name="password" formControlName="password" placeholder="contrasena">
         </div>
         <button class="Enviar" value="enviar" (click)="registro()">Registrarse</button>
     </form>
-    </div>
-    
-    
+</div>

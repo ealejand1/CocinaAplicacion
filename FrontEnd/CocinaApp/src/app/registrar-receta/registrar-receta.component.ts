@@ -140,7 +140,9 @@ export class RegistrarRecetaComponent implements OnInit {
       this.receta.usuario = { id: userId }; // Usuario predefinido
       this.cargarIngredientes();
     }
+  }
 
-    
+  removeIngredient(ingrediente: Ingrediente): void {
+    this.listaIngrediente = this.listaIngrediente.filter(ing => ing !== ingrediente);
   }
 }

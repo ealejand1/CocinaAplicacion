@@ -58,4 +58,21 @@ eliminarReceta(id: number): void {
     error: error => console.error('Error al eliminar la receta:', error)
   });
 }
+
+calcularPromedioValoracion(receta: Receta): number | null {
+  if (receta.valoraciones && receta.valoraciones.length > 0) {
+    const sumaTotal = receta.valoraciones.reduce((suma, valoracion) => suma + valoracion.puntuacion, 0);
+    return sumaTotal / receta.valoraciones.length;
+  }
+  return null;  // Retornar null si no hay valoraciones para evitar división por cero
+}
+
+mostrarEstrellas(puntuacion: number | null): string {
+  if (puntuacion === null) {
+    return 'Sin valoraciones';  // Mensaje cuando no hay valoraciones
+  }
+  const redondeado = Math.round(puntuacion);  // Redondea al número entero más cercano
+  return '★'.repeat(redondeado) + '☆'.repeat(5 - redondeado);  // Completa hasta 5 estrellas
+}
+
 }
