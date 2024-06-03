@@ -65,6 +65,7 @@ export class RegistrarRecetaComponent implements OnInit {
     } else {
       console.error('Falta información del ingrediente');
     }
+    console.log(this.receta)
   }
 
 
@@ -140,7 +141,9 @@ export class RegistrarRecetaComponent implements OnInit {
       this.receta.usuario = { id: userId }; // Usuario predefinido
       this.cargarIngredientes();
     }
+  }
 
-    
+  removeIngredient(ingrediente: RecetaIngrediente): void {
+    this.receta.ingredientes = this.receta.ingredientes.filter(ing => ing !== ingrediente);
   }
 }

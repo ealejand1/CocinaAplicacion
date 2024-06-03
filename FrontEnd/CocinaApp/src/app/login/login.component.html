@@ -1,17 +1,15 @@
-
 <div class="caja">
-<form class="formulario" [formGroup]="loginForm" method="post">
-    <h2>Login</h2>
-    <div class="input usuario">
-         <input type="text" name="usuario" formControlName="username" placeholder="nombre de usuario">
-    </div>
-    <div class="input contra">
-        <input type="password" name="password" formControlName="password" placeholder="contrasena">
-    </div>
-    <button class="Enviar" value="enviar" (click)="login()">Iniciar Sesion</button>
-    <button class="invitado" (click)="loginInvitado()">Iniciar como invitado</button>
-    <button (click)="registrarse()">Registrarse</button>
-    <p>Tu próximo plato favorito te espera. ¡Ingresa ahora para empezar a cocinar!</p>
-</form>
+    <form class="formulario" [formGroup]="loginForm" method="post">
+        <h2>Login</h2>
+        <div class="input usuario">
+            <input type="text" name="usuario" formControlName="username" placeholder="Nombre de Usuario">
+        </div>
+        <div class="input contra">
+            <input type="password" name="password" formControlName="password" placeholder="Contraseña">
+        </div>
+        <button class="Enviar" value="enviar" (click)="login()">Iniciar Sesion</button>
+        <button class="invitado" (click)="loginInvitado()">Iniciar como invitado</button>
+        <button (click)="registrarse()">Registrarse</button>
+        <p>Tu próximo plato favorito te espera. ¡Ingresa ahora para empezar a cocinar!</p>
+    </form>
 </div>
-

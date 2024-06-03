@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Receta } from '../clases/receta';
 import { Usuario } from '../clases/usuario';
 import { Valoracion } from '../clases/valoracion';
 import { ValoracionService } from '../servicios/valoracion.service';
-import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-valorar-receta',
@@ -16,7 +15,7 @@ export class ValorarRecetaComponent implements OnInit {
   valoracion: Valoracion = new Valoracion();
    // Asumiendo que el usuario está autenticado y se tiene su ID
 
-  constructor(private valoracionService: ValoracionService, private route: ActivatedRoute) { }
+  constructor(private valoracionService: ValoracionService, private router: Router) { }
 
   ngOnInit(): void {
     this.valoracion.usuario = new Usuario();
@@ -39,7 +38,8 @@ export class ValorarRecetaComponent implements OnInit {
     this.valoracionService.crearValoracion(this.valoracion).subscribe({
       next: (response) => {
         console.log('Valoración creada con éxito', response);
-        
+        console.log(`recetas/${this.valoracion.receta.id}`);
+        this.router.navigate([`/recetas/${this.valoracion.receta.id}`])
       },
       error: (error) => {
         console.error('Error al crear valoración', error);

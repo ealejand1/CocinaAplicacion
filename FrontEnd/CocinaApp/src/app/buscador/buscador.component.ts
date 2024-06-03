@@ -18,6 +18,7 @@ export class BuscadorComponent implements OnInit {
   selectedIngredientes: Ingrediente[] = [];
   searchTerm: string = '';
   listaRecetas: Receta[] = [];
+  isPorIngrediente: boolean= true;
 
 
   constructor(
@@ -58,6 +59,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   buscarPorIngredientes(event: Event): void {
+    console.log("UwU")
     event.preventDefault();
     this.listaRecetas = [];
     let recetasRecibidas: Receta[] = [];
@@ -90,6 +92,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   buscarPorNombre(event: Event): void {
+    console.log("OwO")
     event.preventDefault(); 
     const target = event.target as HTMLFormElement;
     const input = target.querySelector('input[name="nombreBuscar"]') as HTMLInputElement;
@@ -97,5 +100,13 @@ export class BuscadorComponent implements OnInit {
     this.recetaServicio.obtenerRecetasPorNombre(value).subscribe(recetas =>{
       this.listaRecetas=recetas;
     })
+  }
+
+  cambiarBuscador(){
+    if(this.isPorIngrediente){
+      this.isPorIngrediente=false;
+    }else{
+      this.isPorIngrediente=true;
+    }
   }
 }

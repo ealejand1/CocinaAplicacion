@@ -1,21 +1,21 @@
 <header>
 
-    <div class="desplegable">
+    <div class="desplegable" (click)="toggleCrearRecetaDesplegable()">
         <div></div>
         <div></div>
     </div>
     <a [routerLink]="['/inicio/']">RecipyEnte</a>
-
-    <div *appMostrarRoles="['ADMIN','USER']">
-        <a (click)="crearReceta()">crear Receta</a>
-    </div>
-    
-    <div *appMostrarRoles="['ADMIN','INVITADO','USER']">
-        <a (click)="logOut()">Cerrar Sesion</a>
-    </div>
-   
-    <div class="imagen">
+  
+    <div class="imagen" (click)="toggleCerrarSesionDesplegable()">
         ★
     </div>
 
+    <div class="desplegable-contenido izq" [ngClass]="{'mostrar': mostrarCrearRecetaDesplegable}">
+        <a *appMostrarRoles="['ADMIN','USER']" (click)="crearReceta()">Crear Receta</a>
+        <a *appMostrarRoles="['ADMIN','USER']" [routerLink]="['/recetas']" >Mis recetas</a>
+        <a [routerLink]="['/inicio/']">Inicio</a>
+    </div>
+    <div class="desplegable-contenido der" [ngClass]="{'mostrar': mostrarCerrarSesionDesplegable}">
+        <a *appMostrarRoles="['ADMIN','INVITADO','USER']" (click)="logOut()">Cerrar Sesión</a>
+    </div>
 </header>

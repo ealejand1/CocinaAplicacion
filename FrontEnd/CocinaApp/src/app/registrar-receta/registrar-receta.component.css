@@ -1,87 +1,237 @@
 .caja-registrar{
     background-image: url('../../assets/fondos/Inicio.jpg');
     width: 100%;
-    height: 100vh;
+    height: 93.5vh;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .caja-marco{
-    width: 50%;
-    height: 75vh;
-    background-color: antiquewhite;
-  
+    width: 900px;
+    height: 75%;
+    background-color: #FFF9E9;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    
 }
 .formulario-registrar{
-    width: 95%;
-    height: 70vh;
-    background-color: antiquewhite;
+    width: 96%;
+    height: 95%;
+    background-color: #FFF9E9;
     border: 2px solid #DB8243;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
+    display: grid;
+    gap: 5px;
+    grid-template-columns: [c1 izquierda-start]2fr[c2 izquierda-end derecha-start]1fr[c3 derecha-end];
+    grid-template-rows: 
+    [r1 nombre-start pasos-start]
+    2fr
+    [r2 nombre-end descripcion-start]
+    4fr
+    [r3 descripcion-end categoria-start]
+    1fr
+    [r4 categoria-end ingredientes-start]
+    1fr
+    [r5 ingredientes-end listaIngre-start botones-start]
+    3fr
+    [r6 pasos-end listaIngre-end botones-end]
+    ;
 }
 .nombrereceta{
-    width: 100%;
-    padding: 20px;
+    padding: 10px;
     border: none;
     background: transparent;
-    font-size: 50px;
+    font-size: 40px;
     color: #55260F;
-
+    box-shadow: none;
+    grid-column: izquierda;
+    grid-row: nombre;
+}
+.nombrereceta:focus{
+    outline: none;
+}
+.contenedor{
+    padding: 10px;
+}
+.contenedor-desImg{
+    grid-column: izquierda;
+    grid-row: descripcion;
+    display: flex;
+    justify-content: space-between;
+}
+.contenedor-descripcion{
+    width: 60%;
+}
+.descripcion{
+    height: 100%;
+}
+.contenedor-imagen{
+    width: 40%;
+}
+.imagen{
+    height: 100%;
+    display: none;
+}
+.label-imagen{
+    height: 100%;
+    background-color: #FFF9E9;
+    border: 2px solid #55260fa1; 
+    box-shadow:  0 2px 2px rgba(0, 0, 0, 0.185);
+    border-radius: 10px; 
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.label-imagen b{
+    font-size: 100px;
+    font-weight: lighter;
+}
+.label-imagen img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.contenedor-catTie{
+    grid-column: izquierda;
+    grid-row: categoria;
+    display: flex;
+    justify-content: space-between;
+}
+.contenedor-categoria{
+    width: 100%;
+}
+.contenedor-tiempo{
+    width: 20%;
+}
+.contenedor-ingrediente{
+    grid-column: izquierda;
+    grid-row: ingredientes;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.contenedor-listaIng{
+    grid-column: izquierda;
+    grid-row: listaIngre;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+.contenedor-instrucciones{
+    grid-column: derecha;
+    grid-row: pasos;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+.instrucciones{
+    height: 80%;
+}
+input,select,textarea{
+    background-color: #FFF9E9;
+    border: 2px solid #55260fa1; 
+    box-shadow:  0 2px 2px rgba(0, 0, 0, 0.185);
+    width: 95%; 
+    padding: 0.5rem; 
+    border-radius: 10px; 
+    font-size: 1rem; 
+    resize: none; 
+    box-sizing: border-box; 
+    color: #55260F;
 }
 label {
     display: block;
-    margin-left: 15px;
     font-size: 1rem;
     font-weight: bold;
     color: #55260F;
-  }
-  .descripcion, .instrucciones, .tiempo {
-    margin-left: 15px;
-    width: 95%; 
-    padding: 0.5rem; /* Espacio interno del textarea */
-    border: 2px solid #55260F; 
-    border-radius: 10px; 
-    font-size: 1rem; 
-    resize: vertical; /* Permitir solo el cambio de tamaño vertical */
-    box-shadow:  0 4px 8px rgba(0, 0, 0, 05);
-    box-sizing: border-box; /* Incluir el padding y el borde en el ancho total */
-  }
-  .descripcion::placeholder{
-    color: #55260F;
+}
+input,select,textarea::placeholder{
+    color: #5f4538;
     font-size: 12px;
-  }
-.nombrereceta::placeholder{
-    color:#55260F;
 }
-.tiempo{
-    width: 10%; 
+.contenedor-botones{
+    grid-column: derecha;
+    grid-row: botones;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: flex-end;
+    gap: 10px;
 }
-.crear{
+.boton{
     border-radius: 100px;
-    width: 25%;
-    height: 15vh;
-    background-color: #823914;
-    align-self: center;
+    padding: 5px;
     color:white;
     border: none;
-    margin-bottom: 20px;
-    font-size: 25px;
+    font-size: 15px;
+}
+.crear{
+    width: 90px;
+    background-color: #55260F;
+
 }
 .cancelar{
-    width: 15%;
-    height: 5vh;
+    width: 80px;
+    background-color: #7e5b4a;
 }
-img{
-    width: 50%;
-    height: 70%;
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+li button {
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: crosshair;
+    background-color: inherit;
+    transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 900px){
+    .caja-marco{
+        width: 500px;
+    }
+    .formulario-registrar{
+        grid-template-columns: [c1 izquierda-start derecha-start]1fr[c2 izquierda-end derecha-start derecha-end];
+        grid-template-rows: 
+        [r1 nombre-start]
+        2fr
+        [r2 nombre-end descripcion-start]
+        4fr
+        [r3 descripcion-end categoria-start]
+        1fr
+        [r4 categoria-end ingredientes-start]
+        1fr
+        [r5 ingredientes-end listaIngre-start]
+        3fr
+        [r6 listaIngre-end pasos-start]
+        4fr
+        [r7 botones-start pasos-end]
+        1fr
+        [r8 botones-end]
+        ;
+    }
 }

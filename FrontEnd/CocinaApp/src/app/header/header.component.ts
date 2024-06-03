@@ -6,13 +6,14 @@ import { UsuarioService } from '../servicios/auth/usuario.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 
 })
 export class HeaderComponent implements OnInit{
 
   loggeado:boolean = false;
-  rol:String;
+  mostrarCrearRecetaDesplegable: boolean = false;
+  mostrarCerrarSesionDesplegable: boolean = false;
   constructor(private router:Router, private loginServicio:LoginService){}
 
   ngOnInit(): void {
@@ -22,7 +23,23 @@ export class HeaderComponent implements OnInit{
   crearReceta(){
     this.router.navigate(['registrar-receta'])
   }
+
   logOut():void{
     this.loginServicio.logout();
   }
+
+  toggleCrearRecetaDesplegable(): void {
+    this.mostrarCrearRecetaDesplegable = !this.mostrarCrearRecetaDesplegable;
+    if (this.mostrarCrearRecetaDesplegable) {
+      this.mostrarCerrarSesionDesplegable = false; // Para cerrar el otro desplegable si estaba abierto
+    }
+  }
+
+  toggleCerrarSesionDesplegable(): void {
+    this.mostrarCerrarSesionDesplegable = !this.mostrarCerrarSesionDesplegable;
+    if (this.mostrarCerrarSesionDesplegable) {
+      this.mostrarCrearRecetaDesplegable = false; // Para cerrar el otro desplegable si estaba abierto
+    }
+  }
+
 }

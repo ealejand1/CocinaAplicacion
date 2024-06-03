@@ -55,7 +55,7 @@ button {
     font-size: 16px;
 }
 
-.Enviar:hover {
+button:hover {
     background-color: #a07d45; 
     color: #55260F;
 }
@@ -63,11 +63,6 @@ button {
     background-color: #55260F;
     border: solid 1px white;
 }
-.invitado:hover{
-    background-color: #a07d45;
-    color: #55260F;
-}
-
 img{
     max-width: 100%;
     height: auto;

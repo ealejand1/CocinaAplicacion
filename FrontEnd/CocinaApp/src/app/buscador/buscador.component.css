@@ -10,11 +10,112 @@ main{
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     padding-top: 100px;
     padding-bottom: 100px;
 }
+
+#contenedorBuscadores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    background-color: #B9581E;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+button:hover {
+    background-color: #994811;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    width: 250px;
+    text-align: center;
+}
+
+input[type="submit"] {
+    background-color: #B9581E;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #994811;
+}
+
+input{
+    font-size: 15px;
+}
+
+.buscador {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #55260F;
+    border-radius: 15px;
+    background-color: #FFF9E9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.774);
+}
+
+h3 {
+    margin: 10px 0;
+    text-align: center;
+    color: #55260F;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+li button {
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: crosshair;
+    background-color: inherit;
+    transition: background-color 0.3s ease;
+}
+
 
 .contenedor {
     padding: 20px;
@@ -22,13 +123,6 @@ main{
     background-color: #FFF9E9;
     width: 80%;
     border-radius: 20px;
-}
-
-.titulo-categoria {
-    font-size: 2rem;
-    color: #55260F;
-    margin-bottom: 20px;
-    text-align: center;
 }
 
 .grid {
@@ -51,7 +145,7 @@ main{
     align-items: center;
     text-align: left;
     font-size: 1.2rem;
-    color: #692609;
+    color: #55260F;
     background-color: #fff;
     transition: transform 0.3s ease;
     text-decoration: none;
@@ -72,7 +166,7 @@ main{
     padding: 10px;
     flex: 1;
     font-size: 1rem;
-    color: #692609;
+    color: #55260F;
 }
 
 .receta-nombre {
@@ -104,4 +198,18 @@ main{
         width: calc(50% - 40px) * 2; /* El doble de ancho */
         max-width: 800px; /* El doble de la anterior máxima anchura */
     }
+    #contenedorBuscadores{
+        width: 50vw;
+    }
+    .buscador {
+        width: 100%;
+        max-width: 900px;
+    }
+    input[type="text"] {
+        width: 450px;
+    }
+    input{
+        font-size: 20px;
+    }
 }
+

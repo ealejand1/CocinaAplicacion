@@ -1,6 +1,6 @@
 <main>
   <div class="contenedor">
-    <h1 class="titulo-categoria">{{categoria}}</h1>
+    <h1 class="titulo">{{categoria}}</h1>
     <div class="grid">
       <a [routerLink]="['/recetas/', receta.id]" class="caja" *ngFor="let receta of recetas">
         <img src="../../assets/imagenes/categorias/Entrantes.jpg" alt="Imagen de {{ receta.nombre }}" class="imgCaja">
