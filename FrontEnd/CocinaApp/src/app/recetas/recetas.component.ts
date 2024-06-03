@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Receta } from '../clases/receta';
 import { RecetaService } from '../servicios/receta.service';
+import { ValoracionService } from '../servicios/valoracion.service';
+import { Valoracion } from '../clases/valoracion';
 
 @Component({
   selector: 'app-recetas',
@@ -9,8 +11,9 @@ import { RecetaService } from '../servicios/receta.service';
 })
 export class RecetasComponent {
   recetas: Receta[]=[];
+  valoraciones:Valoracion[]=[];
 
-  constructor(private recetaService: RecetaService) { }
+  constructor(private recetaService: RecetaService, private valoracionServicio: ValoracionService) { }
 
   ngOnInit(): void {
     let userId:any  = localStorage.getItem("idUsuario");
@@ -29,10 +32,11 @@ export class RecetasComponent {
           // Asegúrate de que data es un array
         if (Array.isArray(data)) {
           this.recetas=data;
-          console.error('Datos recibidos no son un array:', data);
+        }else{
+          console.error('Datos recibidos en cargarRecetasPorUsuarioId no son un array:', data);
         }
       },
-      error: error => console.error('Error al obtener las recetas:', error)
+      error: error => console.error('Error al obtener las recetas en cargarRecetasPorUsuarioId:', error)
     });
   }
 
@@ -43,10 +47,10 @@ cargarRecetas(): void {
       if (Array.isArray(data)) {
         this.recetas = data;
       } else {
-        console.error('Datos recibidos no son un array:', data);
+        console.error('Datos recibidos en cargarRecetas no son un array:', data);
       }
     },
-    error: error => console.error('Error al obtener las recetas:', error)
+    error: error => console.error('Error al obtener las recetas en cargarRecetas:', error)
   });
 }
 eliminarReceta(id: number): void {
@@ -60,9 +64,12 @@ eliminarReceta(id: number): void {
 }
 
 calcularPromedioValoracion(receta: Receta): number | null {
-  if (receta.valoraciones && receta.valoraciones.length > 0) {
-    const sumaTotal = receta.valoraciones.reduce((suma, valoracion) => suma + valoracion.puntuacion, 0);
-    return sumaTotal / receta.valoraciones.length;
+  this.valoracionServicio.obtenerValoracionesPorReceta(receta.id).subscribe(valoracion =>{
+    this.valoraciones= valoracion;
+  })
+  if (this.valoraciones && this.valoraciones.length > 0) {
+    const sumaTotal = this.valoraciones.reduce((suma, valoracion) => suma + valoracion.puntuacion, 0);
+    return sumaTotal / this.valoraciones.length;
   }
   return null;  // Retornar null si no hay valoraciones para evitar división por cero
 }

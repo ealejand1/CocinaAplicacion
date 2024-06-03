@@ -12,6 +12,8 @@
 
     <div class="desplegable-contenido izq" [ngClass]="{'mostrar': mostrarCrearRecetaDesplegable}">
         <a (click)="crearReceta()">Crear Receta</a>
+        <a [routerLink]="['/recetas']" >Mis recetas</a>
+        <a [routerLink]="['/inicio/']">Inicio</a>
     </div>
     <div class="desplegable-contenido der" [ngClass]="{'mostrar': mostrarCerrarSesionDesplegable}">
         <a (click)="logOut()">Cerrar Sesión</a>

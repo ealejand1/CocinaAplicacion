@@ -25,6 +25,7 @@
     border: 2px solid #DB8243;
     border-radius: 20px;
     display: grid;
+    gap: 5px;
     grid-template-columns: [c1 izquierda-start]2fr[c2 izquierda-end derecha-start]1fr[c3 derecha-end];
     grid-template-rows: 
     [r1 nombre-start pasos-start]
@@ -35,9 +36,9 @@
     1fr
     [r4 categoria-end ingredientes-start]
     1fr
-    [r5 ingredientes-end listaIngre-start]
+    [r5 ingredientes-end listaIngre-start botones-start]
     3fr
-    [r6 pasos-end listaIngre-end]
+    [r6 pasos-end listaIngre-end botones-end]
     ;
 }
 .nombrereceta{
@@ -83,6 +84,13 @@
     border-radius: 10px; 
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.label-imagen b{
+    font-size: 100px;
+    font-weight: lighter;
 }
 .label-imagen img{
     width: 100%;
@@ -109,6 +117,8 @@
     grid-row: ingredientes;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
 .contenedor-listaIng{
     grid-column: izquierda;
@@ -116,6 +126,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow-y: scroll;
 }
 .contenedor-instrucciones{
     grid-column: derecha;
@@ -152,7 +163,7 @@ input,select,textarea::placeholder{
 }
 .contenedor-botones{
     grid-column: derecha;
-    grid-row: listaIngre;
+    grid-row: botones;
     display: flex;
     flex-direction: row;
     align-items: end;
@@ -174,4 +185,53 @@ input,select,textarea::placeholder{
 .cancelar{
     width: 80px;
     background-color: #7e5b4a;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+li button {
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: crosshair;
+    background-color: inherit;
+    transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 900px){
+    .caja-marco{
+        width: 500px;
+    }
+    .formulario-registrar{
+        grid-template-columns: [c1 izquierda-start derecha-start]1fr[c2 izquierda-end derecha-start derecha-end];
+        grid-template-rows: 
+        [r1 nombre-start]
+        2fr
+        [r2 nombre-end descripcion-start]
+        4fr
+        [r3 descripcion-end categoria-start]
+        1fr
+        [r4 categoria-end ingredientes-start]
+        1fr
+        [r5 ingredientes-end listaIngre-start]
+        3fr
+        [r6 listaIngre-end pasos-start]
+        4fr
+        [r7 botones-start pasos-end]
+        1fr
+        [r8 botones-end]
+        ;
+    }
 }

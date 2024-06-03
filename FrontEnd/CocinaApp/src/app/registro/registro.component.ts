@@ -31,4 +31,9 @@ export class RegistroComponent {
     );
     this.router.navigateByUrl("/login");
   }
+
+  login(){
+    this.router.navigateByUrl("/login");
+
+  }
 }

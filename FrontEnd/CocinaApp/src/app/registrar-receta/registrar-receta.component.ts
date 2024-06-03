@@ -65,6 +65,7 @@ export class RegistrarRecetaComponent implements OnInit {
     } else {
       console.error('Falta información del ingrediente');
     }
+    console.log(this.receta)
   }
 
 
@@ -142,7 +143,7 @@ export class RegistrarRecetaComponent implements OnInit {
     }
   }
 
-  removeIngredient(ingrediente: Ingrediente): void {
-    this.listaIngrediente = this.listaIngrediente.filter(ing => ing !== ingrediente);
+  removeIngredient(ingrediente: RecetaIngrediente): void {
+    this.receta.ingredientes = this.receta.ingredientes.filter(ing => ing !== ingrediente);
   }
 }
