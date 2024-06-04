@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.cocina.API.receta.ControladorRecetas;
 import com.example.cocina.API.receta.Receta;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/recetas-ingredientes") 
 public class ControladorRecetasIngredientes {
