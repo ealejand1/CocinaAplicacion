@@ -1,0 +1,65 @@
+/* Estilos generales */
+main{
+    background-image: url(../../assets/fondos/listado.jpg);
+    min-height: 72vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* Encabezados */
+h2,
+h3 {
+    color: #B9581E;
+    margin-bottom: 10px;
+}
+
+/* Contenedor principal de la receta */
+.receta-container {
+    background-color: #FFF9E9;
+    border: 1px solid #55260F;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+}
+
+/* Descripción e instrucciones */
+p {
+    line-height: 1.6;
+}
+
+/* Ingredientes y valoraciones */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #FFF9E9;
+    border: 1px solid #55260F;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+/* Enlace de valoración */
+app-valorar-receta {
+    display: block;
+    margin-top: 20px;
+}
+
+/* Mensaje de carga */
+.loading-message {
+    font-size: 1.2em;
+    color: #B9581E;
+}

@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit()">
+  <h3>Valorar receta</h3>
+  <div>
+    <label for="puntuacion">Puntuación:</label>
+    <select id="puntuacion" [(ngModel)]="valoracion.puntuacion" name="puntuacion" required>
+      <option *ngFor="let star of [1, 2, 3, 4, 5]" [value]="star">{{ star }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="comentario">Comentario:</label>
+    <textarea id="comentario" [(ngModel)]="valoracion.comentario" name="comentario"></textarea>
+  </div>
+  <button type="submit">Enviar Valoración</button>
+</form>

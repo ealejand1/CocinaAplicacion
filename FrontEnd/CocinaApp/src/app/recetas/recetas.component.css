@@ -1,0 +1,121 @@
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+main{
+  background-image: url(../../assets/fondos/listado.jpg);
+  min-height: 72vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.contenedor {
+  padding: 20px;
+  text-align: center;
+  background-color: #FFF9E9;
+  width: 80%;
+  border-radius: 20px;
+}
+
+.titulo {
+  font-size: 2rem;
+  color: #55260F;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.caja {
+  width: calc(50% - 40px);
+  max-width: 400px;
+  margin: 10px;
+  border: 1px solid #C6A986;
+  box-shadow: 0 2px 10px rgba(72, 29, 11, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  font-size: 1.2rem;
+  color: #692609;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.caja:hover {
+  transform: scale(1.05);
+}
+
+.imgCaja {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.receta-info {
+  padding: 10px;
+  flex: 1;
+  font-size: 1rem;
+  color: #692609;
+}
+
+.receta-nombre {
+  font-size: 1.5rem;
+  color: #55260F;
+  margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .caja {
+      width: calc(100% - 40px);
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .imgCaja {
+      width: 100%;
+      height: 200px;
+      margin-right: 0;
+  }
+
+  .receta-info {
+      padding: 10px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .caja {
+      width: calc(50% - 40px) * 2; /* El doble de ancho */
+      max-width: 800px; /* El doble de la anterior máxima anchura */
+  }
+}
+
+.valoraciones {
+  display: flex;
+  justify-content: center;
+}
+
+.filled {
+  color: gold;
+}
+
+.unfilled {
+  color: lightgray;
+}
+

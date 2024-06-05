@@ -1,0 +1,59 @@
+/* Estilos generales del formulario */
+form {
+  background-color: #FFF9E9;
+  border: 1px solid #55260F;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado del formulario */
+form h3 {
+  color: #B9581E;
+  margin-bottom: 20px;
+}
+
+/* Etiquetas y campos del formulario */
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #55260F;
+}
+
+form select,
+form textarea {
+  width: 8
+  90%;
+  border: 1px solid #55260F;
+  border-radius: 4px;
+  background-color: #FFF9E9;
+  color: #55260F;
+  font-size: 1em;
+}
+
+/* Botón de envío */
+form button {
+  background-color: #B9581E;
+  color: #FFF9E9;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #55260F;
+}
+
+/* Ajustes del textarea */
+form textarea {
+  resize: none;
+}

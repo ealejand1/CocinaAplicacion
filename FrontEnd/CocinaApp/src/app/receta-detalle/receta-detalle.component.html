@@ -1,0 +1,30 @@
+<main>
+  <div *ngIf="receta" class="receta-container">
+    <h2>{{receta.usuario.nombre}}</h2>
+    <h2>{{ receta.nombre }}</h2>
+    <p>{{ receta.descripcion }}</p>
+    <h3>Instrucciones</h3>
+    <p>{{ receta.instrucciones }}</p>
+
+    <h3>Ingredientes</h3>
+    <ul *ngIf="ingredientes.length > 0; else noIngredientes">
+      <li *ngFor="let ingrediente of ingredientes">
+        {{ ingrediente.ingrediente.nombre }} - {{ ingrediente.cantidad }} {{ ingrediente.unidades }}
+      </li>
+    </ul>
+    <ng-template #noIngredientes>
+      <p>No hay ingredientes listados para esta receta.</p>
+    </ng-template>
+    <h3>Valoraciones</h3>
+    <app-valorar-receta [receta]="receta"></app-valorar-receta>
+    <ul *ngIf="valoraciones && valoraciones.length > 0">
+      <li *ngFor="let valoracion of valoraciones">
+        "{{ valoracion.comentario }}" - {{ valoracion.puntuacion }} estrellas
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #loading>
+    <p class="loading-message">Cargando detalles de la receta...</p>
+  </ng-template>
+</main>

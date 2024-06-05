@@ -1,0 +1,74 @@
+<main>
+
+    <div class="caja-registrar">
+        <div class="caja-marco">
+    
+        
+        <form (ngSubmit)="onSubmit()" method="post" class="formulario-registrar">
+    
+    
+                
+            <input class="nombrereceta" id="nombre" type="text" autocomplete="off" [(ngModel)]="receta.nombre" name="nombre" placeholder="Nombre Receta" required>
+
+            <div class="contenedor-desImg contenedor">
+                <div class="contenedor-descripcion">
+                    <label  for="descripcion">Descripción:</label>
+                    <textarea class="descripcion" id="descripcion" [(ngModel)]="receta.descripcion" name="descripcion" required placeholder="Descripción breve y detalles a añadir a tu receta"></textarea>
+                </div>
+                <div class="contenedor-imagen">
+                    <label for="imageFile">Imágen:</label>
+                    <label class="label-imagen"><b>+</b>
+                        <input class="imagen" type="file" id="imageFile" (change)="onFileSelected($event)" accept=".jpg, .jpeg, .png">
+                        <img *ngIf="imageSrc" [src]="imageSrc" class="preview-img" alt="Previsualización de la imagen">
+                    </label>
+                </div>
+            </div>
+            
+            <div class="contenedor-catTie contenedor">
+                <div class="contenedor-categoria">
+                    <label for="cateogira">Categoria</label>
+                    <input type="text" id="cateogira">
+                </div>
+                <div class="contenedor-tiempo">
+                    <label for="tiempoPreparacion">Tiempo</label>
+                    <input  class="tiempo"id="tiempoPreparacion" type="text" [(ngModel)]="receta.tiempoPreparacion" name="tiempoPreparacion">
+                </div>
+            </div>
+
+            <div class="contenedor-ingrediente contenedor">
+                <label for="ingredienteSeleccionado">Ingredientes</label>
+                <select [(ngModel)]="nuevoIngrediente.ingrediente" name="ingredienteSeleccionado" id="ingredienteSeleccionado" required>
+                    <option *ngFor="let ingrediente of todosLosIngredientes" [ngValue]="ingrediente">{{ingrediente.nombre}}</option>
+                </select>
+                <input type="number" min="0" [(ngModel)]="nuevoIngrediente.cantidad" name="cantidad" placeholder="Cantidad" required>
+                <input type="text" [(ngModel)]="nuevoIngrediente.unidades" name="unidades" placeholder="Unidades Ej.ml,g" required>
+                <button type="button" class="boton crear" (click)="addIngredient()">Añadir</button>
+            </div>
+
+            <div class="contenedor-listaIng contenedor">
+                <ul>
+                    <li *ngFor="let ingrediente of receta.ingredientes">
+                        {{ingrediente.ingrediente.nombre}} {{ingrediente.cantidad}} {{ingrediente.unidades}} 
+                        <input type="hidden" id="{{ingrediente.id}}{{ingrediente.ingrediente.nombre}}"
+                            value="{{ingrediente.id}}">
+                        <button (click)="removeIngredient(ingrediente)">🗑️</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contenedor-instrucciones contenedor">
+                <label for="instrucciones">Instrucciones:</label>
+                <textarea placeholder="Describe cada paso" class="instrucciones"id="instrucciones" [(ngModel)]="receta.instrucciones" name="instrucciones"></textarea>
+            </div>
+            
+    
+            <div class="contenedor-botones contenedor">
+                <button class="boton cancelar" (click)="regresoRecetas()"> Cancelar</button>
+                <button class="boton crear" type="submit">Crear</button>
+            </div>
+            
+              
+        </form>  
+    </div> 
+    </div>
+</main>
