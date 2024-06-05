@@ -17,7 +17,7 @@ import com.example.cocina.API.receta.*;
 
 @RestController
 @RequestMapping("/api/v1/categorias")
-@CrossOrigin(origins = "http://localhost:4200/", methods = { RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET,
+@CrossOrigin(origins = "*", methods = { RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET,
 		RequestMethod.DELETE },allowedHeaders = "*")
 public class ControladorCategorias {
 

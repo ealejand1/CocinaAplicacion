@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET,
+@CrossOrigin(origins = "*", methods = { RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET,
 		RequestMethod.DELETE },allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/recetas")

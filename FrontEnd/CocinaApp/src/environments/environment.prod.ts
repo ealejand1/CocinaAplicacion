@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    urlHost: 'http://recipyente.ddns.net',
-    urlApi: 'http://recipyente.ddns.net/api/v1',
+    urlHost: 'http://100.27.79.255',
+    urlApi: 'http://100.27.79.255/api/v1',
   };
   

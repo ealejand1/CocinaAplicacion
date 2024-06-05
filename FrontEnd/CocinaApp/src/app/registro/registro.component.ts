@@ -26,7 +26,7 @@ export class RegistroComponent {
       {
         error : error =>{
           console.error("Error al registrar" + error);
-        }
+        },
       }
     );
     this.router.navigateByUrl("/login");
