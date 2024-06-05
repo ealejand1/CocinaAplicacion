@@ -76,6 +76,7 @@ export class RegistrarRecetaComponent implements OnInit {
         next: (recetaGuardada) => {
           console.log('Receta creada con éxito', recetaGuardada);
           this.guardarIngredientes(recetaGuardada.id);
+          //this.router.navigateByUrl("recetas")
       
         },
         error: (error) => {
