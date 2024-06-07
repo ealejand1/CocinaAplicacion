@@ -40,6 +40,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   private obtenerRecetas():void{
+    this.listaRecetas = [];
     this.recetaServicio.obtenerRecetas().subscribe(recetas =>{
       this.listaRecetas=recetas;
     })
@@ -109,6 +110,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   cambiarBuscador(){
+    this.obtenerRecetas()
     if(this.isPorIngrediente){
       this.isPorIngrediente=false;
     }else{
