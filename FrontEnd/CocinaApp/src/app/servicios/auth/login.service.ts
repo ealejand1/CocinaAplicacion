@@ -9,7 +9,7 @@ import {
   tap,
   map,
 } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 import { registroRequest } from './registroRequest';
 import { User } from './user';
 import { Router } from '@angular/router';
