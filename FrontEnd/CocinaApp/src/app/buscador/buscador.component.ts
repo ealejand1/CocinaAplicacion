@@ -29,6 +29,7 @@ export class BuscadorComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerIngredientes();
+    this.obtenerRecetas();
   }
 
   private obtenerIngredientes(): void {
@@ -36,6 +37,12 @@ export class BuscadorComponent implements OnInit {
       this.ingredientes = ingredientes;
       this.filteredIngredientes = ingredientes; // Inicializar con todos los ingredientes
     });
+  }
+
+  private obtenerRecetas():void{
+    this.recetaServicio.obtenerRecetas().subscribe(recetas =>{
+      this.listaRecetas=recetas;
+    })
   }
 
   filterIngredients(): void {
@@ -59,7 +66,6 @@ export class BuscadorComponent implements OnInit {
   }
 
   buscarPorIngredientes(event: Event): void {
-    console.log("UwU")
     event.preventDefault();
     this.listaRecetas = [];
     let recetasRecibidas: Receta[] = [];
