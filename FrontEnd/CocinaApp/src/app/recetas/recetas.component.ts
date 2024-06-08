@@ -12,6 +12,7 @@ import { Valoracion } from '../clases/valoracion';
 export class RecetasComponent {
   recetas: Receta[]=[];
   valoraciones:Valoracion[]=[];
+  estrella: { [key: number]: string } = {};
 
   constructor(private recetaService: RecetaService, private valoracionServicio: ValoracionService) { }
 
@@ -23,6 +24,10 @@ export class RecetasComponent {
       this.cargarRecetasPorUsuarioId(+userId);
       
     }
+    this.recetas.forEach(receta => {
+      this.estrella[receta.id]=this.mostrarEstrellas(this.calcularPromedioValoracion(receta))
+    })
+
    
   }
 
