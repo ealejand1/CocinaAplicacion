@@ -3,13 +3,16 @@
     <h1 class="titulo">Tus Recetas</h1>
     <div class="grid">
       <a [routerLink]="['/recetas/', receta.id]" class="caja" *ngFor="let receta of recetas">
-        <img src="../../assets/imagenes/categorias/Entrantes.jpg" alt="Imagen de {{ receta.nombre }}" class="imgCaja">
+        <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="imgCaja">
+        
         <div class="receta-info">
           <h2 class="receta-nombre">{{ receta.nombre }}</h2>
           <p>Tiempo: {{ receta.tiempoPreparacion }}</p>
           <div class="valoraciones">
             <p>{{ mostrarEstrellas(calcularPromedioValoracion(receta)) }}</p>
           </div>
+          <button (click)="eliminarReceta(receta.id)" class="btn-eliminar">Eliminar</button>
+          <button (click)="editarReceta(receta.id)" class="btn-editar">Editar</button>
         </div>
       </a>
     </div>
