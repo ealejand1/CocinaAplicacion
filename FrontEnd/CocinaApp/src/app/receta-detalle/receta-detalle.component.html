@@ -1,37 +1,44 @@
 <main>
   <div *ngIf="receta" class="receta-container">
-    <div class="receta-top">
-      <div class="receta-info">
+    <div class="receta-header">
+      <div class="receta-titulo">
         <h1>{{ receta.nombre }}</h1>
-        <p>{{ receta.descripcion }}</p>
       </div>
       <div class="receta-imagen">
         <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}">
       </div>
     </div>
 
+    <p class="descripcion">{{ receta.descripcion }}</p>
+
     <div class="instrucciones">
       <h3>Instrucciones</h3>
       <p>{{ receta.instrucciones }}</p>
     </div>
-
     <div class="ingredientes">
-      <h3>Ingredientes</h3>
-      <div class="ingredientes-scroll">
-        <div *ngFor="let ingrediente of receta.ingredientes" class="ingrediente-item">
-          {{ ingrediente.ingrediente.nombre }} <span class="cantidad">- {{ ingrediente.cantidad }} {{ ingrediente.unidades }}</span>
-        </div>
-      </div>
+    <h3>Ingredientes</h3>
+    <div class="ingredientes-lista">
+    <ul *ngIf="ingredientes.length > 0; else noIngredientes">
+      <li *ngFor="let ingrediente of ingredientes">
+     <span class="ingrediente-nombre">{{ ingrediente.ingrediente.nombre }}</span>
+     <span class="ingrediente-detalle">{{ ingrediente.cantidad }} {{ ingrediente.unidades }}</span>    
+      </li>
+    </ul>
     </div>
+  </div>
+    <ng-template #noIngredientes>
+      <p>No hay ingredientes listados para esta receta.</p>
+    </ng-template>
 
-    <div class="comentarios">
-      <h3>Comentarios y Valoraciones</h3>
-      <ul>
+    <div class="valoraciones">
+      <h3>Comentarios</h3>
+      <ul *ngIf="valoraciones && valoraciones.length > 0">
         <li *ngFor="let valoracion of valoraciones">
           <div class="valoracion-estrellas">{{ mostrarEstrellas(valoracion.puntuacion) }}</div>
           <p>{{ valoracion.comentario }}</p>
         </li>
       </ul>
+      <app-valorar-receta [receta]="receta"></app-valorar-receta>
     </div>
   </div>
 </main>
