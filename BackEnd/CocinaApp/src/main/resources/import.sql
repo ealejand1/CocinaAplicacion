@@ -118,62 +118,90 @@ INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, 
 INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
 ("00:50", 1, "Sopa italiana de verduras con pasta o arroz.", "Cocinar cebolla, apio, zanahoria y ajo en una olla con aceite de oliva.\nAñadir caldo de verduras, tomates, judías verdes, patatas y calabacín.\nCocinar hasta que las verduras estén tiernas.\nAñadir pasta o arroz y cocinar hasta que esté listo.", "Minestrone"); -- id receta 40
 
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:30", 1, "Tacos rellenos de cerdo adobado con piña y cilantro.", "Marinar la carne de cerdo en adobo de chiles y especias.\nCocinar la carne en una sartén hasta que esté dorada.\nServir en tortillas de maíz con piña, cebolla y cilantro.", "Tacos al Pastor"); -- id receta 41
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:10", 1, "Tradicional dip mexicano a base de aguacate.", "Machacar aguacates maduros en un tazón.\nAñadir tomate, cebolla, cilantro, jugo de limón, sal y pimienta al gusto.\nMezclar bien y servir con totopos.", "Guacamole"); -- id receta 42
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("01:00", 1, "Chiles poblanos rellenos de picadillo de carne con salsa de nuez.", "Asar y pelar los chiles poblanos.\nRellenar con una mezcla de carne molida, frutas y especias.\nCubrir con una salsa de nuez y decorar con granada.", "Chiles en Nogada"); -- id receta 43
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:15", 1, "Tortillas rellenas de queso y otros ingredientes, doradas en la sartén.", "Colocar queso rallado y otros ingredientes en una tortilla.\nDoblar la tortilla y cocinar en una sartén hasta que el queso se derrita.\nServir con salsa y guacamole.", "Quesadillas"); -- id receta 44
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:30", 1, "Pequeñas bases de masa de maíz frita, cubiertas con frijoles, carne y verduras.", "Formar pequeñas bases de masa de maíz y freírlas.\nCubrir con frijoles refritos, carne, lechuga, crema y queso.\nServir con salsa al gusto.", "Sopes"); -- id receta 45
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:20", 1, "Tostadas crujientes cubiertas con ceviche de pescado fresco.", "Marinar pescado fresco en jugo de limón con cebolla, tomate y cilantro.\nColocar el ceviche sobre tostadas de maíz.\nServir con aguacate y salsa picante.", "Tostadas de Ceviche"); -- id receta 46
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:40", 1, "Tortillas rellenas de pollo, bañadas en salsa verde y horneadas.", "Rellenar tortillas con pollo desmenuzado.\nBañar con salsa verde y cubrir con queso.\nHornear hasta que el queso se derrita.", "Enchiladas Verdes"); -- id receta 47
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("02:00", 1, "Masa de maíz rellena de carne o frijoles, envuelta en hojas de maíz y cocida al vapor.", "Preparar la masa de maíz y los rellenos.\nColocar el relleno en la masa y envolver en hojas de maíz.\nCocer al vapor hasta que estén firmes.", "Tamales"); -- id receta 48
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("01:30", 1, "Sopa tradicional de maíz nixtamalizado con carne y condimentos.", "Cocinar maíz nixtamalizado con carne de cerdo.\nAñadir chiles, ajo y cebolla.\nServir con lechuga, rábanos y orégano.", "Pozole"); -- id receta 49
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("01:00", 1, "Postre cremoso de huevo y leche, con caramelo de cajeta.", "Preparar una mezcla de huevos, leche condensada y leche evaporada.\nVerter en moldes con cajeta en el fondo.\nHornear a baño maría hasta que cuaje.", "Flan de Cajeta"); -- id receta 50
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("01:00", 1, "Rollos de sushi rellenos de salmón fresco y vegetales.", "Cocinar el arroz para sushi y sazonar con vinagre de arroz.\nColocar una hoja de alga nori sobre una esterilla de sushi y extender el arroz.\nAñadir tiras de salmón y vegetales (aguacate, pepino) y enrollar.\nCortar en piezas y servir con salsa de soya y wasabi.", "Sushi de Salmón"); -- id receta 51
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:30", 1, "Fideos de arroz salteados con pollo, camarones, huevo y salsa de tamarindo.", "Cocinar los fideos de arroz según las instrucciones del paquete.\nSaltear pollo y camarones en un wok.\nAñadir huevo y cocinar hasta que esté revuelto.\nAñadir los fideos cocidos y la salsa de tamarindo.\nServir con maní picado y cilantro.", "Pad Thai"); -- id receta 52
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("01:00", 1, "Empanadillas rellenas de carne de cerdo y vegetales, cocidas al vapor.", "Mezclar carne de cerdo molida con cebollín, jengibre, ajo y salsa de soya.\nRellenar las envolturas de dumpling con la mezcla y cerrar bien.\nCocinar al vapor durante 15 minutos.\nServir con salsa de soya y vinagre de arroz.", "Dumplings de Cerdo"); -- id receta 53
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:15", 1, "Sopa tradicional japonesa a base de caldo dashi y pasta de miso.", "Calentar el caldo dashi en una olla.\nAñadir tofu en cubos y algas wakame.\nDisolver la pasta de miso en un poco de caldo caliente y agregar a la sopa.\nServir caliente, decorado con cebollín.", "Sopa Miso"); -- id receta 54
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:45", 1, "Carne de res marinada y asada a la parrilla, típica de Corea.", "Marinar la carne de res en una mezcla de salsa de soya, azúcar, ajo, jengibre y aceite de sésamo.\nAsar la carne en una parrilla caliente hasta que esté cocida.\nServir con arroz blanco y vegetales frescos.", "Bulgogi"); -- id receta 55
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:30", 1, "Pollo glaseado con una salsa de teriyaki dulce y salada.", "Cocinar las pechugas de pollo en una sartén hasta que estén doradas.\nAñadir la salsa teriyaki y cocinar hasta que la salsa se reduzca y glasee el pollo.\nServir con arroz blanco y brócoli al vapor.", "Pollo Teriyaki"); -- id receta 56
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:30", 1, "Rollos de primavera frescos rellenos de vegetales y camarones.", "Remojar las envolturas de arroz en agua hasta que estén blandas.\nRellenar con camarones cocidos, fideos de arroz, zanahoria rallada, pepino y menta.\nEnrollar y servir con salsa de maní.", "Spring Rolls"); -- id receta 57
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("01:00", 1, "Sopa de fideos japonesa con caldo de carne, huevo y vegetales.", "Cocinar los fideos ramen según las instrucciones del paquete.\nPreparar un caldo con huesos de cerdo, miso y salsa de soya.\nAñadir los fideos cocidos al caldo y decorar con huevo cocido, cebolleta y nori.", "Ramen"); -- id receta 58
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:45", 1, "Plato coreano de arroz con vegetales, carne y huevo.", "Cocinar arroz blanco.\nSaltear vegetales (espinaca, zanahoria, champiñones) y carne de res en rodajas.\nColocar el arroz en un bol y añadir los vegetales y la carne por encima.\nCoronar con un huevo frito y servir con salsa gochujang.", "Bibimbap"); -- id receta 59
+
+INSERT INTO receta (tiempo_preparacion, usuario_id, descripcion, instrucciones, nombre) VALUES 
+("00:30", 1, "Mariscos y vegetales fritos en una ligera capa de masa.", "Mezclar harina, agua fría y huevo para hacer la masa de tempura.\nSumergir mariscos y vegetales (camarones, zanahorias, batatas) en la masa.\nFreír en aceite caliente hasta que estén dorados y crujientes.\nServir con salsa de tempura.", "Tempura"); -- id receta 60
 
 
 
-insert into categoria (nombre) values ("Entrantes");
-insert into categoria (nombre) values ("Postres");
-insert into categoria (nombre) values ("Batidos");
-insert into categoria (nombre) values ("Italiana");
-insert into categoria (nombre) values ("Mexicana");
-insert into categoria (nombre) values ("Asiática");
-insert into categoria (nombre) values ("Vegetariana");
-insert into categoria (nombre) values ("Vegana");
-insert into categoria (nombre) values ("Cumpleaños");
-insert into categoria (nombre) values ("Rápidas");
-insert into categoria (nombre) values ("Pocos ingredientes");
-insert into categoria (nombre) values ("Española");
-insert into categoria (nombre) values ("Arroces");
-insert into categoria (nombre) values ("Carnes");
-insert into categoria (nombre) values ("Peruana");
-insert into categoria (nombre) values ("Hamburguesas");
-insert into categoria (nombre) values ("Ecuatoriana");
-insert into categoria (nombre) values ("Pizzas");
-insert into categoria (nombre) values ("Pastas");
+insert into categoria (nombre) values ("Entrantes"); -- 1
+insert into categoria (nombre) values ("Postres"); -- 2
+insert into categoria (nombre) values ("Batidos"); -- 3
+insert into categoria (nombre) values ("Italiana"); -- 4
+insert into categoria (nombre) values ("Mexicana"); -- 5
+insert into categoria (nombre) values ("Asiática"); -- 6
+insert into categoria (nombre) values ("Vegetariana"); -- 7
+insert into categoria (nombre) values ("Vegana"); -- 8
+insert into categoria (nombre) values ("Cumpleaños"); -- 9
+insert into categoria (nombre) values ("Rápidas"); -- 10
+insert into categoria (nombre) values ("Pocos ingredientes"); -- 11
+insert into categoria (nombre) values ("Española"); -- 12
+insert into categoria (nombre) values ("Arroces"); -- 13
+insert into categoria (nombre) values ("Carnes"); -- 14
+insert into categoria (nombre) values ("Peruana"); -- 15
+insert into categoria (nombre) values ("Hamburguesas"); -- 16
+insert into categoria (nombre) values ("Ecuatoriana"); -- 17
+insert into categoria (nombre) values ("Pizzas"); -- 18
+insert into categoria (nombre) values ("Pastas"); -- 19
 
 
 insert into receta_categoria values(1,1);
-insert into receta_categoria values(2,1);
-insert into receta_categoria values(3,1);
-insert into receta_categoria values(4,1);
-insert into receta_categoria values(5,1);
-insert into receta_categoria values(6,1);
-insert into receta_categoria values(7,1);
-insert into receta_categoria values(8,1);
-insert into receta_categoria values(9,1);
-insert into receta_categoria values(10,1);
-
-insert into receta_categoria values(1,2);
-insert into receta_categoria values(2,2);
-insert into receta_categoria values(3,2);
-insert into receta_categoria values(4,2);
-insert into receta_categoria values(5,2);
-insert into receta_categoria values(6,2);
-insert into receta_categoria values(7,2);
-insert into receta_categoria values(8,2);
-insert into receta_categoria values(9,2);
-insert into receta_categoria values(10,2);
-
-insert into receta_categoria values(1,3);
-insert into receta_categoria values(2,3);
-insert into receta_categoria values(3,3);
-insert into receta_categoria values(4,3);
-insert into receta_categoria values(5,3);
-insert into receta_categoria values(6,3);
-insert into receta_categoria values(7,3);
-insert into receta_categoria values(8,3);
-insert into receta_categoria values(9,3);
-insert into receta_categoria values(10,3);
 
 
 INSERT INTO ingrediente (nombre) VALUES ("Aceite de oliva"); -- 1
@@ -258,6 +286,51 @@ INSERT INTO ingrediente (nombre) VALUES ("Harina"); -- id 79
 INSERT INTO ingrediente (nombre) VALUES ("Hojas de lasagna"); -- id 80
 INSERT INTO ingrediente (nombre) VALUES ("Judías verdes"); -- id 81
 INSERT INTO ingrediente (nombre) VALUES ("Mascarpone"); -- id 82
+INSERT INTO ingrediente (nombre) VALUES ("Cerdo"); -- id 82
+INSERT INTO ingrediente (nombre) VALUES ("Adobo de chiles"); -- id 83
+INSERT INTO ingrediente (nombre) VALUES ("Tortillas de maíz"); -- id 84
+INSERT INTO ingrediente (nombre) VALUES ("Piña"); -- id 85
+INSERT INTO ingrediente (nombre) VALUES ("Cebolla"); -- id 86
+INSERT INTO ingrediente (nombre) VALUES ("Cilantro"); -- id 87
+INSERT INTO ingrediente (nombre) VALUES ("Chiles poblanos"); -- id 88
+INSERT INTO ingrediente (nombre) VALUES ("Nuez"); -- id 89
+INSERT INTO ingrediente (nombre) VALUES ("Granada"); -- id 90
+INSERT INTO ingrediente (nombre) VALUES ("Frutas"); -- id 91
+INSERT INTO ingrediente (nombre) VALUES ("Carne molida"); -- id 92
+INSERT INTO ingrediente (nombre) VALUES ("Queso rallado"); -- id 93
+INSERT INTO ingrediente (nombre) VALUES ("Frijoles refritos"); -- id 94
+INSERT INTO ingrediente (nombre) VALUES ("Lechuga"); -- id 95
+INSERT INTO ingrediente (nombre) VALUES ("Crema"); -- id 96
+INSERT INTO ingrediente (nombre) VALUES ("Tostadas de maíz"); -- id 97
+INSERT INTO ingrediente (nombre) VALUES ("Pescado fresco"); -- id 98
+INSERT INTO ingrediente (nombre) VALUES ("Salsa picante"); -- id 99
+INSERT INTO ingrediente (nombre) VALUES ("Salsa verde"); -- id 100
+INSERT INTO ingrediente (nombre) VALUES ("Masa de maíz"); -- id 101
+INSERT INTO ingrediente (nombre) VALUES ("Hojas de maíz"); -- id 102
+INSERT INTO ingrediente (nombre) VALUES ("Maíz nixtamalizado"); -- id 103
+INSERT INTO ingrediente (nombre) VALUES ("Carne de cerdo"); -- id 104
+INSERT INTO ingrediente (nombre) VALUES ("Rábanos"); -- id 105
+INSERT INTO ingrediente (nombre) VALUES ("Cajeta"); -- id 106
+INSERT INTO ingrediente (nombre) VALUES ("Leche evaporada"); -- id 107
+INSERT INTO ingrediente (nombre) VALUES ("Arroz para sushi"); -- id 108
+INSERT INTO ingrediente (nombre) VALUES ("Vinagre de arroz"); -- id 109
+INSERT INTO ingrediente (nombre) VALUES ("Alga nori"); -- id 110
+INSERT INTO ingrediente (nombre) VALUES ("Salmón"); -- id 111
+INSERT INTO ingrediente (nombre) VALUES ("Aguacate"); -- id 112
+INSERT INTO ingrediente (nombre) VALUES ("Fideos de arroz"); -- id 113
+INSERT INTO ingrediente (nombre) VALUES ("Salsa de tamarindo"); -- id 114
+INSERT INTO ingrediente (nombre) VALUES ("Maní picado"); -- id 115
+INSERT INTO ingrediente (nombre) VALUES ("Cebollín"); -- id 116
+INSERT INTO ingrediente (nombre) VALUES ("Jengibre"); -- id 117
+INSERT INTO ingrediente (nombre) VALUES ("Algas wakame"); -- id 118
+INSERT INTO ingrediente (nombre) VALUES ("Tofu"); -- id 119
+INSERT INTO ingrediente (nombre) VALUES ("Aceite de sésamo"); -- id 120
+INSERT INTO ingrediente (nombre) VALUES ("Envolturas de dumpling"); -- id 121
+INSERT INTO ingrediente (nombre) VALUES ("Fideos ramen"); -- id 122
+INSERT INTO ingrediente (nombre) VALUES ("Huesos de cerdo"); -- id 123
+INSERT INTO ingrediente (nombre) VALUES ("Gochujang"); -- id 124
+INSERT INTO ingrediente (nombre) VALUES ("Masa de tempura"); -- id 125
+
 
 
 
@@ -562,11 +635,163 @@ INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) V
 INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 79, 36, "gramos"); -- Bizcochos de soletilla
 INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 75, 36, "cucharadas"); -- Cacao en polvo
 
+
 -- Gnocchi de Patata
 INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (500, 18, 37, "gramos"); -- Patata
 INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 79, 37, "gramos"); -- Harina
 INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 3, 37, "manojo"); -- Albahaca
 INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 22, 37, "gramos"); -- Salsa de tomate
 
+-- Polenta con Salsa de Tomate
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (250, 24, 38, "gramos"); -- Polenta
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 6, 38, "dientes"); -- Ajo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (300, 22, 38, "gramos"); -- Salsa de tomate
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (50, 21, 38, "gramos"); -- Queso parmesano
 
+-- Fettuccine Alfredo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (400, 25, 39, "gramos"); -- Fettuccine
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 21, 39, "gramos"); -- Queso parmesano
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 78, 39, "mililitros"); -- Crema de leche
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 17, 39, "cucharadas"); -- Mantequilla
+
+-- Minestrone
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 2, 40, "unidades"); -- Cebolla
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 26, 40, "unidades"); -- Apio
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 27, 40, "unidades"); -- Zanahoria
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 6, 40, "dientes"); -- Ajo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (500, 77, 40, "mililitros"); -- Caldo de verduras
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 8, 40, "unidades"); -- Tomate
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 81, 40, "gramos"); -- Judías verdes
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 74, 40, "unidades"); -- Calabacín
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 25, 40, "gramos"); -- Pasta
+
+-- Tacos al Pastor
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (500, 82, 41, "gramos"); -- Cerdo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 83, 41, "gramos"); -- Adobo de chiles
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (8, 84, 41, "unidades"); -- Tortillas de maíz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 85, 41, "gramos"); -- Piña
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 86, 41, "unidad"); -- Cebolla
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (20, 87, 41, "gramos"); -- Cilantro
+
+-- Guacamole
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 37, 42, "unidades"); -- Aguacates
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 31, 42, "unidad"); -- Tomate
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 86, 42, "unidad"); -- Cebolla
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (10, 87, 42, "gramos"); -- Cilantro
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 14, 42, "unidad"); -- Limón
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 32, 42, "pizca"); -- Sal
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 33, 42, "pizca"); -- Pimienta
+
+-- Chiles en Nogada
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (4, 88, 43, "unidades"); -- Chiles poblanos
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 89, 43, "gramos"); -- Nuez
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 90, 43, "unidad"); -- Granada
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 91, 43, "gramos"); -- Frutas
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (300, 92, 43, "gramos"); -- Carne molida
+
+-- Quesadillas
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (4, 84, 44, "unidades"); -- Tortillas de maíz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 93, 44, "gramos"); -- Queso rallado
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 31, 44, "gramos"); -- Tomate
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 86, 44, "unidad"); -- Cebolla
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (10, 87, 44, "gramos"); -- Cilantro
+
+-- Sopes
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (4, 84, 45, "unidades"); -- Tortillas de maíz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 94, 45, "gramos"); -- Frijoles refritos
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 92, 45, "gramos"); -- Carne molida
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (50, 95, 45, "gramos"); -- Lechuga
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (50, 96, 45, "gramos"); -- Crema
+
+-- Tostadas de Ceviche
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (4, 97, 46, "unidades"); -- Tostadas de maíz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (300, 98, 46, "gramos"); -- Pescado fresco
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 14, 46, "unidades"); -- Limones
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 86, 46, "unidad"); -- Cebolla
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 31, 46, "unidad"); -- Tomate
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (10, 87, 46, "gramos"); -- Cilantro
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (20, 87, 46, "gramos"); -- Aguacate
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 99, 46, "cucharada"); -- Salsa picante
+
+-- Enchiladas Verdes
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (8, 84, 47, "unidades"); -- Tortillas de maíz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (300, 100, 47, "mililitros"); -- Salsa verde
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (300, 37, 47, "gramos"); -- Pollo desmenuzado
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 93, 47, "gramos"); -- Queso rallado
+
+-- Tamales
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (500, 101, 48, "gramos"); -- Masa de maíz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (300, 37, 48, "gramos"); -- Pollo desmenuzado
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (8, 102, 48, "unidades"); -- Hojas de maíz
+
+-- Pozole
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (500, 103, 49, "gramos"); -- Maíz nixtamalizado
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (500, 104, 49, "gramos"); -- Carne de cerdo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 26, 49, "unidades"); -- Chiles
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 86, 49, "unidad"); -- Cebolla
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (50, 95, 49, "gramos"); -- Lechuga
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (50, 105, 49, "gramos"); -- Rábanos
+
+-- Flan de Cajeta
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 106, 50, "gramos"); -- Cajeta
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (3, 53, 50, "unidades"); -- Huevos
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (397, 51, 50, "gramos"); -- Leche condensada
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (354, 107, 50, "mililitros"); -- Leche evaporada
+
+-- Sushi de Salmón
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (250, 108, 51, "gramos"); -- Arroz para sushi
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (3, 109, 51, "cucharadas"); -- Vinagre de arroz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (5, 110, 51, "hojas"); -- Alga nori
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 111, 51, "gramos"); -- Salmón
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 112, 51, "unidad"); -- Aguacate
+
+-- Pad Thai
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 113, 52, "gramos"); -- Fideos de arroz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (150, 111, 52, "gramos"); -- Salmón
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 114, 52, "mililitros"); -- Salsa de tamarindo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (50, 115, 52, "gramos"); -- Maní picado
+
+-- Dumplings de Cerdo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (300, 37, 53, "gramos"); -- Cerdo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (3, 116, 53, "cucharadas"); -- Cebollín
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 117, 53, "cucharada"); -- Jengibre
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (20, 121, 53, "unidades"); -- Envolturas de dumpling
+
+-- Sopa Miso
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (500, 12, 54, "mililitros"); -- Caldo dashi
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 119, 54, "gramos"); -- Tofu
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (10, 118, 54, "gramos"); -- Algas wakame
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (3, 109, 54, "cucharadas"); -- Vinagre de arroz
+
+-- Bulgogi
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (500, 37, 55, "gramos"); -- Res
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (3, 117, 55, "cucharadas"); -- Jengibre
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (2, 120, 55, "cucharadas"); -- Aceite de sésamo
+
+-- Pollo Teriyaki
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (400, 1, 56, "gramos"); -- Pollo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 40, 56, "mililitros"); -- Salsa teriyaki
+
+-- Spring Rolls
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (10, 121, 57, "hojas"); -- Envolturas de arroz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 111, 57, "gramos"); -- Camarones
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 113, 57, "gramos"); -- Fideos de arroz
+
+-- Ramen
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 122, 58, "gramos"); -- Fideos ramen
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 123, 58, "litro"); -- Caldo con huesos de cerdo
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (3, 108, 58, "cucharadas"); -- Miso
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (1, 116, 58, "cucharada"); -- Cebollín
+
+-- Bibimbap
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 18, 59, "gramos"); -- Arroz
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 37, 59, "gramos"); -- Res
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (50, 6, 59, "gramos"); -- Espinaca
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (50, 7, 59, "gramos"); -- Zanahoria
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 124, 59, "gramos"); -- Gochujang
+
+-- Tempura
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (200, 111, 60, "gramos"); -- Camarones
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 125, 60, "gramos"); -- Masa de tempura
+INSERT INTO receta_ingrediente (cantidad, ingrediente_id, receta_id, unidades) VALUES (100, 7, 60, "gramos"); -- Zanahoria
 

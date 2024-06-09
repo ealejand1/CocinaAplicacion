@@ -11,7 +11,6 @@ import { ValoracionService } from '../servicios/valoracion.service';
 })
 export class RecetasComponent {
   recetas: Receta[] = [];
-
   constructor(
     private recetaService: RecetaService,
     private valoracionService: ValoracionService,
