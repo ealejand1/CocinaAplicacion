@@ -119,3 +119,30 @@ main{
   color: lightgray;
 }
 
+.btn-editar, .btn-eliminar {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  width: 90%;
+  text-align: center;
+}
+
+.btn-editar {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+}
+
+.btn-editar:hover {
+  background-color: #45a049;
+}
+
+.btn-eliminar {
+  background-color: #f44336; /* Rojo */
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background-color: #da190b;
+}
