@@ -69,63 +69,56 @@ app-valorar-receta {
   align-items: center;
 }
 
-.receta-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
+.receta-titulo {
+    border: 1px solid black;
+  flex: 1;
+}
+
+.receta-imagen img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid black;
   
-  .receta-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  
-  .receta-info {
-    flex-grow: 1;
-    margin-right: 20px;
-  }
-  
-  .receta-imagen img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  
-  .ingredientes-scroll {
-    display: flex;
-    overflow-x: auto;
-    padding: 10px 0;
-    white-space: nowrap;
-    gap: 15px;
-  }
-  
-  .ingrediente-item {
-    display: inline-block;
-    background: #8a3324;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-  }
-  
-  .cantidad {
-    margin-left: 10px;
-  }
-  
-  .comentarios, .instrucciones {
-    margin-top: 20px;
-  }
-  
-  .valoracion-estrellas {
-    color: gold;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
+}
+
+.descripcion {
+  font-style: italic;
+  color: #666;
+  padding: 10px 0;
+}
+
+.instrucciones {
+  margin-top: 20px;
+}
+
+.ingredientes-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.ingrediente-nombre {
+  font-weight: bold;
+}
+
+.ingrediente-detalle {
+  background-color: #8a3324;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.valoraciones {
+  margin-top: 20px;
+}
+
+.valoracion-estrellas {
+  color: gold;
+  font-size: 1.2em;
+}
+
+.loading-message {
+  text-align: center;
+}
