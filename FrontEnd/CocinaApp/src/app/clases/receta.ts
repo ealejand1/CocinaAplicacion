@@ -15,6 +15,7 @@ export class Receta {
     valoraciones: Valoracion[];
     categorias: Categoria[];
     ingredientes: RecetaIngrediente[];
+    estrellas?: string;
     
 }
 
