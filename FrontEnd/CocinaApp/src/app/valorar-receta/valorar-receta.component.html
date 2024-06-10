@@ -1,14 +1,18 @@
 <form (ngSubmit)="onSubmit()">
-  <h3>Valorar receta</h3>
+  <h3>¡Tu opinión importa! ¿Qué te pareció?</h3>
   <div>
-    <label for="puntuacion">Puntuación:</label>
-    <select id="puntuacion" [(ngModel)]="valoracion.puntuacion" name="puntuacion" required>
-      <option *ngFor="let star of [1, 2, 3, 4, 5]" [value]="star">{{ star }}</option>
-    </select>
+    <label>Del 1 al 5, ¿qué tan sabroso?</label>
+    <div class="star-rating">
+      <!-- Crea estrellas de 5 a 1 -->
+      <label *ngFor="let star of [5, 4, 3, 2, 1]; let i = index">
+        <input type="radio" id="puntuacion{{i+1}}" [(ngModel)]="valoracion.puntuacion" name="puntuacion" [value]="star" required>
+        <span class="star">&#9733;</span>
+      </label>
+    </div>
   </div>
   <div>
-    <label for="comentario">Comentario:</label>
-    <textarea id="comentario" [(ngModel)]="valoracion.comentario" name="comentario"></textarea>
+    <label for="comentario">¿Algún secreto para compartir?</label>
+    <textarea id="comentario" [(ngModel)]="valoracion.comentario" name="comentario" maxlength="250" placeholder="Dinos lo que piensas, pero en modo mini: ¡250 caracteres solo!"></textarea>
   </div>
-  <button type="submit">Enviar Valoración</button>
+  <button type="submit">Servir mi opinión</button>
 </form>

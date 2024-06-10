@@ -1,18 +1,18 @@
 <main>
   <div class="contenedor">
-    <h1 class="titulo">Tus Recetas</h1>
+    <h1 class="titulo">Tu Propio Rincón Gourmet</h1>
     <div class="grid">
-      <a [routerLink]="['/recetas/', receta.id]" class="caja" *ngFor="let receta of recetas">
-        <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="imgCaja">
+      <a  class="caja" *ngFor="let receta of recetas">
+        <img [routerLink]="['/recetas/', receta.id]" [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="imgCaja">
         
         <div class="receta-info">
           <h2 class="receta-nombre">{{ receta.nombre }}</h2>
-          <p>Tiempo: {{ receta.tiempoPreparacion }}</p>
+          <p class="receta-tiempo">Listo en solo: {{ receta.tiempoPreparacion }}</p>
           <div class="valoraciones">
-            <p>{{ mostrarEstrellas(calcularPromedioValoracion(receta)) }}</p>
+            <p class="estrella-recetas">{{ mostrarEstrellas(calcularPromedioValoracion(receta)) }}</p>
           </div>
-          <button (click)="eliminarReceta(receta.id)" class="btn-eliminar">Eliminar</button>
-          <button (click)="editarReceta(receta.id)" class="btn-editar">Editar</button>
+          <button (click)="eliminarReceta(receta.id)" class="btn-eliminar">Retirar del Menú</button>
+          <button (click)="editarReceta(receta.id)" class="btn-editar">Refina la receta</button>
         </div>
       </a>
     </div>
