@@ -49,4 +49,7 @@ obtenerRecetasPorUsuarioId(userId: number): Observable<Receta[]> {
   obtenerRecetasPorNombre(nombreReceta:String):Observable<Receta[]>{
     return this.http.get<Receta[]>(`${this.apiUrl}/nombre/${nombreReceta}`);
   }
+  obtenerTop20():Observable<Receta[]>{
+    return this.http.get<Receta[]>(`${this.apiUrl}/top20`)
+  }
 }

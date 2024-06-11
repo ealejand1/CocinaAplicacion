@@ -7,6 +7,7 @@ import { RecetaIngredienteService } from '../servicios/receta-ingrediente.servic
 import { ValoracionService } from '../servicios/valoracion.service'; // Asegúrate de importar el servicio
 import { Valoracion } from '../clases/valoracion'; // Asegúrate de importar el modelo de valoraciones si no lo has hecho
 import { ValoracionComunicadorService } from '../servicios/comunicadores/valoracion-comunicador.service';
+import { Ingrediente } from '../clases/ingrediente';
 
 @Component({
   selector: 'app-receta-detalle',
@@ -55,6 +56,11 @@ export class RecetaDetalleComponent implements OnInit {
       ingredientes => {
         console.log('Ingredientes cargados:', ingredientes);
         this.ingredientes = ingredientes || [];
+        this.ingredientes.forEach(ingrediente =>{
+          if(ingrediente.ingrediente==null){
+            ingrediente.ingrediente = {id:0,nombre:'uwu'};
+          }
+        })
       },
       error => {
         console.error('Error al cargar ingredientes:', error);

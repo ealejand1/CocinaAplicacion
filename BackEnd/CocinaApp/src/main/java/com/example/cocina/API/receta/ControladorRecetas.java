@@ -2,12 +2,14 @@ package com.example.cocina.API.receta;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.HttpStatus;
@@ -44,6 +46,18 @@ public class ControladorRecetas {
     public EntityModel<Receta> obtenerRecetaPorId(@PathVariable("id") Long id) {
         Receta receta = repositorio.findById(id).orElseThrow(() -> new RecetaNotFoundException(id));
         return creaLinks.toModel(receta);
+    }
+    
+    @GetMapping("/top20")
+    public ResponseEntity<List<Receta>> obtenerTop20(){
+    	List<Receta> lista = repositorio.findAll();
+    	List<Receta> res= new ArrayList<>();
+    	
+    	for(int i=0;i<=19;i++) {
+    		res.add(lista.get(i));
+    	}
+    	
+    	return ResponseEntity.ok(res);
     }
     
     // Obtener receta por nombre (GET)
