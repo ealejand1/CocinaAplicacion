@@ -76,3 +76,12 @@ p{
     color: white;
     text-align: center;
 }
+
+.alerta{
+    text-align: center;
+    color: #ffffff;
+    background-color: #55260f;
+}
+.errorMensaje{
+    color: #fd5757;
+}

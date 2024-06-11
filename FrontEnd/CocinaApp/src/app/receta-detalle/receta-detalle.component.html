@@ -40,7 +40,6 @@
      </div> 
       <ul *ngIf="valoraciones && valoraciones.length > 0">
         <li *ngFor="let valoracion of valoraciones" class="comentario">
-          <p>{{ valoracion.usuario.nombre}}</p>
           <div class="valoracion-estrellas">{{ mostrarEstrellas(valoracion.puntuacion) }}</div>
           <p>{{ valoracion.comentario }}</p>
         </li>
