@@ -1,85 +1,86 @@
 import { Component } from '@angular/core';
 import { Receta } from '../clases/receta';
 import { RecetaService } from '../servicios/receta.service';
+import { Router } from '@angular/router'; // Correct Router import from Angular
 import { ValoracionService } from '../servicios/valoracion.service';
-import { Valoracion } from '../clases/valoracion';
 
 @Component({
   selector: 'app-recetas',
   templateUrl: './recetas.component.html',
-  styleUrl: './recetas.component.css'
+  styleUrls: ['./recetas.component.css'] // Ensure it's styleUrls in an array format
 })
 export class RecetasComponent {
-  recetas: Receta[]=[];
-  valoraciones:Valoracion[]=[];
 
-  constructor(private recetaService: RecetaService, private valoracionServicio: ValoracionService) { }
+  recetas: Receta[] = [];
+  constructor(
+    private recetaService: RecetaService,
+    private valoracionService: ValoracionService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.cargarRecetasPorUsuario();
     let userId:any  = localStorage.getItem("idUsuario");
-    if (userId !== null && userId !== undefined){
-      console.log(userId)
-      
-      this.cargarRecetasPorUsuarioId(+userId);
-      
-    }
-   
+    
   }
 
-  cargarRecetasPorUsuarioId(userId: number): void {
-    this.recetaService.obtenerRecetasPorUsuarioId(userId).subscribe({
-      next: (data) => {
-          // Asegúrate de que data es un array
-        if (Array.isArray(data)) {
-          this.recetas=data;
-        }else{
-          console.error('Datos recibidos en cargarRecetasPorUsuarioId no son un array:', data);
-        }
+  cargarRecetasPorUsuario(): void {
+    const userId = localStorage.getItem("idUsuario"); // Getting user ID from local storage
+    if (userId) {
+      this.recetaService.obtenerRecetasPorUsuarioId(+userId).subscribe({
+        next: (data: Receta[]) => {
+          if (Array.isArray(data)) {
+            this.recetas = data;
+            this.recetas.forEach(receta => this.cargarValoraciones(receta)); // Load all ratings at once
+          } else {
+            console.error('Datos recibidos no son un array:', data);
+          }
+        },
+        error: error => console.error('Error al obtener las recetas:', error)
+      });
+    }
+  }
+
+  cargarValoraciones(receta: Receta): void {
+    this.valoracionService.obtenerValoracionesPorReceta(receta.id).subscribe({
+      next: valoraciones => {
+        receta.valoraciones = valoraciones; // Store ratings in each recipe object
       },
-      error: error => console.error('Error al obtener las recetas en cargarRecetasPorUsuarioId:', error)
+      error: error => console.error('Error al obtener las valoraciones:', error)
     });
   }
 
- // En tu componente
-cargarRecetas(): void {
-  this.recetaService.obtenerRecetas().subscribe({
-    next: (data: Receta[]) => {
-      if (Array.isArray(data)) {
-        this.recetas = data;
-      } else {
-        console.error('Datos recibidos en cargarRecetas no son un array:', data);
-      }
-    },
-    error: error => console.error('Error al obtener las recetas en cargarRecetas:', error)
-  });
-}
-eliminarReceta(id: number): void {
-  this.recetaService.eliminarReceta(id).subscribe({
-    next: () => {
-      console.log('Receta eliminada con éxito');
-      this.cargarRecetas(); // Recargar la lista de recetas después de eliminar
-    },
-    error: error => console.error('Error al eliminar la receta:', error)
-  });
-}
-
-calcularPromedioValoracion(receta: Receta): number | null {
-  this.valoracionServicio.obtenerValoracionesPorReceta(receta.id).subscribe(valoracion =>{
-    this.valoraciones= valoracion;
-  })
-  if (this.valoraciones && this.valoraciones.length > 0) {
-    const sumaTotal = this.valoraciones.reduce((suma, valoracion) => suma + valoracion.puntuacion, 0);
-    return sumaTotal / this.valoraciones.length;
+  calcularPromedioValoracion(receta: Receta): number | null {
+    if (receta.valoraciones && receta.valoraciones.length > 0) {
+      const sumaTotal = receta.valoraciones.reduce((suma, valoracion) => suma + valoracion.puntuacion, 0);
+      return sumaTotal / receta.valoraciones.length;
+    }
+    return null;  // Return null if no ratings to avoid division by zero
   }
-  return null;  // Retornar null si no hay valoraciones para evitar división por cero
-}
 
-mostrarEstrellas(puntuacion: number | null): string {
-  if (puntuacion === null) {
-    return 'Sin valoraciones';  // Mensaje cuando no hay valoraciones
+  mostrarEstrellas(puntuacion: number | null): string {
+    if (puntuacion === null) {
+      return 'El cielo está claro…';  // Message when there are no ratings
+    }
+    const redondeado = Math.round(puntuacion);  // Round to the nearest whole number
+    return '★'.repeat(redondeado) + '☆'.repeat(5 - redondeado);  // Fill up to 5 stars
   }
-  const redondeado = Math.round(puntuacion);  // Redondea al número entero más cercano
-  return '★'.repeat(redondeado) + '☆'.repeat(5 - redondeado);  // Completa hasta 5 estrellas
-}
 
+  editarReceta(id: number): void {
+    this.router.navigate(['/editar-receta', id]);
+  }
+
+  eliminarReceta(id: number): void {
+    console.log("dfasd"+id)
+    this.recetaService.eliminarReceta(id).subscribe({
+      next: () => {
+        console.log('Receta eliminada con éxito')
+
+      this.cargarRecetasPorUsuario();
+
+         // Reload the list of recipes after deletion
+      },
+      error: error => console.error('Error al eliminar la receta:', error)
+    });
+  }
 }

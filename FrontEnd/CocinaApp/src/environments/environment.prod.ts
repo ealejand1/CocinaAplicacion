@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    urlHost: 'http://100.27.79.255',
-    urlApi: 'http://100.27.79.255/api/v1',
+    urlHost: 'http://localhost:8080',
+    urlApi: 'http://localhost:8080/api/v1',
   };
   

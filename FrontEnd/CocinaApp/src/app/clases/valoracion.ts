@@ -5,6 +5,6 @@ export class Valoracion {
     id: number;
     puntuacion: number;
     comentario: string;
-    usuario: Usuario;
-    receta:Receta;
+    usuario_id: any;
+    receta_id:number;
 }

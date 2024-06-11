@@ -5,11 +5,9 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
-import org.springframework.hateoas.CollectionModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.HttpStatus;
@@ -17,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.cocina.API.receta_ingrediente.RecetaIngrediente;
+import com.example.cocina.API.receta_ingrediente.RepositorioRecetaIngrediente;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @CrossOrigin(origins = "*", methods = { RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET,
@@ -25,13 +25,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RequestMapping("/api/v1/recetas")
 public class ControladorRecetas {
 
-    private final RepositorioReceta repositorio;
-    private final CreadorLinksReceta creaLinks;
+	@Autowired
+    private RepositorioReceta repositorio;
+	@Autowired
+    private CreadorLinksReceta creaLinks;
+	@Autowired
+	private RepositorioRecetaIngrediente repositorioRecetaIngrediente;
 
-    public ControladorRecetas(RepositorioReceta repositorio, CreadorLinksReceta creaLinks) {
-        this.repositorio = repositorio;
-        this.creaLinks = creaLinks;
-    }
 
     // Obtener todas las recetas (GET)
     @GetMapping
@@ -56,10 +56,7 @@ public class ControladorRecetas {
     @GetMapping("/usuario/{idUsuario}/recetas")	
     public List<Receta> obtenerRecetasPorUsuario(@PathVariable("idUsuario") Long idUsuario) {
         return repositorio.findByUsuarioId(idUsuario);
-                
-
-        
-       
+                    
     }
     
     @GetMapping("/categoria/{idCategoria}/recetas")
@@ -78,7 +75,6 @@ public class ControladorRecetas {
     }
 
 
-
     // Crear una nueva receta (POST)
     @PostMapping
     public ResponseEntity<EntityModel<Receta>> crearReceta(@RequestBody Receta receta) {
@@ -95,6 +91,7 @@ public class ControladorRecetas {
         Receta recetaActu = repositorio.findById(id)
                 .map(receta -> {
                     receta.setNombre(recetaNueva.getNombre());
+                    receta.setInstrucciones(recetaNueva.getInstrucciones());
                     receta.setCategorias(recetaNueva.getCategorias());
                     receta.setDescripcion(recetaNueva.getDescripcion());
                     receta.setTiempoPreparacion(recetaNueva.getTiempoPreparacion());
@@ -140,14 +137,18 @@ public class ControladorRecetas {
             return ResponseEntity.notFound().build();
         }
     }
-
-
+    
     // Eliminar una receta por su ID (DELETE)
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarReceta(@PathVariable("id") Long id) {
+    	List<RecetaIngrediente> listaRecetasIngredientes = repositorioRecetaIngrediente.findByRecetaId(id);
+    	for (RecetaIngrediente recetaIngrediente : listaRecetasIngredientes) {
+    		repositorioRecetaIngrediente.deleteById(recetaIngrediente.getId());
+		}
         repositorio.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+    
     @PostMapping("/conImagen")
     public ResponseEntity<EntityModel<Receta>> crearRecetaConImagen(@RequestParam("receta") String recetaJson, @RequestParam("file") MultipartFile file) {
         try {

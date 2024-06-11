@@ -10,12 +10,14 @@ import com.example.cocina.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -28,10 +30,14 @@ public class Receta {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected long id;
+	protected Long id;
 	
 	protected String nombre;
+	@Lob
+    @Column(columnDefinition = "LONGTEXT")
 	protected String descripcion;
+	@Lob
+    @Column(columnDefinition = "LONGTEXT")
 	protected String instrucciones;
 	protected String tiempoPreparacion;
 	protected String imagenUrl;
@@ -74,11 +80,11 @@ public class Receta {
     	fechaCreacion = new Date(); // Establecer la fecha actual antes de persistir
     }
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

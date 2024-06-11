@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categoria } from '../clases/categoria';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,9 @@ export class CategoriasService {
   obtenerCategoriaPorId(id:number):Observable<Categoria>{
     return this.httpClient.get<Categoria>(`${this.baseURL}/${id}`)
   }
+  agregarRecetaACategoria(categoriaId: number, recetaId: number): Observable<any> {
+    return this.httpClient.post(`${this.baseURL}/${categoriaId}/recetas/${recetaId}`, null); // Cambia aquí si es necesario
+  }
+  
 
 }

@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { RecetaIngrediente } from '../clases/receta-ingrediente';
 
 
@@ -24,4 +24,9 @@ export class RecetaIngredienteService {
   obtenerRecetasPorIngrediente(ingredienteId: number): Observable<RecetaIngrediente[]>{
     return this.http.get<RecetaIngrediente[]>(`${this.apiUrl}/ingrediente/${ingredienteId}`);
   }
+  // En src/app/services/receta-ingrediente.service.ts
+actualizarRecetaIngrediente(ingredienteId: number, recetaIngrediente: RecetaIngrediente): Observable<RecetaIngrediente> {
+  return this.http.put<RecetaIngrediente>(`${this.apiUrl}/${ingredienteId}`, recetaIngrediente);
 }
+
+} 

@@ -41,5 +41,12 @@ export class HeaderComponent implements OnInit{
       this.mostrarCrearRecetaDesplegable = false; // Para cerrar el otro desplegable si estaba abierto
     }
   }
+  cerrarDesplegable(menu: string) {
+    if (menu === 'crearReceta') {
+      this.mostrarCrearRecetaDesplegable = false;
+    } else if (menu === 'cerrarSesion') {
+      this.mostrarCerrarSesionDesplegable = false;
+    }
+  }
 
 }

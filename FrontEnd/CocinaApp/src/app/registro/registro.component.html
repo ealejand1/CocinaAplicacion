@@ -4,9 +4,19 @@
         <p>Crea tu usuario :D</p>
         <div class="input usuario">
             <input type="text" name="usuario" formControlName="username" placeholder="Nombre de Usuario">
+            <div *ngIf="registrarForm.get('username')?.invalid && registrarForm.get('username')?.touched">
+                <small *ngIf="registrarForm.get('username')?.errors?.['required']">El nombre de usuario es OBLIGATORIO.</small>
+                <small *ngIf="registrarForm.get('username')?.errors?.['minlength']">El nombre de usuario debe tener al menos 3 caracteres.</small>
+                <small *ngIf="registrarForm.get('username')?.errors?.['invalidUsername']">El nombre de usuario no debe contener caracteres especiales.</small>
+            </div>
         </div>
         <div class="input contra">
             <input type="password" name="password" formControlName="password" placeholder="Contraseña">
+            <div *ngIf="registrarForm.get('password')?.invalid && registrarForm.get('password')?.touched">
+                <small *ngIf="registrarForm.get('password')?.errors?.['required']">La contraseña es requerida.</small>
+                <small *ngIf="registrarForm.get('password')?.errors?.['passwordLength']">La contraseña debe tener al menos 5 caracteres.</small>
+                <small *ngIf="registrarForm.get('password')?.errors?.['passwordComplexity']">La contraseña debe contener números, letras minúsculas y mayúsculas.</small>
+            </div>
         </div>
         <button class="Enviar" value="enviar" (click)="registro()">Registrarse</button>
         <button class="Enviar" value="enviar" (click)="login()">Iniciar Sesion</button>
