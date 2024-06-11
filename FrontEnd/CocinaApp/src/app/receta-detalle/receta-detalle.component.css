@@ -133,7 +133,7 @@ strong{
 .receta-imagen img {
   width: 104%;
   height: 320px;
-  object-fit:contain;
+  object-fit:cover;
   border: 4px solid rgb(73, 44, 0);
   border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 0 10px 1px rgba(125, 88, 0, 0.75);

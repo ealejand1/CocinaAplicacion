@@ -109,6 +109,11 @@ main{
 .valoraciones {
     display: flex;
     justify-content: center;
+   
+  }
+  .valoraciones p{
+    font-size: 28px;
+  margin: 0;
   }
   
   .filled {

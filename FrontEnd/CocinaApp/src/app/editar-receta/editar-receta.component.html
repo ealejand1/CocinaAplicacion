@@ -1,53 +1,98 @@
-<div class="caja-registrar">
-    <div class="caja-marco">
-      <form (ngSubmit)="onSubmit()" class="formulario-registrar">
-        <!-- Nombre de la receta -->
-        <div>
-          <input class="nombrereceta" id="nombre" type="text" [(ngModel)]="receta.nombre" name="nombre" placeholder="Nombre Receta" required>
-        </div>
+<main>
+
+  <div class="caja-registrar">
+      <div class="caja-marco">
   
-        <!-- Descripción -->
-        <div>
-          <label for="descripcion">Descripción:</label>
-          <textarea class="descripcion" id="descripcion" [(ngModel)]="receta.descripcion" name="descripcion" required placeholder="Descripción breve y detalles a añadir a tu receta"></textarea>
-        </div>
-        
-        <!-- Instrucciones -->
-        <div class="contenedor-instrucciones">
-          <label for="instrucciones">Instrucciones:</label>
-          <textarea class="instrucciones" id="instrucciones" [(ngModel)]="receta.instrucciones" name="instrucciones"></textarea>
-        </div>
+      
+      <form (ngSubmit)="onSubmit()" method="post" class="formulario-registrar">
   
-        <!-- Tiempo de Preparación -->
-        <div>
-          <label for="tiempoPreparacion">Tiempo de Preparación:</label>
-          <input class="tiempo" id="tiempoPreparacion" type="text" [(ngModel)]="receta.tiempoPreparacion" name="tiempoPreparacion">
-        </div>
-        
-        <!-- Botón para guardar los cambios de la receta -->
-        <button class="crear" type="submit">Guardar Cambios de la Receta</button>
-        
-        <!-- Contenedor de Ingredientes -->
-        <div class="contenedor-ingrediente">
-          <h3>Ingredientes</h3>
-          <ul>
-            <!-- Lista de ingredientes existentes con opción de eliminar -->
-            <li *ngFor="let ingrediente of receta.ingredientes">
-              {{ ingrediente.ingrediente.nombre }} - {{ ingrediente.cantidad }} {{ ingrediente.unidades }}
-              <button type="button" (click)="removeIngredient(ingrediente)">Eliminar</button>
-            </li>
-          </ul>
   
-          <!-- Selector y entradas para añadir un nuevo ingrediente -->
-          <h4>Añadir nuevo ingrediente:</h4>
-          <select [(ngModel)]="nuevoIngrediente.ingrediente" name="ingredienteSeleccionado" required>
-            <option *ngFor="let ingrediente of todosLosIngredientes" [ngValue]="ingrediente">{{ ingrediente.nombre }}</option>
-          </select>
-          <input type="number" [(ngModel)]="nuevoIngrediente.cantidad" name="cantidad" placeholder="Cantidad" required>
-          <input type="text" [(ngModel)]="nuevoIngrediente.unidades" name="unidades" placeholder="Unidades (ej. g, ml)" required>
-          <button type="button" (click)="addIngredient()">Añadir Ingrediente</button>
-        </div>
-      </form>
-    </div>
+              
+          <input class="nombrereceta" id="nombre" type="text" autocomplete="off" [(ngModel)]="receta.nombre" name="nombre" placeholder="Nombre Receta" required>
+
+          <div class="contenedor-desImg contenedor">
+              <div class="contenedor-descripcion">
+                  <label  for="descripcion">Descripción:</label>
+                  <textarea class="descripcion" id="descripcion" [(ngModel)]="receta.descripcion" name="descripcion" required placeholder="Descripción breve y detalles a añadir a tu receta"></textarea>
+              </div>
+              <div class="contenedor-imagen"(click)="mostrarPopupImagenes()">
+      
+                  <!-- Área de previsualización de la imagen -->
+                  <img class="img-select preview-img" 
+                  *ngIf="imagenSeleccionada || 'assets/predeterminadas/defecto.png'"
+                  [src]="imagenSeleccionada ? imagenSeleccionada : 'assets/predeterminadas/defecto.png'"
+                  alt="Previsualización de la imagen">
+                </div>
+                
+                <!-- Pop-up para seleccionar una imagen -->
+                <div *ngIf="mostrarPopup" class="popup-imagenes">
+                  <div *ngFor="let img of imagenesPredeterminadas">
+                    <img [src]="img" (click)="seleccionarImagen(img)" [alt]="img">
+                  </div>
+                  <button  class="boton-cerrar" (click)="cerrarPopup()">Cerrar</button>
+                </div>
+          </div>
+          
+          <!-- <div class="contenedor-catTie contenedor">
+              <div class="contenedor-categoria contenedor">
+                  <label for="categoriaSeleccionada">Categoría</label>
+                  <select [(ngModel)]="nuevaCategoria" name="categoriaSeleccionada" id="categoriaSeleccionada" required>
+                      <option *ngFor="let categoria of todasLasCategorias" [ngValue]="categoria">{{categoria.nombre}}</option>
+                  </select>
+                  <button type="button" class="boton crear" (click)="addCategoria()">Añadir</button>
+              </div>
+              
+              <div class="contenedor-listaCat contenedor" contenteditable="true">
+                  <ul>
+                      <li *ngFor="let categoria of receta.categorias">
+                          {{ categoria.nombre }} 
+                          <button (click)="removeCategoria(categoria)">🗑️</button>
+                      </li>
+                  </ul>
+                  <div *ngIf="receta.categorias.length === 0" class="placeholder">Escribe algo aquí...</div>
+              </div> -->
+                
+              <div class="contenedor-tiempo">
+                  <label for="tiempoPreparacion">Tiempo</label>
+                  <input  class="tiempo" id="tiempoPreparacion" type="text" [(ngModel)]="receta.tiempoPreparacion" name="tiempoPreparacion" placeholder="00:00">
+              </div>
+          <!-- </div> -->
+
+          <div class="contenedor-ingrediente contenedor">
+              <label for="ingredienteSeleccionado">Ingredientes</label>
+              <select [(ngModel)]="nuevoIngrediente.ingrediente" name="ingredienteSeleccionado" id="ingredienteSeleccionado" required>
+                  <option *ngFor="let ingrediente of todosLosIngredientes" [ngValue]="ingrediente">{{ingrediente.nombre}}</option>
+              </select>
+              <input type="number" min="0" [(ngModel)]="nuevoIngrediente.cantidad" name="cantidad" placeholder="Cantidad" required>
+              <input type="text" [(ngModel)]="nuevoIngrediente.unidades" name="unidades" placeholder="Unidades Ej.ml,g" required>
+              <button type="button" class="boton crear" (click)="addIngredient()">Añadir</button>
+          </div>
+
+          <div class="contenedor-listaIng contenedor" contenteditable="true" >
+              <ul>
+                  <li *ngFor="let ingrediente of receta.ingredientes">
+                      {{ingrediente.ingrediente.nombre}} {{ingrediente.cantidad}} {{ingrediente.unidades}} 
+                      <input type="hidden" id="{{ingrediente.id}}{{ingrediente.ingrediente.nombre}}"
+                          value="{{ingrediente.id}}">
+                      <button (click)="removeIngredient(ingrediente)">🗑️</button>
+                  </li>
+              </ul>
+              <div *ngIf="receta.ingredientes.length === 0" class="placeholder">Escribe algo aquí...</div>
+          </div>
+
+          <div class="contenedor-instrucciones contenedor">
+              <label for="instrucciones">Instrucciones:</label>
+              <textarea placeholder="Describe cada paso" class="instrucciones"id="instrucciones" [(ngModel)]="receta.instrucciones" name="instrucciones"></textarea>
+          </div>
+          
+  
+          <div class="contenedor-botones contenedor">
+              <button class="boton cancelar" > Cancelar</button>
+              <button class="boton crear" type="submit">Crear</button>
+          </div>
+          
+            
+      </form>  
+  </div> 
   </div>
-  
+</main>

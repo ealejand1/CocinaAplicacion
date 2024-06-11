@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.cocina.API.receta_ingrediente.RecetaIngrediente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Ingrediente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected long id;
 	
+	@Column(unique = true)
 	protected String nombre;
 	
 	@ManyToMany(mappedBy = "ingrediente")
