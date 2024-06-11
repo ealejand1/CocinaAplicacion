@@ -44,7 +44,8 @@
           <p>{{ valoracion.comentario }}</p>
         </li>
       </ul>
-      <app-valorar-receta [receta]="receta"></app-valorar-receta>
+      <app-valorar-receta *appMostrarRoles="['ADMIN','USER']" [receta]="receta"></app-valorar-receta>
     </div>
+
   </div>
 </main>
