@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { RecetaIngrediente } from '../clases/receta-ingrediente';
+import { receta_IngredienteDTO } from '../clases/receta-ingredienteDTO';
 
 
 @Injectable({
@@ -25,8 +26,12 @@ export class RecetaIngredienteService {
     return this.http.get<RecetaIngrediente[]>(`${this.apiUrl}/ingrediente/${ingredienteId}`);
   }
   // En src/app/services/receta-ingrediente.service.ts
-actualizarRecetaIngrediente(ingredienteId: number, recetaIngrediente: RecetaIngrediente): Observable<RecetaIngrediente> {
+actualizarRecetaIngrediente(ingredienteId: any, recetaIngrediente: receta_IngredienteDTO): Observable<RecetaIngrediente> {
   return this.http.put<RecetaIngrediente>(`${this.apiUrl}/${ingredienteId}`, recetaIngrediente);
+}
+
+borrarRecetaIngrediente(ingrediente_id:any){
+  return this.http.delete<void>(`${this.apiUrl}/${ingrediente_id}`)
 }
 
 } 

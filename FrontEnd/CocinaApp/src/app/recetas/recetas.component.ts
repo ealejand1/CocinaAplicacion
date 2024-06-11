@@ -20,18 +20,17 @@ export class RecetasComponent {
 
   ngOnInit(): void {
     this.cargarRecetasPorUsuario();
-    let userId:any  = localStorage.getItem("idUsuario");
     
   }
 
   cargarRecetasPorUsuario(): void {
-    const userId = localStorage.getItem("idUsuario"); // Getting user ID from local storage
+    const userId = localStorage.getItem("idUsuario");
     if (userId) {
       this.recetaService.obtenerRecetasPorUsuarioId(+userId).subscribe({
         next: (data: Receta[]) => {
           if (Array.isArray(data)) {
             this.recetas = data;
-            this.recetas.forEach(receta => this.cargarValoraciones(receta)); // Load all ratings at once
+            this.recetas.forEach(receta => this.cargarValoraciones(receta));
           } else {
             console.error('Datos recibidos no son un array:', data);
           }
