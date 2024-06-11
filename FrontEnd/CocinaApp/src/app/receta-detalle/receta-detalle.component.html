@@ -1,39 +1,46 @@
 <main>
   <div *ngIf="receta" class="receta-container">
-    <div class="receta-header">
+    <p class="linea"></p>
       <div class="receta-titulo">
         <h1>{{ receta.nombre }}</h1>
+        <div class="descripcion">
+      <p >{{ receta.descripcion }}</p>
+    </div>
       </div>
       <div class="receta-imagen">
         <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}">
       </div>
-    </div>
-
-    <p class="descripcion">{{ receta.descripcion }}</p>
-
+   
+      
     <div class="instrucciones">
-      <h3>Instrucciones</h3>
+   <div class="tituloIns">   <h3 class="intro">UUUUUUU </h3>  <strong> Modo de preparacion</strong>  <h3 class="intro">  UUUUUUUU </h3></div>
       <p>{{ receta.instrucciones }}</p>
     </div>
     <div class="ingredientes">
-    <h3>Ingredientes</h3>
-    <div class="ingredientes-lista">
-    <ul *ngIf="ingredientes.length > 0; else noIngredientes">
-      <li *ngFor="let ingrediente of ingredientes">
-     <span class="ingrediente-nombre">{{ ingrediente.ingrediente.nombre }}</span>
-     <span class="ingrediente-detalle">{{ ingrediente.cantidad }} {{ ingrediente.unidades }}</span>    
-      </li>
-    </ul>
-    </div>
+      <h3>Todo lo bueno que necesitarás:</h3>
+      <div class="ingredientes-scroll">
+          <ul *ngIf="ingredientes.length > 0; else noIngredientes">
+              <li *ngFor="let ingrediente of ingredientes" class="ingrediente-item">
+                  <div class="ingrediente-nombre">{{ ingrediente.ingrediente.nombre }}</div>
+                  <div class="ingrediente-detalle">
+                      <span class="detalle-ovalo">{{ ingrediente.cantidad }} {{ ingrediente.unidades }}</span>
+                  </div>
+              </li>
+          </ul>
+      </div>
   </div>
+  
     <ng-template #noIngredientes>
-      <p>No hay ingredientes listados para esta receta.</p>
+      <p>¡Oops! Parece que nos comimos todos los ingredientes. ¡Vuelve pronto!</p>
     </ng-template>
 
-    <div class="valoraciones">
+    <div class="comentarios">
+     <div class="titulo-comentario">
       <h3>Comentarios</h3>
+     </div> 
       <ul *ngIf="valoraciones && valoraciones.length > 0">
-        <li *ngFor="let valoracion of valoraciones">
+        <li *ngFor="let valoracion of valoraciones" class="comentario">
+          <p>{{ valoracion.usuario.nombre}}</p>
           <div class="valoracion-estrellas">{{ mostrarEstrellas(valoracion.puntuacion) }}</div>
           <p>{{ valoracion.comentario }}</p>
         </li>

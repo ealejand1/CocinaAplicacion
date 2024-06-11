@@ -20,6 +20,8 @@ export class RecetasComponent {
 
   ngOnInit(): void {
     this.cargarRecetasPorUsuario();
+    let userId:any  = localStorage.getItem("idUsuario");
+    
   }
 
   cargarRecetasPorUsuario(): void {
@@ -58,7 +60,7 @@ export class RecetasComponent {
 
   mostrarEstrellas(puntuacion: number | null): string {
     if (puntuacion === null) {
-      return 'Sin valoraciones';  // Message when there are no ratings
+      return 'El cielo está claro…';  // Message when there are no ratings
     }
     const redondeado = Math.round(puntuacion);  // Round to the nearest whole number
     return '★'.repeat(redondeado) + '☆'.repeat(5 - redondeado);  // Fill up to 5 stars
@@ -69,10 +71,14 @@ export class RecetasComponent {
   }
 
   eliminarReceta(id: number): void {
+    console.log("dfasd"+id)
     this.recetaService.eliminarReceta(id).subscribe({
       next: () => {
-        console.log('Receta eliminada con éxito');
-        this.cargarRecetasPorUsuario(); // Reload the list of recipes after deletion
+        console.log('Receta eliminada con éxito')
+
+      this.cargarRecetasPorUsuario();
+
+         // Reload the list of recipes after deletion
       },
       error: error => console.error('Error al eliminar la receta:', error)
     });

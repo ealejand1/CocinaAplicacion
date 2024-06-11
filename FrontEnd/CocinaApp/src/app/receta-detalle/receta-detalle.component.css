@@ -1,4 +1,19 @@
 /* Estilos generales */
+@font-face {
+    font-family: 'titulo';
+    src: url(/assets/fuentes/titulo.ttf);
+    color: #55260F;
+}
+@font-face {
+    font-family: 'texto';
+    src: url(/assets/fuentes/texto.otf);
+    color: #55260F;
+}
+@font-face {
+    font-family: 'intro';
+    src: url(/assets/fuentes/Bakery.ttf);
+    color: #55260F;
+}
 main{
     background-image: url(../../assets/fondos/listado.jpg);
     min-height: 72vh;
@@ -18,19 +33,36 @@ main{
 h2,
 h3 {
     color: #B9581E;
-    margin-bottom: 10px;
+   
+    text-align: center;
 }
 
 /* Contenedor principal de la receta */
 .receta-container {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
     background-color: #FFF9E9;
-    border: 1px solid #55260F;
-    border-radius: 8px;
-    padding: 20px;
+    border: 10px double #55260F;
+    border-style:double;
+    border-radius: 15px;
+    padding: 33px;
+    padding-top: 10px;
     max-width: 800px;
     margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(255, 255, 255, 0.1);
     width: 80%;
+
+
+}
+.linea{
+    border:1px solid #55260F;
+    width: 100%;
+    height: 0;
+    margin: 15px;
+    
+    
 }
 
 /* Descripción e instrucciones */
@@ -44,13 +76,6 @@ ul {
     padding: 0;
 }
 
-li {
-    background-color: #FFF9E9;
-    border: 1px solid #55260F;
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 5px;
-}
 
 /* Enlace de valoración */
 app-valorar-receta {
@@ -63,40 +88,95 @@ app-valorar-receta {
     font-size: 1.2em;
     color: #B9581E;
 }
-.receta-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+ 
 
 .receta-titulo {
-    border: 1px solid black;
-  flex: 1;
+    width: 50%;
+    height: 50px;
+  
+    font-size: 20px;
+}
+.tituloIns{
+    display: flex;
+    flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   margin-top: 10px ;
+   
+}
+h1{
+    margin: 0;
+    font-family: "titulo";
+    color: #55260F  ;
+    text-align: center;
+    white-space: nowrap; /* Mantiene el texto en una sola línea */
+    overflow: hidden; /* Si el texto es demasiado largo, se cortará */
+    text-overflow: ellipsis;
+    
+}
+.intro{
+    font-family: "intro";
+    
+
+}
+strong{
+    margin: 0 15px;
+    color: #B9581E;
+    font-size: 25px;
+    
+}
+.receta-imagen{
+    width: 43%;
+    margin-left: 26px;
 }
 
 .receta-imagen img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border: 1px solid black;
+  width: 104%;
+  height: 320px;
+  object-fit:contain;
+  border: 4px solid rgb(73, 44, 0);
+  border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px 1px rgba(125, 88, 0, 0.75);
   
 }
 
 .descripcion {
   font-style: italic;
   color: #666;
-  padding: 10px 0;
+  padding: 10px;
+  max-width: 96%;
+    text-align: center  ;
+    border-bottom: 4px solid transparent; /* Define el borde pero lo hace transparente */
+    border-image: linear-gradient(to left, transparent, black, transparent) 1 1 50%;
+  font-size: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin; /* 'auto' o 'thin' */
+  scrollbar-color: #55260F  transparent; /* thumb y track */
+  margin-top: 10px;
+  height: 260px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
 .instrucciones {
   margin-top: 20px;
+  width: 100%;
+  height:100%;
+  
+  font-size: 20px;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  scrollbar-width: thin; /* 'auto' o 'thin' */
+  scrollbar-color: #55260F  transparent; /* thumb y track */
 }
 
-.ingredientes-lista {
+/* .ingredientes {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
+  width: 100%;
 }
 
 .ingrediente-nombre {
@@ -108,7 +188,74 @@ app-valorar-receta {
   color: white;
   padding: 5px 10px;
   border-radius: 20px;
+} */
+.ingredientes {
+    width: 100%; /* Ajustar según sea necesario */
+    
 }
+
+.ingredientes-scroll {
+    overflow-x: auto; /* Permite desplazamiento horizontal si hay muchos ingredientes */
+    white-space: nowrap; /* Mantiene los ingredientes en una sola línea */
+    scrollbar-width: thin; /* 'auto' o 'thin' */
+    scrollbar-color: #55260F  transparent; /* thumb y track */
+    
+}
+
+
+.ingrediente-item {
+    display: inline-block; /* Alineación horizontal de los elementos */
+    margin-right: 20px;
+    padding-right: 30px; 
+    border-right: 3px solid rgb(147, 105, 59);
+
+}
+
+.ingrediente-nombre {
+    display: block; /* Asegura que el nombre esté arriba */
+    text-align: center; /* Centra el nombre del ingrediente */
+    margin-bottom: 5px; 
+
+}
+
+.ingrediente-detalle {
+    text-align: center; /* Centra los detalles */
+}
+/* Ajusta la barra de desplazamiento general */
+.ingredientes-scroll::-webkit-scrollbar {
+    width: 10px; /* Ajusta el ancho de la barra */
+}
+
+/* Ajusta el track de la barra de desplazamiento */
+.ingredientes-scroll::-webkit-scrollbar-track {
+    background: transparent; /* Hace que el fondo sea transparente */
+}
+
+/* Ajusta el thumb de la barra de desplazamiento */
+.ingredientes-scroll::-webkit-scrollbar-thumb {
+    background-color: red; /* Cambia el color del thumb a rojo */
+    border-radius: 10px; /* Redondea las esquinas del thumb */
+    border: 3px solid transparent; /* Añade un borde transparente para evitar que el thumb toque los bordes del track */
+}
+
+
+.detalle-ovalo {
+    display: inline-block;
+    width: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #d08e5f; /* Color marrón para el óvalo */
+    color: rgb(102, 66, 27); /* Texto en blanco */
+    padding: 5px 15px; /* Padding para forma ovalada */
+    border-radius: 20px; /* Borde redondeado para forma ovalada */
+}
+
+/* Estilos para no tener ingredientes */
+.noIngredientes {
+    color: #666;
+    text-align: center;
+}
+
 
 .valoraciones {
   margin-top: 20px;
@@ -116,9 +263,34 @@ app-valorar-receta {
 
 .valoracion-estrellas {
   color: gold;
-  font-size: 1.2em;
+  font-size: 2.5em;
 }
+.titulo-comentario{
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 100%;
+    border: #55260F 1px solid;
+    background-color: #55260F;
+    
 
+}
+.comentario{
+    border-top: 2px solid black;
+    
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 5px;
+    
+}
+.comentario:last-child{
+    border-bottom: 2px solid black;
+}
+.titulo-comentario h3{
+    color: #FFF9E9;
+}
 .loading-message {
   text-align: center;
+}
+.comentarios{
+    width: 100%;
 }

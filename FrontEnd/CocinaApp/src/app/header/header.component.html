@@ -10,7 +10,7 @@
         ★
     </div>
 
-    <div class="desplegable-contenido izq" [ngClass]="{'mostrar': mostrarCrearRecetaDesplegable}">
+    <div class="desplegable-contenido izq" [ngClass]="{'mostrar': mostrarCrearRecetaDesplegable}"(mouseleave)="cerrarDesplegable('crearReceta')">
         <a *appMostrarRoles="['ADMIN','USER']" (click)="crearReceta()">Crear Receta</a>
         <a *appMostrarRoles="['ADMIN','USER']" [routerLink]="['/recetas']" >Mis recetas</a>
         <a [routerLink]="['/inicio/']">Inicio</a>

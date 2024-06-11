@@ -24,4 +24,9 @@ export class RecetaIngredienteService {
   obtenerRecetasPorIngrediente(ingredienteId: number): Observable<RecetaIngrediente[]>{
     return this.http.get<RecetaIngrediente[]>(`${this.apiUrl}/ingrediente/${ingredienteId}`);
   }
+  // En src/app/services/receta-ingrediente.service.ts
+actualizarRecetaIngrediente(ingredienteId: number, recetaIngrediente: RecetaIngrediente): Observable<RecetaIngrediente> {
+  return this.http.put<RecetaIngrediente>(`${this.apiUrl}/${ingredienteId}`, recetaIngrediente);
 }
+
+} 
