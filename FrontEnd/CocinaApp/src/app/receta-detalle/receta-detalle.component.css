@@ -294,3 +294,6 @@ strong{
 .comentarios{
     width: 100%;
 }
+.desaparece{
+    width: -100px;
+}

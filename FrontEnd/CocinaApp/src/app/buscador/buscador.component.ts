@@ -41,7 +41,7 @@ export class BuscadorComponent implements OnInit {
 
   private obtenerRecetas():void{
     this.listaRecetas = [];
-    this.recetaServicio.obtenerRecetas().subscribe(recetas =>{
+    this.recetaServicio.obtenerTop20().subscribe(recetas =>{
       this.listaRecetas=recetas;
     })
   }
