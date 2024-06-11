@@ -92,8 +92,7 @@ app-valorar-receta {
 
 .receta-titulo {
     width: 50%;
-    height: 50px;
-  
+    height: 320px;
     font-size: 20px;
 }
 .tituloIns{
@@ -101,8 +100,12 @@ app-valorar-receta {
     flex-direction: row;
    align-items: center;
    justify-content: center;
+   overflow-x: hidden;
    margin-top: 10px ;
    
+}
+.tituloIns strong{
+    text-align: center;
 }
 h1{
     margin: 0;
@@ -241,7 +244,7 @@ strong{
 
 .detalle-ovalo {
     display: inline-block;
-    width: 80px;
+    width: fit-content;
     font-size: 20px;
     font-weight: bold;
     background-color: #d08e5f; /* Color marrón para el óvalo */
@@ -296,4 +299,13 @@ strong{
 }
 .desaparece{
     width: -100px;
+}
+
+@media screen and (max-width: 900px){
+ .receta-titulo{
+    width: 100%;
+ }   
+ .receta-imagen{
+    width: 80%;
+ }
 }
