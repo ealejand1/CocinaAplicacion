@@ -17,18 +17,38 @@
                 </div>
                 <div class="contenedor-imagen">
                     <label for="imageFile">Imágen:</label>
-                    <label class="label-imagen"><b>+</b>
-                        <input class="imagen" type="file" id="imageFile" (change)="onFileSelected($event)" accept=".jpg, .jpeg, .png">
-                        <img *ngIf="imageSrc" [src]="imageSrc" class="preview-img" alt="Previsualización de la imagen">
-                    </label>
-                </div>
+                    <button type="button" (click)="mostrarPopupImagenes()">Seleccionar Imagen Predeterminada</button>
+                    <!-- Área de previsualización de la imagen -->
+                    <img *ngIf="imagenSeleccionada" [src]="imagenSeleccionada" class="preview-img" alt="Previsualización de la imagen">
+                  </div>
+                  
+                  <!-- Pop-up para seleccionar una imagen -->
+                  <div *ngIf="mostrarPopup" class="popup-imagenes">
+                    <div *ngFor="let img of imagenesPredeterminadas">
+                      <img [src]="img" (click)="seleccionarImagen(img)" [alt]="img">
+                    </div>
+                    <button (click)="cerrarPopup()">Cerrar</button>
+                  </div>
             </div>
             
             <div class="contenedor-catTie contenedor">
-                <div class="contenedor-categoria">
-                    <label for="cateogira">Categoria</label>
-                    <input type="text" id="cateogira">
+                <div class="contenedor-categoria contenedor">
+                    <label for="categoriaSeleccionada">Categoría</label>
+                    <select [(ngModel)]="nuevaCategoria" name="categoriaSeleccionada" id="categoriaSeleccionada" required>
+                        <option *ngFor="let categoria of todasLasCategorias" [ngValue]="categoria">{{categoria.nombre}}</option>
+                    </select>
+                    <button type="button" class="boton crear" (click)="addCategoria()">Añadir</button>
                 </div>
+                
+                <div class="contenedor-listaCat contenedor">
+                    <ul>
+                        <li *ngFor="let categoria of receta.categorias">
+                            {{ categoria.nombre }} 
+                            <button (click)="removeCategoria(categoria)">🗑️</button>
+                        </li>
+                    </ul>
+                </div>
+                  
                 <div class="contenedor-tiempo">
                     <label for="tiempoPreparacion">Tiempo</label>
                     <input  class="tiempo"id="tiempoPreparacion" type="text" [(ngModel)]="receta.tiempoPreparacion" name="tiempoPreparacion">

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.cocina.API.receta.*;
 
+import jakarta.transaction.Transactional;
+
 
 @RestController
 @RequestMapping("/api/v1/categorias")
@@ -23,10 +25,12 @@ public class ControladorCategorias {
 
     private final RepositorioCategoria repositorio;
     private final CreadorLinksCategoria creaLinks;
+    private final RepositorioReceta repositorioReceta;
 
-    public ControladorCategorias(RepositorioCategoria repositorio, CreadorLinksCategoria creaLinks) {
+    public ControladorCategorias(RepositorioCategoria repositorio, CreadorLinksCategoria creaLinks, RepositorioReceta repositorioReceta) {
         this.repositorio = repositorio;
         this.creaLinks = creaLinks;
+        this.repositorioReceta=repositorioReceta;
     }
 
     // Obtener todas las categorías (GET)
@@ -110,6 +114,26 @@ public class ControladorCategorias {
     public ResponseEntity<Void> eliminarCategoria(@PathVariable("id") Long id) {
         repositorio.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/{categoriaId}/recetas/{recetaId}")
+    public ResponseEntity<?> agregarRecetaACategoria(@PathVariable("categoriaId") Long categoriaId, @PathVariable("recetaId") Long recetaId) {
+    	 try {
+    	        Categoria categoria = repositorio.findById(categoriaId).orElseThrow(() -> new RuntimeException("Categoría no encontrada con ID: " + categoriaId));
+    	        Receta receta = repositorioReceta.findById(recetaId).orElseThrow(() -> new RuntimeException("Receta no encontrada con ID: " + recetaId));
+    	        
+    	        if (categoria.getRecetas().contains(receta)) {
+    	            return ResponseEntity.badRequest().body("La receta ya está asociada a esta categoría");
+    	        }
+    	        
+    	        categoria.getRecetas().add(receta);
+    	        receta.getCategorias().add(categoria); // Asegúrate de que la receta también conoce la nueva categoría
+    	        repositorio.save(categoria);
+    	        repositorioReceta.save(receta); // Guarda también la receta
+
+    	        return ResponseEntity.ok("Receta agregada a la categoría con éxito");
+    	    } catch (Exception e) {
+    	        return ResponseEntity.internalServerError().body("Error al agregar receta a categoría: " + e.getMessage());
+    	    }
     }
 }
 

@@ -22,5 +22,9 @@ export class CategoriasService {
   obtenerCategoriaPorId(id:number):Observable<Categoria>{
     return this.httpClient.get<Categoria>(`${this.baseURL}/${id}`)
   }
+  agregarRecetaACategoria(categoriaId: number, recetaId: number): Observable<any> {
+    return this.httpClient.post(`${this.baseURL}/${categoriaId}/recetas/${recetaId}`, null); // Cambia aquí si es necesario
+  }
+  
 
 }

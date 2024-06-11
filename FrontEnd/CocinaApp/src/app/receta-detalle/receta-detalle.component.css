@@ -63,3 +63,62 @@ app-valorar-receta {
     font-size: 1.2em;
     color: #B9581E;
 }
+.receta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.receta-titulo {
+    border: 1px solid black;
+  flex: 1;
+}
+
+.receta-imagen img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid black;
+  
+}
+
+.descripcion {
+  font-style: italic;
+  color: #666;
+  padding: 10px 0;
+}
+
+.instrucciones {
+  margin-top: 20px;
+}
+
+.ingredientes-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.ingrediente-nombre {
+  font-weight: bold;
+}
+
+.ingrediente-detalle {
+  background-color: #8a3324;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.valoraciones {
+  margin-top: 20px;
+}
+
+.valoracion-estrellas {
+  color: gold;
+  font-size: 1.2em;
+}
+
+.loading-message {
+  text-align: center;
+}

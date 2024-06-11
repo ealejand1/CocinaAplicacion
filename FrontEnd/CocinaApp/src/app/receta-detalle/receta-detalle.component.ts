@@ -61,5 +61,11 @@ export class RecetaDetalleComponent implements OnInit {
       }
     );
   }
-
+  mostrarEstrellas(puntuacion: number | null): string {
+    if (puntuacion === null) {
+      return 'Sin valoraciones';  // Message when there are no ratings
+    }
+    const redondeado = Math.round(puntuacion);  // Round to the nearest whole number
+    return '★'.repeat(redondeado) + '☆'.repeat(5 - redondeado);  // Fill up to 5 stars
+  }
 }

@@ -18,4 +18,8 @@ export class ValoracionService {
   crearValoracion(valoracion: Valoracion): Observable<Valoracion> {
     return this.http.post<Valoracion>(this.apiUrl, valoracion);
   }
+  obtenerTodasLasValoraciones(): Observable<Valoracion[]> {
+    return this.http.get<Valoracion[]>(this.apiUrl);
+  }
+  
 }
