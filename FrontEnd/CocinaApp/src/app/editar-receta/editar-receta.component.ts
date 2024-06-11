@@ -58,7 +58,6 @@ export class EditarRecetaComponent implements OnInit {
   onSubmit() {
     if (this.receta.id) { // Verificar si receta tiene ID para evitar enviar una receta vacía
       this.guardarCambiosIngrediente(this.receta.ingredientes);
-      console.log(this.receta)
       this.recetaService.actualizarReceta(this.receta.id, this.receta).subscribe({
         next: () => {
           this.router.navigate(['/recetas']);

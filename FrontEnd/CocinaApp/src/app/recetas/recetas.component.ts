@@ -70,16 +70,17 @@ export class RecetasComponent {
   }
 
   eliminarReceta(id: number): void {
-    console.log("dfasd"+id)
     this.recetaService.eliminarReceta(id).subscribe({
       next: () => {
-        console.log('Receta eliminada con éxito')
-
-      this.cargarRecetasPorUsuario();
-
-         // Reload the list of recipes after deletion
+        console.log('Receta eliminada con éxito');
+        this.cargarRecetasPorUsuario();
       },
       error: error => console.error('Error al eliminar la receta:', error)
     });
   }
+
+  crearReceta():void{
+    this.router.navigateByUrl("/registrar-receta");
+  }
+
 }

@@ -67,11 +67,8 @@ export class LoginService {
   }
 
   private loginNuevoUsuario(idUsuario: any, token: string) {
-    console.log(idUsuario);
-    console.log(token);
     this.usuarioServicio.obtenerRolporIdUsuario(idUsuario).subscribe(
-      (response) => {
-        console.log(response);
+      (response) => {  
         const newUser: User = {
           id: idUsuario,
           token: token,
