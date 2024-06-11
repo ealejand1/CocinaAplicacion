@@ -81,6 +81,10 @@ p{
     text-align: center;
     color: #ffffff;
     background-color: #55260f;
+    border-radius: 10px;
+}
+.alerta h4{
+    padding: 5px;
 }
 .errorMensaje{
     color: #fd5757;
