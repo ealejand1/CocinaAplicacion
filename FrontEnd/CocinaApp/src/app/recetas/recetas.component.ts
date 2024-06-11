@@ -70,8 +70,11 @@ export class RecetasComponent {
     this.router.navigate(['/editar-receta', id]);
   }
 
+   crearReceta():void{
+    this.router.navigateByUrl("/registrar-receta");
+  }
+  
   eliminarReceta(id: number): void {
-    console.log("Intentando eliminar la receta con ID:", id)
     Swal.fire({
       title: '¿Estás seguro?',
       text: "¡No podrás revertir esto!",
@@ -114,5 +117,4 @@ export class RecetasComponent {
       }
     });
   }
-  
 }

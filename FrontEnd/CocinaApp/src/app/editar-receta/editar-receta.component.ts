@@ -61,7 +61,6 @@ export class EditarRecetaComponent implements OnInit {
     this.receta.imagenUrl = this.imagenSeleccionada;
     if (this.receta.id) { // Verificar si receta tiene ID para evitar enviar una receta vacía
       this.guardarCambiosIngrediente(this.receta.ingredientes);
-      console.log(this.receta)
       this.receta.imagenUrl = this.imagenSeleccionada;
       this.recetaService.actualizarReceta(this.receta.id, this.receta).subscribe({
         next: () => {

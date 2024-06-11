@@ -6,7 +6,6 @@ import { RecetaService } from '../servicios/receta.service';
 import { IngredienteService } from '../servicios/ingrediente.service';
 import { Router } from '@angular/router';
 import { RecetaIngredienteService } from '../servicios/receta-ingrediente.service';
-import { Console } from 'console';
 import { CategoriasService } from '../servicios/categorias.service';
 import { Categoria } from '../clases/categoria';
 import Swal from 'sweetalert2';
@@ -93,12 +92,10 @@ export class RegistrarRecetaComponent implements OnInit {
     } else {
       console.error('Falta información del ingrediente');
     }
-    console.log(this.receta)
   }
   addCategoria() {
     if (this.nuevaCategoria) {
       this.receta.categorias.push(this.nuevaCategoria);
-      console.log('Categoría Añadida:', this.nuevaCategoria);
       this.nuevaCategoria = new Categoria();  // Reset para nueva entrada
     } else {
       console.error('No se seleccionó una categoría');
@@ -114,7 +111,7 @@ export class RegistrarRecetaComponent implements OnInit {
           console.log('Receta creada con éxito', recetaGuardada);
           this.guardarCategorias(this.receta.id);
           this.guardarIngredientes(recetaGuardada.id);
-          //this.router.navigateByUrl("recetas")
+          this.router.navigateByUrl("/recetas")
       
         },
         error: (error) => {
@@ -146,9 +143,6 @@ export class RegistrarRecetaComponent implements OnInit {
   }
   guardarCategorias(recetaId: number) {
     this.receta.categorias.forEach(categoria => {
-      console.log("aque estoy guardado las categorias"+categoria)
-      console.log("categoriasid"+categoria.id)
-      console.log("recetaid"+recetaId)
       this.categoriaService.agregarRecetaACategoria(categoria.id, recetaId).subscribe({
         next: (response) => console.log('Categoría asignada con éxito:', response),
         error: (error) => console.error('Error al asignar categoría', error)
@@ -206,7 +200,6 @@ export class RegistrarRecetaComponent implements OnInit {
   //la lista de ingredientes de la receta vacia
   // cargamos los ingredientes todos
   ngOnInit() {
-    console.log(localStorage.getItem("idUsuario") + "aaaaaaa")
     let userId:any  = localStorage.getItem("idUsuario");
     if (userId !== null && userId !== undefined){
 

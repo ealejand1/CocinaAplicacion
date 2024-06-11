@@ -31,7 +31,6 @@ export class MostrarRolesDirective implements OnInit, OnDestroy {
         }),
         distinctUntilChanged(),
         tap(hasRole => {
-          console.log('Has role:', hasRole);
           hasRole ? this.viewContainerRef.createEmbeddedView(this.templateRef) : this.viewContainerRef.clear();
         })
       )
