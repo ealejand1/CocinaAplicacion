@@ -5,6 +5,7 @@ import { Valoracion } from '../clases/valoracion';
 import { ValoracionComunicadorService } from '../servicios/comunicadores/valoracion-comunicador.service';
 import { LoginService } from '../servicios/auth/login.service';
 import { map } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-valorar-receta',
@@ -28,5 +29,6 @@ export class ValorarRecetaComponent implements OnInit {
     this.valoracion.usuario_id = this.usuarioId;
     this.valoracionComunicador.agregarValoracion(this.valoracion);
     this.valoracion = new Valoracion;
+    Swal.fire("¡Gracias por tu valoración!");
   }
 }

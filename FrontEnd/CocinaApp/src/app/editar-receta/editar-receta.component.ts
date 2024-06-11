@@ -7,6 +7,7 @@ import { RecetaIngrediente } from '../clases/receta-ingrediente';
 import { Ingrediente } from '../clases/ingrediente';
 import { IngredienteService } from '../servicios/ingrediente.service';
 import { RecetaIngredienteService } from '../servicios/receta-ingrediente.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-receta',
@@ -35,7 +36,7 @@ export class EditarRecetaComponent implements OnInit {
     private recetaIngredienteService: RecetaIngredienteService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {  }
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -52,17 +53,30 @@ export class EditarRecetaComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log("Imagen seleccionada antes de guardar:", this.receta.imagenUrl);
+    this.receta.imagenUrl = this.imagenSeleccionada;
     if (this.receta.id) { // Verificar si receta tiene ID para evitar enviar una receta vacía
+      console.log("Guardando receta con imagen:", this.receta.imagenUrl);
       console.log(this.receta.ingredientes)
       this.receta.ingredientes.forEach(ingrediente => {
         if (ingrediente.id) {
           this.guardarCambiosIngrediente(ingrediente);
         }
       });
+      this.receta.imagenUrl = this.imagenSeleccionada;
       this.recetaService.actualizarReceta(this.receta.id, this.receta).subscribe({
         next: () => {
-          console.log(this.receta);
-          this.router.navigate(['/recetas']);
+          Swal.fire({
+            title: '¡Sazón al punto!',
+            text: 'Los cambios en tu receta han sido añadidos con maestría. Está todo listo para deleitar paladares.',
+            icon: 'success',
+            iconColor: 'green',
+            background: '#fcf4e3',
+            confirmButtonColor: '#8B4513',
+          
+          });
+                    this.router.navigate(['/recetas']);
+
         },
         error: (error) => {
           console.error('Error al actualizar la receta', error);

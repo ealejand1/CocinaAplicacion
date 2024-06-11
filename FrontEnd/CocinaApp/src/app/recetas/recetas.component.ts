@@ -3,6 +3,7 @@ import { Receta } from '../clases/receta';
 import { RecetaService } from '../servicios/receta.service';
 import { Router } from '@angular/router'; // Correct Router import from Angular
 import { ValoracionService } from '../servicios/valoracion.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recetas',
@@ -71,16 +72,48 @@ export class RecetasComponent {
   }
 
   eliminarReceta(id: number): void {
-    console.log("dfasd"+id)
-    this.recetaService.eliminarReceta(id).subscribe({
-      next: () => {
-        console.log('Receta eliminada con éxito')
-
-      this.cargarRecetasPorUsuario();
-
-         // Reload the list of recipes after deletion
-      },
-      error: error => console.error('Error al eliminar la receta:', error)
+    console.log("Intentando eliminar la receta con ID:", id)
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, bórralo!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Código para borrar la receta solo si se confirma
+        this.recetaService.eliminarReceta(id).subscribe({
+          next: () => {
+            console.log('Receta eliminada con éxito');
+            Swal.fire(
+              '¡Borrado!',
+              'La receta ha sido eliminada.',
+              'success'
+            );
+            this.cargarRecetasPorUsuario(); // Recargar las recetas tras la eliminación
+          },
+          error: error => {
+            console.error('Error al eliminar la receta:', error);
+            Swal.fire(
+              'Error',
+              'No se pudo eliminar la receta: ' + error.message,
+              'error'
+            );
+          }
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Si se cancela, mostrar un mensaje o realizar alguna acción
+        Swal.fire(
+          'Cancelado',
+          'Tu receta está segura :)',
+          'error'
+        );
+      }
     });
   }
+  
 }
