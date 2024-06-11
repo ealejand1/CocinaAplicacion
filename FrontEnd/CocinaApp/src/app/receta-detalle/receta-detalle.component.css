@@ -144,17 +144,19 @@ strong{
   font-style: italic;
   color: #666;
   padding: 10px;
-  width: 96%;
+  max-width: 96%;
     text-align: center  ;
     border-bottom: 4px solid transparent; /* Define el borde pero lo hace transparente */
     border-image: linear-gradient(to left, transparent, black, transparent) 1 1 50%;
   font-size: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-width: thin; /* 'auto' o 'thin' */
   scrollbar-color: #55260F  transparent; /* thumb y track */
   margin-top: 10px;
   height: 260px;
-  
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
 .instrucciones {
@@ -163,7 +165,7 @@ strong{
   height:100%;
   
   font-size: 20px;
-  
+  overflow-wrap: break-word;
   overflow-y: auto;
   scrollbar-width: thin; /* 'auto' o 'thin' */
   scrollbar-color: #55260F  transparent; /* thumb y track */

@@ -42,13 +42,15 @@ export class EditarRecetaComponent implements OnInit {
 
   onSubmit() {
     if (this.receta.id) { // Verificar si receta tiene ID para evitar enviar una receta vacía
+      console.log(this.receta.ingredientes)
+      this.receta.ingredientes.forEach(ingrediente => {
+        if (ingrediente.id) {
+          this.guardarCambiosIngrediente(ingrediente);
+        }
+      });
       this.recetaService.actualizarReceta(this.receta.id, this.receta).subscribe({
         next: () => {
-          this.receta.ingredientes.forEach(ingrediente => {
-            if (ingrediente.id) {
-              this.guardarCambiosIngrediente(ingrediente);
-            }
-          });
+          console.log(this.receta);
           this.router.navigate(['/recetas']);
         },
         error: (error) => {
@@ -89,6 +91,7 @@ export class EditarRecetaComponent implements OnInit {
     });
   }
   guardarCambiosIngrediente(ingrediente: RecetaIngrediente): void {
+    console.log(ingrediente);
     if (ingrediente.id) { // Solo actualiza si el ingrediente tiene un ID
       this.recetaIngredienteService.actualizarRecetaIngrediente(ingrediente.id, ingrediente).subscribe({
         next: (updatedIngredient) => {

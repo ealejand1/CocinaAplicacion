@@ -32,6 +32,9 @@ export class RegistrarRecetaComponent implements OnInit {
     'assets/predeterminadas/img1.png',
     'assets/predeterminadas/img2.png',
     'assets/predeterminadas/img3.jpg',
+    'assets/predeterminadas/img3.jpg',
+    'assets/predeterminadas/img3.jpg',
+    'assets/predeterminadas/img3.jpg',
   ];
   imagenSeleccionada: string = '';
 
@@ -126,6 +129,7 @@ export class RegistrarRecetaComponent implements OnInit {
           this.guardarCategorias(recetaGuardada.id);
           this.guardarIngredientes(recetaGuardada.id);
           console.log(this.receta.ingredientes)
+          this.router.navigate(['/recetas'])
           
         },
         error: (error) => {
