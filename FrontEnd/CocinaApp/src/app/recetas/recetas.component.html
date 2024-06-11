@@ -3,7 +3,7 @@
     <h1 class="titulo">Tu Propio Rincón Gourmet</h1>
     <div class="grid" *ngIf="this.recetas.length != 0 ; else noRecetas">
       <a  class="caja" *ngFor="let receta of recetas">
-        <img [routerLink]="['/recetas/', receta.id]" [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="imgCaja">
+        <img [routerLink]="['/recetas/', receta.id]"[src]="receta.imagenUrl ? receta.imagenUrl : '../../assets/imagenes/categorias/Entrantes.jpg'" alt="Imagen de {{ receta.nombre }}" class="imgCaja">
         
         <div class="receta-info">
           <h2 class="receta-nombre">{{ receta.nombre }}</h2>

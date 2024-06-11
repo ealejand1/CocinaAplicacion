@@ -3,6 +3,7 @@ import { Receta } from '../clases/receta';
 import { RecetaService } from '../servicios/receta.service';
 import { Router } from '@angular/router'; // Correct Router import from Angular
 import { ValoracionService } from '../servicios/valoracion.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recetas',
@@ -69,18 +70,51 @@ export class RecetasComponent {
     this.router.navigate(['/editar-receta', id]);
   }
 
-  eliminarReceta(id: number): void {
-    this.recetaService.eliminarReceta(id).subscribe({
-      next: () => {
-        console.log('Receta eliminada con éxito');
-        this.cargarRecetasPorUsuario();
-      },
-      error: error => console.error('Error al eliminar la receta:', error)
-    });
-  }
-
-  crearReceta():void{
+   crearReceta():void{
     this.router.navigateByUrl("/registrar-receta");
   }
-
+  
+  eliminarReceta(id: number): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, bórralo!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Código para borrar la receta solo si se confirma
+        this.recetaService.eliminarReceta(id).subscribe({
+          next: () => {
+            console.log('Receta eliminada con éxito');
+            Swal.fire(
+              '¡Borrado!',
+              'La receta ha sido eliminada.',
+              'success'
+            );
+            this.cargarRecetasPorUsuario(); // Recargar las recetas tras la eliminación
+          },
+          error: error => {
+            console.error('Error al eliminar la receta:', error);
+            Swal.fire(
+              'Error',
+              'No se pudo eliminar la receta: ' + error.message,
+              'error'
+            );
+          }
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Si se cancela, mostrar un mensaje o realizar alguna acción
+        Swal.fire(
+          'Cancelado',
+          'Tu receta está segura :)',
+          'error'
+        );
+      }
+    });
+  }
 }

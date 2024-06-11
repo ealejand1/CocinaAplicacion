@@ -9,6 +9,8 @@ import { RecetaIngredienteService } from '../servicios/receta-ingrediente.servic
 import { CategoriasService } from '../servicios/categorias.service';
 import { Categoria } from '../clases/categoria';
 import Swal from 'sweetalert2';
+import { NgFor } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-registrar-receta',
@@ -31,11 +33,11 @@ export class RegistrarRecetaComponent implements OnInit {
   imagenesPredeterminadas: string[] = [
     'assets/predeterminadas/img1.png',
     'assets/predeterminadas/img2.png',
-    'assets/predeterminadas/img3.jpg',
-    'assets/predeterminadas/img3.jpg',
-    'assets/predeterminadas/img3.jpg',
-    'assets/predeterminadas/img3.jpg',
-  ];
+    'assets/predeterminadas/img3.png',
+    'assets/predeterminadas/img4.png',
+    'assets/predeterminadas/img5.png',
+    'assets/predeterminadas/img6.png',
+  ]
   imagenSeleccionada: string = '';
 
   constructor(
@@ -101,7 +103,7 @@ export class RegistrarRecetaComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  onSubmit(myForm: NgForm) {
     if (this.imageFile) {
       // Crear receta con imagen
       this.recetaService.crearRecetaConImagen(this.receta, this.imageFile).subscribe({
@@ -118,6 +120,7 @@ export class RegistrarRecetaComponent implements OnInit {
         }
       });
     } else {
+  
       // Crear receta sin imagen
       this.receta.imagenUrl = this.imagenSeleccionada;
       this.recetaService.crearReceta(this.receta).subscribe({
