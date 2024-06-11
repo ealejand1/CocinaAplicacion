@@ -1,24 +1,18 @@
 <div class="caja">
     <form class="formulario" [formGroup]="loginForm" method="post">
         <h2>Login</h2>
-        <div *ngIf="showError" class="errorMensaje"><h3>Error en el usuario o contraseña</h3></div>
+        <div *ngIf="showError" class="errorMensaje">
+            <h3>Error en el usuario o contraseña</h3>
+        </div>
         <div class="input usuario">
             <input type="text" name="usuario" formControlName="username" placeholder="Nombre de Usuario">
-            <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-                <small *ngIf="loginForm.get('username')?.errors?.['required']">El nombre de usuario es OBLIGATORIO.</small>
-                <small *ngIf="loginForm.get('username')?.errors?.['minlength']">El nombre de usuario debe tener al menos 3 caracteres.</small>
-                <small *ngIf="loginForm.get('username')?.errors?.['invalidUsername']">El nombre de usuario no debe contener caracteres especiales.</small>
-            </div>
+        </div>
         <div class="input contra">
             <input type="password" name="password" formControlName="password" placeholder="Contraseña">
-            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-                <small *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida.</small>
-                <small *ngIf="loginForm.get('password')?.errors?.['passwordLength']">La contraseña debe tener al menos 5 caracteres.</small>
-                <small *ngIf="loginForm.get('password')?.errors?.['passwordComplexity']">La contraseña debe contener números, letras minúsculas y mayúsculas.</small>
-            </div>
         </div>
         <button class="Enviar" value="enviar" (click)="login()">Iniciar Sesion</button>
         <button class="invitado" (click)="loginInvitado()">Iniciar como invitado</button>
         <button (click)="registrarse()">Registrarse</button>
         <p>Tu próximo plato favorito te espera. ¡Ingresa ahora para empezar a cocinar!</p>
+    </form>
 </div>

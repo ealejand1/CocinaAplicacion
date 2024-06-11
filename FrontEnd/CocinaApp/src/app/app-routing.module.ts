@@ -13,19 +13,33 @@ import { BuscadorComponent } from './buscador/buscador.component';
 import { hasRole, hasRoleGuard } from './guard/has-role.guard';
 
 const routes: Routes = [
-  {path: 'recetas', component: RecetasComponent },
-  {path: 'recetas/:id', component: RecetaDetalleComponent },
+  {path: 'recetas', component: RecetasComponent,
+    canActivate: [hasRole(['ADMIN','USER'])],
+    canLoad:[hasRole(['ADMIN','USER'])],
+   },
+  {path: 'recetas/:id', component: RecetaDetalleComponent,
+    canActivate: [hasRole(['ADMIN','USER','INVITADO'])],
+    canLoad:[hasRole(['ADMIN','USER','INVITADO'])],
+   },
   {path : "inicio",component:InicioComponent,  
   canActivate:[loginGuard]},
-  {path : 'categoria/:id', component:CategoriaRecetasComponent},
-  { path: 'editar-receta/:id', component: EditarRecetaComponent },
+  {path : 'categoria/:id', component:CategoriaRecetasComponent,
+    canActivate: [hasRole(['ADMIN','USER','INVITADO'])],
+    canLoad:[hasRole(['ADMIN','USER','INVITADO'])],
+  },
+  { path: 'editar-receta/:id', component: EditarRecetaComponent,
+    canActivate: [hasRole(['ADMIN','USER'])],
+    canLoad:[hasRole(['ADMIN','USER'])],
+  },
   {path : "registro",component:RegistroComponent},
   { path: 'registrar-receta', component: RegistrarRecetaComponent,
     canActivate: [hasRole(['ADMIN','USER','INVITADO'])],
     canLoad:[hasRole(['ADMIN','USER','INVITADO'])],
   },
   {path : "login",component:LoginComponent},
-  {path : 'buscador',component:BuscadorComponent},
+  {path : 'buscador',component:BuscadorComponent,
+    canActivate: [hasRole(['ADMIN','USER','INVITADO'])],
+    canLoad:[hasRole(['ADMIN','USER','INVITADO'])],},
   {path : '', redirectTo:"inicio",pathMatch: 'full'}
 ];
 

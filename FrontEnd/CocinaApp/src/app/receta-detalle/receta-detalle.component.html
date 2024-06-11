@@ -20,15 +20,18 @@
       <h3>Todo lo bueno que necesitarás:</h3>
       <div class="ingredientes-scroll">
           <ul *ngIf="ingredientes.length > 0; else noIngredientes">
-              <li *ngFor="let ingrediente of ingredientes" class="ingrediente-item">
-                  <div class="ingrediente-nombre">{{ ingrediente.ingrediente.nombre }}</div>
-                  <div class="ingrediente-detalle">
-                      <span class="detalle-ovalo">{{ ingrediente.cantidad }} {{ ingrediente.unidades }}</span>
-                  </div>
-              </li>
+            <li *ngFor="let ingrediente of ingredientes" class="ingrediente-item" >
+              <div *ngIf="ingrediente.ingrediente && ingrediente.ingrediente.nombre !== 'uwu'">
+                <div class="ingrediente-nombre">{{ ingrediente.ingrediente.nombre }}</div>
+                <div class="ingrediente-detalle">
+                    <span class="detalle-ovalo">{{ ingrediente.cantidad }} {{ ingrediente.unidades }}</span>
+                </div>
+              </div>
+            </li>
           </ul>
       </div>
   </div>
+ 
   
     <ng-template #noIngredientes>
       <p>¡Oops! Parece que nos comimos todos los ingredientes. ¡Vuelve pronto!</p>
@@ -40,12 +43,12 @@
      </div> 
       <ul *ngIf="valoraciones && valoraciones.length > 0">
         <li *ngFor="let valoracion of valoraciones" class="comentario">
-        
           <div class="valoracion-estrellas">{{ mostrarEstrellas(valoracion.puntuacion) }}</div>
           <p>{{ valoracion.comentario }}</p>
         </li>
       </ul>
-      <app-valorar-receta [receta]="receta"></app-valorar-receta>
+      <app-valorar-receta *appMostrarRoles="['ADMIN','USER']" [receta]="receta"></app-valorar-receta>
     </div>
+
   </div>
 </main>

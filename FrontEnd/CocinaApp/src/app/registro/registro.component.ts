@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegistroComponent implements OnInit {
 
   registrarForm:FormGroup;
+  showError: boolean = false;
 
   constructor(private formBuilder:FormBuilder,private loginServicio:LoginService,private router:Router){
   }
@@ -26,10 +27,10 @@ export class RegistroComponent implements OnInit {
     return this.registrarForm.valid;
   }
 
-  validarPasswd(control:any):{ [key:string]: boolean}| null {
+  validarPasswd(control:any):{ [key:string]: boolean} | null {
     const contra = control.value;
     if (contra.length < 5) {
-      return {'passwordLenght':true}
+      return {'passwordLength':true}
     }  
     const hasLowercase = /[a-z]/.test(contra);
     const hasUppercase = /[A-Z]/.test(contra);
@@ -56,12 +57,15 @@ export class RegistroComponent implements OnInit {
   registro():void{
     this.loginServicio.registroUsuario(this.registrarForm.value as registroRequest).subscribe(
       {
-        error : error =>{
-          console.error("Error al registrar" + error);
+        next:next =>{
+          this.router.navigateByUrl("/login");
+        },
+        error:error => {
+          this.showError = true;
         },
       }
     );
-    this.router.navigateByUrl("/login");
+   
   }
 
   login(){

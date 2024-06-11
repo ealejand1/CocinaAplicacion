@@ -3,12 +3,11 @@ body {
 }
 
 main{
-    background-image: url(../../assets/fondos/listado.jpg);
+    background-image: url(../../assets/fondos/texturaSaco.jpg);
     min-height: 72vh;
     width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 1000px;
+    background-repeat: repeat;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -30,7 +29,7 @@ main{
 button {
     background-color: #B9581E;
     border: none;
-    border-radius: 50%;
+    border-radius: 25px;
     padding: 10px 15px;
     cursor: pointer;
     font-size: 20px;

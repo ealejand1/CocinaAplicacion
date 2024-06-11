@@ -2,7 +2,8 @@
 
     <div id="contenedorBuscadores">
 
-        <button (click)="cambiarBuscador()" id="idCambiarBuscador">♥</button>
+        <button (click)="cambiarBuscador()" id="idCambiarBuscador" [style.display]="isPorIngrediente ? 'block' : 'none'">♥ Cambiar a buscador por receta ♥</button>
+        <button (click)="cambiarBuscador()" id="idCambiarBuscador" [style.display]="isPorIngrediente ? 'none' : 'block'">♥ Cambiar a buscador por ingredientes ♥</button>
 
         <div id="idMenuBuscadorPorIngrediente" class="buscador" [style.display]="isPorIngrediente ? 'block' : 'none'">
             <form (submit)="addIngredient($event)">

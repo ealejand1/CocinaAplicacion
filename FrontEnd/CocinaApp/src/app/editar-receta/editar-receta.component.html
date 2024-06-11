@@ -33,24 +33,6 @@
                 </div>
           </div>
           
-          <!-- <div class="contenedor-catTie contenedor">
-              <div class="contenedor-categoria contenedor">
-                  <label for="categoriaSeleccionada">Categoría</label>
-                  <select [(ngModel)]="nuevaCategoria" name="categoriaSeleccionada" id="categoriaSeleccionada" required>
-                      <option *ngFor="let categoria of todasLasCategorias" [ngValue]="categoria">{{categoria.nombre}}</option>
-                  </select>
-                  <button type="button" class="boton crear" (click)="addCategoria()">Añadir</button>
-              </div>
-              
-              <div class="contenedor-listaCat contenedor" contenteditable="true">
-                  <ul>
-                      <li *ngFor="let categoria of receta.categorias">
-                          {{ categoria.nombre }} 
-                          <button (click)="removeCategoria(categoria)">🗑️</button>
-                      </li>
-                  </ul>
-                  <div *ngIf="receta.categorias.length === 0" class="placeholder">Escribe algo aquí...</div>
-              </div> -->
                 
               <div class="contenedor-tiempo">
                   <label for="tiempoPreparacion">Tiempo</label>
@@ -77,7 +59,6 @@
                       <button (click)="removeIngredient(ingrediente)">🗑️</button>
                   </li>
               </ul>
-              
           </div>
 
           <div class="contenedor-instrucciones contenedor">
