@@ -161,3 +161,20 @@ main{
   margin: 0;
   
 }
+.boton-crear {
+  color: white;
+  border: 3px solid #55260F;
+  border-radius: 15px;
+  padding: 10px 20px; /* Aumenta el padding para hacerlo más prominente */
+  cursor: pointer; /* Cambia a pointer para indicar que es clickeable */
+  background-color: #a54c1f;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra para más profundidad */
+}
+
+.boton-crear:hover, .boton-crear:focus {
+  background-color: #c06030; /* Un tono más claro para el hover */
+  color: #ffffff;
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Brillo alrededor del botón */
+}
