@@ -12,27 +12,30 @@ import { Valoracion } from '../clases/valoracion';
 export class RecetasComponent {
   recetas: Receta[]=[];
   valoraciones:Valoracion[]=[];
+  userId:any;
+  estrella: { [key: number]: string } = {};
 
   constructor(private recetaService: RecetaService, private valoracionServicio: ValoracionService) { }
 
   ngOnInit(): void {
-    let userId:any  = localStorage.getItem("idUsuario");
-    if (userId !== null && userId !== undefined){
-      console.log(userId)
-      
-      this.cargarRecetasPorUsuarioId(+userId);
-      
-    }
-   
+    
+      this.userId = Number(localStorage.getItem("idUsuario"));
+      this.cargarRecetasPorUsuarioId(this.userId);
+      console.log(this.recetas);
   }
 
+  //ERROR AQUI XD
   cargarRecetasPorUsuarioId(userId: number): void {
     this.recetaService.obtenerRecetasPorUsuarioId(userId).subscribe({
       next: (data) => {
-          // Asegúrate de que data es un array
         if (Array.isArray(data)) {
-          this.recetas=data;
-        }else{
+          this.recetas = data;
+          console.log('Recetas cargadas:', this.recetas);  // Aquí es donde los datos están disponibles
+          this.recetas.forEach(receta => {
+            this.estrella[receta.id]=this.mostrarEstrellas(this.calcularPromedioValoracion(receta))
+            console.log(this.estrella[receta.id])
+          })
+        } else {
           console.error('Datos recibidos en cargarRecetasPorUsuarioId no son un array:', data);
         }
       },
@@ -40,24 +43,11 @@ export class RecetasComponent {
     });
   }
 
- // En tu componente
-cargarRecetas(): void {
-  this.recetaService.obtenerRecetas().subscribe({
-    next: (data: Receta[]) => {
-      if (Array.isArray(data)) {
-        this.recetas = data;
-      } else {
-        console.error('Datos recibidos en cargarRecetas no son un array:', data);
-      }
-    },
-    error: error => console.error('Error al obtener las recetas en cargarRecetas:', error)
-  });
-}
 eliminarReceta(id: number): void {
   this.recetaService.eliminarReceta(id).subscribe({
     next: () => {
       console.log('Receta eliminada con éxito');
-      this.cargarRecetas(); // Recargar la lista de recetas después de eliminar
+      this.cargarRecetasPorUsuarioId(this.userId); // Recargar la lista de recetas después de eliminar
     },
     error: error => console.error('Error al eliminar la receta:', error)
   });

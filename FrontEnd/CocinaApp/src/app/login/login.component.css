@@ -71,3 +71,20 @@ p{
     color: white;
     text-align: center;
 }
+small {
+    color: #d9534f;
+    display: block;
+    margin-top: 5px;
+    font-size: 0.875em;
+  }
+  
+  small:before {
+    content: "⚠ ";
+    font-size: 1em;
+  }
+
+  .errorMensaje {
+    color: #d9534f;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }

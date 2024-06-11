@@ -10,27 +10,32 @@ import java.util.stream.Stream;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.cocina.API.ingrediente.RepositorioIngrediente;
 import com.example.cocina.API.receta.ControladorRecetas;
 import com.example.cocina.API.receta.Receta;
+import com.example.cocina.API.receta.RepositorioReceta;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/recetas-ingredientes") 
 public class ControladorRecetasIngredientes {
 
-    private final RepositorioRecetaIngrediente repositorio;
-    private final CreadorLinksRecetaIngrediente creaLinks;
+	@Autowired
+    private RepositorioRecetaIngrediente repositorio;
+    @Autowired
+	private CreadorLinksRecetaIngrediente creaLinks;
+    @Autowired
+    private RepositorioReceta repositorioReceta;
+    @Autowired
+    private RepositorioIngrediente repositorioIngrediente;
 
-    public ControladorRecetasIngredientes(RepositorioRecetaIngrediente repositorio, CreadorLinksRecetaIngrediente creaLinks) {
-        this.repositorio = repositorio;
-        this.creaLinks = creaLinks;
-    }
 
     // Obtener todos los ingredientes de recetas (GET)
     @GetMapping
@@ -129,25 +134,21 @@ public class ControladorRecetasIngredientes {
 
     // Actualizar un ingrediente de receta (PUT)
     @PutMapping("/{id}")
-    public ResponseEntity<EntityModel<RecetaIngrediente>> actualizarRecetaIngrediente(@PathVariable("id") Long id, @RequestBody RecetaIngrediente recetaIngredienteNuevo) {
+    public ResponseEntity<RecetaIngrediente> actualizarRecetaIngrediente(@PathVariable("id") Long id, @RequestBody RecetaIngredienteDTO recetaIngredienteNuevo) {
 
-        RecetaIngrediente recetaIngredienteActu = repositorio.findById(id)
-                .map(recetaIngrediente -> {
-                    recetaIngrediente.setCantidad(recetaIngredienteNuevo.getCantidad());
-                    recetaIngrediente.setUnidades(recetaIngredienteNuevo.getUnidades());
-                    // Agrega aquí más campos que quieras actualizar
-                    return repositorio.save(recetaIngrediente);
-                })
-                .orElseGet(() -> {
-                    recetaIngredienteNuevo.setId(id);
-                    return repositorio.save(recetaIngredienteNuevo);
-                });
-
-        EntityModel<RecetaIngrediente> recetaIngredienteRes = creaLinks.toModel(recetaIngredienteActu);
-
-        return ResponseEntity
-                .created(recetaIngredienteRes.getRequiredLink(IanaLinkRelations.SELF).toUri())
-                .body(recetaIngredienteRes);
+    	Optional<RecetaIngrediente> optionalRecetaIngrediente = repositorio.findById(id);
+    	if(optionalRecetaIngrediente.isPresent()) {
+    		RecetaIngrediente recetaIngrediente = optionalRecetaIngrediente.get();
+    		recetaIngrediente.setCantidad(recetaIngredienteNuevo.getCantidad());
+    		recetaIngrediente.setUnidades(recetaIngrediente.getUnidades());
+    		recetaIngrediente.setReceta(repositorioReceta.findById(recetaIngredienteNuevo.getReceta_id()).orElse(null));
+    		recetaIngrediente.setIngrediente(repositorioIngrediente.findById(recetaIngredienteNuevo.getIngrediente_id()).orElse(null));
+    		return ResponseEntity.ok(repositorio.save(recetaIngrediente));
+    	}
+    	else {
+    		return ResponseEntity.badRequest().build();
+    	}
+    	
     }
 
     // Modificar parcialmente un ingrediente de receta

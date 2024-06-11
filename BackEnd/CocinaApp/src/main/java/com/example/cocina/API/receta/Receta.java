@@ -28,7 +28,7 @@ public class Receta {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected long id;
+	protected Long id;
 	
 	protected String nombre;
 	protected String descripcion;
@@ -74,11 +74,11 @@ public class Receta {
     	fechaCreacion = new Date(); // Establecer la fecha actual antes de persistir
     }
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
