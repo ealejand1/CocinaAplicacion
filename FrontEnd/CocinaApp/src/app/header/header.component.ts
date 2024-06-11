@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { LoginService } from '../servicios/auth/login.service';
 import { UsuarioService } from '../servicios/auth/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -24,8 +25,27 @@ export class HeaderComponent implements OnInit{
     this.router.navigate(['registrar-receta'])
   }
 
-  logOut():void{
-    this.loginServicio.logout();
+  logOut(): void {
+    Swal.fire({
+      title: '¿Nos dejas ya?',
+      text: "Esperamos que vuelvas pronto para más aventuras culinarias!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, cerrar sesión',
+      cancelButtonText: 'Me quedo un poco más'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.loginServicio.logout();
+        this.router.navigate(['/login']);
+        Swal.fire(
+          '¡Hasta pronto!',
+          'Tu sesión ha sido cerrada. ¡Vuelve pronto!',
+          'success'
+        );
+      }
+    });
   }
 
   toggleCrearRecetaDesplegable(): void {

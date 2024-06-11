@@ -3,7 +3,8 @@
     <h1 class="titulo">{{categoria}}</h1>
     <div class="grid">
       <a [routerLink]="['/recetas/', receta.id]" class="caja" *ngFor="let receta of recetas">
-        <img src="../../assets/imagenes/categorias/Entrantes.jpg" alt="Imagen de {{ receta.nombre }}" class="imgCaja">
+        <!-- Uso de un operador ternario para determinar la fuente de la imagen -->
+        <img [src]="receta.imagenUrl ? receta.imagenUrl : '../../assets/imagenes/categorias/Entrantes.jpg'" alt="Imagen de {{ receta.nombre }}" class="imgCaja">
         <div class="receta-info">
           <h2 class="receta-nombre">{{ receta.nombre }}</h2>
           <p>Tiempo: {{ receta.tiempoPreparacion }}</p>

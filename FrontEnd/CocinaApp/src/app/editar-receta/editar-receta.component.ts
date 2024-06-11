@@ -7,6 +7,7 @@ import { RecetaIngrediente } from '../clases/receta-ingrediente';
 import { Ingrediente } from '../clases/ingrediente';
 import { IngredienteService } from '../servicios/ingrediente.service';
 import { RecetaIngredienteService } from '../servicios/receta-ingrediente.service';
+import Swal from 'sweetalert2';
 import { receta_IngredienteDTO } from '../clases/receta-ingredienteDTO';
 import { error } from 'console';
 import { response } from 'express';
@@ -26,11 +27,11 @@ export class EditarRecetaComponent implements OnInit {
   imagenesPredeterminadas: string[] = [
     'assets/predeterminadas/img1.png',
     'assets/predeterminadas/img2.png',
-    'assets/predeterminadas/img3.jpg',
-    'assets/predeterminadas/img3.jpg',
-    'assets/predeterminadas/img3.jpg',
-    'assets/predeterminadas/img3.jpg',
-  ];
+    'assets/predeterminadas/img3.png',
+    'assets/predeterminadas/img4.png',
+    'assets/predeterminadas/img5.png',
+    'assets/predeterminadas/img6.png',
+  ]
   imagenSeleccionada: string = '';
 
   constructor(
@@ -39,7 +40,7 @@ export class EditarRecetaComponent implements OnInit {
     private recetaIngredienteService: RecetaIngredienteService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {  }
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -56,11 +57,23 @@ export class EditarRecetaComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log("Imagen seleccionada antes de guardar:", this.receta.imagenUrl);
+    this.receta.imagenUrl = this.imagenSeleccionada;
     if (this.receta.id) { // Verificar si receta tiene ID para evitar enviar una receta vacía
       this.guardarCambiosIngrediente(this.receta.ingredientes);
       console.log(this.receta)
+      this.receta.imagenUrl = this.imagenSeleccionada;
       this.recetaService.actualizarReceta(this.receta.id, this.receta).subscribe({
         next: () => {
+           Swal.fire({
+            title: '¡Sazón al punto!',
+            text: 'Los cambios en tu receta han sido añadidos con maestría. Está todo listo para deleitar paladares.',
+            icon: 'success',
+            iconColor: 'green',
+            background: '#fcf4e3',
+            confirmButtonColor: '#8B4513',
+          
+          });
           this.router.navigate(['/recetas']);
         },
         error: (error) => {

@@ -109,6 +109,7 @@ public class ControladorRecetas {
                     receta.setCategorias(recetaNueva.getCategorias());
                     receta.setDescripcion(recetaNueva.getDescripcion());
                     receta.setTiempoPreparacion(recetaNueva.getTiempoPreparacion());
+                    receta.setImagenUrl(recetaNueva.getImagenUrl());
                     return repositorio.save(receta);
                 })
                 .orElseGet(() -> {
