@@ -23,11 +23,11 @@ export class EditarRecetaComponent implements OnInit {
   imagenesPredeterminadas: string[] = [
     'assets/predeterminadas/img1.png',
     'assets/predeterminadas/img2.png',
-    'assets/predeterminadas/img3.jpg',
-    'assets/predeterminadas/img3.jpg',
-    'assets/predeterminadas/img3.jpg',
-    'assets/predeterminadas/img3.jpg',
-  ];
+    'assets/predeterminadas/img3.png',
+    'assets/predeterminadas/img4.png',
+    'assets/predeterminadas/img5.png',
+    'assets/predeterminadas/img6.png',
+  ]
   imagenSeleccionada: string = '';
 
   constructor(

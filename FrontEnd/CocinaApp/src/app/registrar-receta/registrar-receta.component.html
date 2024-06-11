@@ -4,7 +4,7 @@
         <div class="caja-marco">
     
         
-        <form (ngSubmit)="onSubmit()" method="post" class="formulario-registrar">
+        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" method="post" class="formulario-registrar">
     
     
                 
@@ -54,7 +54,7 @@
                   
                 <div class="contenedor-tiempo">
                     <label for="tiempoPreparacion">Tiempo</label>
-                    <input  class="tiempo" id="tiempoPreparacion" type="text" [(ngModel)]="receta.tiempoPreparacion" name="tiempoPreparacion" placeholder="00:00">
+                    <input  class="tiempo" id="tiempoPreparacion" type="text" [(ngModel)]="receta.tiempoPreparacion" name="tiempoPreparacion"required>
                 </div>
             </div>
 
