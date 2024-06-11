@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../servicios/auth/login.service';
 import { LoginRequest } from '../servicios/auth/loginRequest';
 import { error } from 'console';
@@ -13,11 +13,9 @@ import { response } from 'express';
 })
 export class LoginComponent implements OnInit {
   ruta: string='../assets/vegetables.jpg'
+  loginForm : FormGroup;
   
-  loginForm = this.formBuilder.group({
-    username:[''],
-    password:['']
-  })
+  showError: boolean = false;
 
 
   constructor(private router:Router,private formBuilder:FormBuilder,private loginService:LoginService){
@@ -25,14 +23,57 @@ export class LoginComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.minLength(3), this.validarUsuario]],
+        password: ['', [Validators.required, Validators.minLength(5), this.validarPasswd]]
+    });
+  }
+
+  validarFormulario():boolean{
+    return this.loginForm.valid;
+   
+  }
+  validarPasswd(control:any):{ [key:string]: boolean}| null {
+    const contra = control.value;
+    if (contra.length < 5) {
+      return {'passwordLenght':true}
+    }  
+    const hasLowercase = /[a-z]/.test(contra);
+    const hasUppercase = /[A-Z]/.test(contra);
+    const hasDigit = /[0-9]/.test(contra);
+  
+    if (!hasLowercase || !hasUppercase || !hasDigit) {
+      return {'passwordComplexity': true};
+    }
+    return null;
+  }
+
+  validarUsuario(control:any):{[key:string]:boolean} | null{
+    const user = control.value;
+    if(!user){
+      return {'required':true};
+    }
+    const validCharacters = /^[a-zA-Z0-9_]+$/;
+    if (!validCharacters.test(user)) {
+      return {'invalidUsername':true};
+    }
+    return null;
   }
 
   login(){
-    this.loginService.login(this.loginForm.value as LoginRequest).subscribe(
-      response => {
-        this.router.navigateByUrl("inicio");
-      },
-    )
+    // if(this.validarFormulario()){
+      this.loginService.login(this.loginForm.value as LoginRequest).subscribe(
+        response => {
+          this.router.navigateByUrl("inicio");
+        },
+        error => {
+          this.showError = true;
+        }
+      )
+    // }
+    // else{
+    //   this.showError = true;
+    // }
   }
 
   loginInvitado(){

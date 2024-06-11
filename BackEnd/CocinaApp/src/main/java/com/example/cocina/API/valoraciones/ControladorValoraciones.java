@@ -6,8 +6,9 @@
 	import java.util.stream.Collectors;
 	
 	import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
-	
-	import org.springframework.hateoas.CollectionModel;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 	import org.springframework.hateoas.EntityModel;
 	import org.springframework.hateoas.IanaLinkRelations;
 	import org.springframework.http.ResponseEntity;
@@ -21,19 +22,27 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 	import org.springframework.web.bind.annotation.RequestBody;
 	import org.springframework.web.bind.annotation.RequestMapping;
 	import org.springframework.web.bind.annotation.RestController;
+
+import com.example.cocina.API.receta.Receta;
+import com.example.cocina.API.receta.RepositorioReceta;
+import com.example.cocina.user.RepositorioUsuario;
+import com.example.cocina.user.User;
 	
 	@CrossOrigin(origins = "*")
 	@RestController
 	@RequestMapping("/api/v1/valoraciones") 
 	public class ControladorValoraciones {
 	
-	    private final RepositorioValoracion repositorioValoracion; 
-	    private final CreadorLinksValoracion creaLinksValoracion;
+		@Autowired
+	    private RepositorioValoracion repositorioValoracion;
+		@Autowired
+		private RepositorioReceta repositorioReceta;
+		@Autowired
+		private RepositorioUsuario repositorioUsuario;
+	    @Autowired
+		private CreadorLinksValoracion creaLinksValoracion;
 	
-	    public ControladorValoraciones(RepositorioValoracion repositorioValoracion, CreadorLinksValoracion creaLinksValoracion) {
-	        this.repositorioValoracion = repositorioValoracion;
-	        this.creaLinksValoracion = creaLinksValoracion;
-	    }
+
 	    
 	    // Obtener todas las valoraciones (GET)
 	    @GetMapping
@@ -76,11 +85,17 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 	    
 	    // Crear una nueva valoracion (POST)
 	    @PostMapping
-	    public ResponseEntity<EntityModel<Valoracion>> crearValoracion(@RequestBody Valoracion valoracion) {
-	        EntityModel<Valoracion> valoracionRes = creaLinksValoracion.toModel(repositorioValoracion.save(valoracion));
-	        return ResponseEntity
-	                .created(valoracionRes.getRequiredLink(IanaLinkRelations.SELF).toUri())
-	                .body(valoracionRes);
+	    public ResponseEntity<Valoracion> crearValoracion(@RequestBody ValoracionDTO valoracion) {
+	  
+	    	Valoracion valoracionNueva = new Valoracion();
+	    	valoracionNueva.setComentario(valoracion.getComentario());
+	    	valoracionNueva.setPuntuacion(valoracion.getPuntuacion());
+	    	valoracionNueva.setReceta(repositorioReceta.findById(valoracion.getReceta_id()).orElse(null));
+	    	valoracionNueva.setUsuario(repositorioUsuario.findById(valoracion.getUsuario_id()).orElse(null));
+	    	
+	    	repositorioValoracion.save(valoracionNueva);
+	    	
+	        return ResponseEntity.ok(valoracionNueva);
 	    }
 	
 	    // Actualizar una valoracion (PUT)

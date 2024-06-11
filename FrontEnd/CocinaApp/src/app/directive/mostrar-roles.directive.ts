@@ -27,7 +27,6 @@ export class MostrarRolesDirective implements OnInit, OnDestroy {
     this.sub = this.loginService.userActual
       .pipe(
         map(user => {
-          console.log('User data:', user);
           return Boolean(user && this.allowdRoles?.includes(user.rol));
         }),
         distinctUntilChanged(),

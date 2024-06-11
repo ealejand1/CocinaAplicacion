@@ -10,6 +10,7 @@ import { ValoracionService } from '../servicios/valoracion.service';
   styleUrls: ['./recetas.component.css'] // Ensure it's styleUrls in an array format
 })
 export class RecetasComponent {
+
   recetas: Receta[] = [];
   constructor(
     private recetaService: RecetaService,
