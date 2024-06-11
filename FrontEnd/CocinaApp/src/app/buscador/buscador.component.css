@@ -30,7 +30,7 @@ main{
 button {
     background-color: #B9581E;
     border: none;
-    border-radius: 50%;
+    border-radius: 25px;
     padding: 10px 15px;
     cursor: pointer;
     font-size: 20px;
