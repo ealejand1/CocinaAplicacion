@@ -8,7 +8,7 @@
     </div>
       </div>
       <div class="receta-imagen">
-        <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}">
+        <img [src]="receta.imagenUrl ? receta.imagenUrl : 'assets/imagenes/categorias/Entrantes.jpg'" alt="Imagen de {{ receta.nombre }}">
       </div>
    
       
@@ -40,7 +40,7 @@
      </div> 
       <ul *ngIf="valoraciones && valoraciones.length > 0">
         <li *ngFor="let valoracion of valoraciones" class="comentario">
-          <p>{{ valoracion.usuario.nombre}}</p>
+        
           <div class="valoracion-estrellas">{{ mostrarEstrellas(valoracion.puntuacion) }}</div>
           <p>{{ valoracion.comentario }}</p>
         </li>

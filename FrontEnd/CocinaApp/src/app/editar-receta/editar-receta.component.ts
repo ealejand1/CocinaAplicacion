@@ -17,6 +17,17 @@ export class EditarRecetaComponent implements OnInit {
   receta: Receta=new Receta();
    todosLosIngredientes: Ingrediente[] = [];
   nuevoIngrediente: RecetaIngrediente = new RecetaIngrediente();
+  imageSrc: string | ArrayBuffer="";
+
+  imagenesPredeterminadas: string[] = [
+    'assets/predeterminadas/img1.png',
+    'assets/predeterminadas/img2.png',
+    'assets/predeterminadas/img3.jpg',
+    'assets/predeterminadas/img3.jpg',
+    'assets/predeterminadas/img3.jpg',
+    'assets/predeterminadas/img3.jpg',
+  ];
+  imagenSeleccionada: string = '';
 
   constructor(
     private recetaService: RecetaService,
@@ -103,6 +114,21 @@ export class EditarRecetaComponent implements OnInit {
         }
       });
     }
+  }
+  mostrarPopup: boolean = false;
+  mostrarPopupImagenes() {
+    this.mostrarPopup = true;
+  }
+  
+  seleccionarImagen(imagen: string) {
+    this.imagenSeleccionada = imagen;  // Guarda la URL de la imagen seleccionada
+    this.imageSrc = imagen;            // Actualiza la fuente de la imagen para la previsualización
+    this.mostrarPopup = false;         // Cierra el pop-up
+  }
+  
+  
+  cerrarPopup() {
+    this.mostrarPopup = false;
   }
   
 }

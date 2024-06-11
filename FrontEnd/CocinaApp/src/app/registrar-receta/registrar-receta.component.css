@@ -20,6 +20,12 @@
     margin-top: 55px;
 
 }
+.swal-wide {
+    border: 2px solid #8B4513; /* Color marrón para el borde */
+    border-radius: 20px; /* Borde más redondeado */
+  }
+  
+  
 .formulario-registrar{
     width: 96%;
     height: 95%;

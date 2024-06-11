@@ -9,6 +9,7 @@ import { RecetaIngredienteService } from '../servicios/receta-ingrediente.servic
 import { Console } from 'console';
 import { CategoriasService } from '../servicios/categorias.service';
 import { Categoria } from '../clases/categoria';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar-receta',
@@ -128,12 +129,13 @@ export class RegistrarRecetaComponent implements OnInit {
           this.nuevoIngrediente.receta=recetaGuardada;
           this.guardarCategorias(recetaGuardada.id);
           this.guardarIngredientes(recetaGuardada.id);
-          console.log(this.receta.ingredientes)
-          this.router.navigate(['/recetas'])
+          this.mostrarExitoAlerta();
+          this.router.navigate(["/recetas"])
           
         },
         error: (error) => {
           console.error('Error al crear receta sin imagen', error);
+          this.mostrarErrorAlerta();  
           
         }
       });
@@ -148,6 +150,24 @@ export class RegistrarRecetaComponent implements OnInit {
         next: (response) => console.log('Categoría asignada con éxito:', response),
         error: (error) => console.error('Error al asignar categoría', error)
       });
+    });
+  }
+  mostrarExitoAlerta() {
+    
+    Swal.fire({
+      title: "¡Receta en el libro!",
+      background: '#FFF9E9',
+      text: "Has añadido con éxito una nueva receta a tu colección. ¡Es hora de cocinar!",
+      icon: "success"
+    });
+  }
+  
+  mostrarErrorAlerta() {
+    Swal.fire({
+      icon: 'error',
+      
+      title: 'Oops...',
+      text: 'Something went wrong! Please try again.'
     });
   }
   
