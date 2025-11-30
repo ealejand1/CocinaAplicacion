@@ -9,7 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RecetasComponent } from './recetas/recetas.component';
 import { RecetaDetalleComponent } from './receta-detalle/receta-detalle.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RecetasCategoriaComponent } from './recetas-categoria/recetas-categoria.component';
 import { EditarRecetaComponent } from './editar-receta/editar-receta.component';
 import { RegistrarRecetaComponent } from './registrar-receta/registrar-receta.component';
@@ -21,38 +21,32 @@ import { BuscadorComponent } from './buscador/buscador.component';
 import { MostrarRolesDirective } from './directive/mostrar-roles.directive';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HeaderComponent,
-    FooterComponent,
-    RecetasComponent,
-    RecetaDetalleComponent,
-    InicioComponent,
-    RecetasCategoriaComponent,
-    EditarRecetaComponent,
-    RegistrarRecetaComponent,
-    CategoriaRecetasComponent,
-    ValorarRecetaComponent,
-    RegistroComponent,
-    BuscadorComponent,
-    MostrarRolesDirective
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    provideClientHydration()
-  ],
-  bootstrap: [AppComponent],
-  exports: [
-    MostrarRolesDirective
-  ]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LoginComponent,
+        HeaderComponent,
+        FooterComponent,
+        RecetasComponent,
+        RecetaDetalleComponent,
+        InicioComponent,
+        RecetasCategoriaComponent,
+        EditarRecetaComponent,
+        RegistrarRecetaComponent,
+        CategoriaRecetasComponent,
+        ValorarRecetaComponent,
+        RegistroComponent,
+        BuscadorComponent,
+        MostrarRolesDirective
+    ],
+    bootstrap: [AppComponent],
+    exports: [
+        MostrarRolesDirective
+    ], imports: [BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule], providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        provideClientHydration(),
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
